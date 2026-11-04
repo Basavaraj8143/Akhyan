@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "build-tools-accessible-set-up-vite",
+  "title": "Set up Vite: Scaffold and Configure a Project with Vite",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Set up a new JavaScript project using Vite as the build tool. Configure the project with basic settings and demonstrate understanding of Vite's configuration options.\n\nRequirements:\n\n1. Project initialization:\n   - Create a new Vite project using the CLI\n   - Choose vanilla JavaScript as the template\n   - Configure the project with a custom title and basic settings\n\n2. Vite configuration:\n   - Create or modify vite.config.js with:\n     - Custom server port (e.g., 3000)\n     - Open browser automatically on server start\n     - Configure build output directory\n   - Explain what each configuration option does\n\n3. Project structure:\n   - Create a simple component (e.g., a counter or greeting)\n   - Import and use the component in main.js\n   - Ensure the project builds and runs correctly\n\n4. Build and development:\n   - Run the development server\n   - Build the project for production\n   - Verify the build output is generated correctly\n\n5. Documentation:\n   - List the commands used to:\n     - Install dependencies\n     - Start the development server\n     - Build for production\n     - Preview the production build\n\nUse Vite as the build tool. Do not use other bundlers like Webpack or Parcel for this exercise.",
+  "instructions": "Submit exactly one file containing the complete project setup documentation. Include the vite.config.js file content, the main.js implementation, component code, and all commands used. Separate each file using clear comments such as // === FILE: vite.config.js ===, // === FILE: main.js ===, etc. Include a brief explanation of each configuration option. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Vite project initialization",
+      "marks": 25,
+      "full": "Correctly initializes a Vite project using the CLI with vanilla JavaScript template and proper project structure.",
+      "partial": "Initializes a project but has issues with template selection or project structure.",
+      "zero": "Does not initialize a Vite project or initialization is incorrect."
+    },
+    {
+      "criterion": "Vite configuration",
+      "marks": 30,
+      "full": "Creates a proper vite.config.js with custom server port, open browser setting, build output directory, and explains each configuration option.",
+      "partial": "Creates a config file but has missing or incorrect configuration options, or explanations are incomplete.",
+      "zero": "Does not create a vite.config.js or configuration is incorrect."
+    },
+    {
+      "criterion": "Component implementation and usage",
+      "marks": 25,
+      "full": "Creates a simple component, imports it correctly in main.js, and the project builds and runs without errors.",
+      "partial": "Creates a component but has import/export issues or the project does not build/run correctly.",
+      "zero": "Does not create a component or the implementation is non-functional."
+    },
+    {
+      "criterion": "Documentation and commands",
+      "marks": 20,
+      "full": "Documents all commands for installation, dev server, production build, and preview, with clear explanations.",
+      "partial": "Documents most commands but misses some or explanations are unclear.",
+      "zero": "Commands are not documented or are incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different port numbers or configuration values as long as they are valid.",
+    "Create different types of components (counter, greeting, etc.) as long as they demonstrate the concept.",
+    "Use additional Vite plugins or configuration options if desired (optional enhancements).",
+    "Use TypeScript with Vite if preferred (specify the template used)."
+  ],
+  "mistakes_to_check": [
+    "Not using the Vite CLI to initialize the project (Project initialization).",
+    "Not creating or modifying vite.config.js (Configuration).",
+    "Not configuring the required options (port, open, build.outDir) (Configuration completeness).",
+    "Not importing or using the component correctly in main.js (Component usage).",
+    "Not documenting the commands or documenting incorrect commands (Documentation).",
+    "Not explaining what the configuration options do (Configuration explanations)."
+  ],
   "solution_file": "solution.js"
 }

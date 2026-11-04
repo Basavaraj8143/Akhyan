@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "angular-accessible-first-components",
+  "title": "First Components: Build Angular Components with Data Binding",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Build a simple Angular application with two components that demonstrate data binding, interpolation, and event handling.\n\nRequirements:\n\n1. Create a ButtonComponent that:\n   - Has an @Input() property for the button label (string)\n   - Has an @Input() property for disabled state (boolean, optional, defaults to false)\n   - Has an @Output() event emitter for click events\n   - Renders a button element with the label\n   - Emits the click event when the button is clicked\n   - Disables the button when the disabled input is true\n\n2. Create a CounterComponent that:\n   - Has a count property initialized to 0\n   - Displays the current count using interpolation\n   - Has increment and decrement methods\n   - Uses the ButtonComponent for both increment and decrement actions\n   - Prevents the count from going below 0\n   - Disables the decrement button when count is 0\n\n3. Create an AppComponent that:\n   - Renders two CounterComponent instances (demonstrating component reusability)\n   - Each counter should maintain independent state\n\nUse Angular's component decorators, @Input, @Output, and EventEmitter. Do not use complex state management libraries.",
+  "instructions": "Submit exactly one file containing the complete Angular implementation. Separate each component using clear comments such as // === COMPONENT: ButtonComponent ===, // === COMPONENT: CounterComponent ===, and // === COMPONENT: AppComponent ===. Include all necessary imports and a brief explanation of how to set up and run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "ButtonComponent with inputs and outputs",
+      "marks": 30,
+      "full": "Creates a ButtonComponent with correct @Input() for label and disabled, @Output() with EventEmitter for clicks, and proper template rendering.",
+      "partial": "Creates a ButtonComponent but has missing inputs/outputs, incorrect decorator usage, or the button does not emit events properly.",
+      "zero": "Does not create a ButtonComponent or the component is non-functional."
+    },
+    {
+      "criterion": "CounterComponent with data binding",
+      "marks": 35,
+      "full": "Creates a CounterComponent with correct property initialization, interpolation for display, increment/decrement methods, uses ButtonComponent, and prevents negative values.",
+      "partial": "Creates a CounterComponent but has issues with data binding, method logic, or does not properly use ButtonComponent.",
+      "zero": "Does not create a CounterComponent or it does not manage state correctly."
+    },
+    {
+      "criterion": "Component reusability and independent state",
+      "marks": 20,
+      "full": "The AppComponent renders two CounterComponent instances that maintain independent state, demonstrating component reusability.",
+      "partial": "The AppComponent renders CounterComponent instances but they share state or the reusability is not properly demonstrated.",
+      "zero": "Does not demonstrate component reusability or independent state."
+    },
+    {
+      "criterion": "Angular best practices and code quality",
+      "marks": 15,
+      "full": "Uses proper Angular decorators (@Component, @Input, @Output), follows Angular naming conventions, handles properties correctly, and the code is clean.",
+      "partial": "Mostly follows Angular best practices but has minor issues with decorator usage, property handling, or code organization.",
+      "zero": "Does not follow Angular best practices or has significant code quality issues."
+    }
+  ],
+  "valid_alternatives": [
+    "Use standalone components or NgModule-based components (both are acceptable).",
+    "Use different template syntax or structure as long as the component functions correctly.",
+    "Add additional features like a reset button if desired (optional enhancements).",
+    "Use setter methods for @Input() properties if additional logic is needed."
+  ],
+  "mistakes_to_check": [
+    "Not using @Input() decorator for component inputs (Angular decorators).",
+    "Not using @Output() and EventEmitter for component outputs (Angular events).",
+    "Allowing the count to go below 0 (Counter logic).",
+    "Not using interpolation for displaying the count (data binding).",
+    "The two CounterComponent instances sharing the same state (state isolation).",
+    "Not properly disabling the decrement button when count is 0 (disabled binding)."
+  ],
+  "solution_file": "solution.ts"
 }

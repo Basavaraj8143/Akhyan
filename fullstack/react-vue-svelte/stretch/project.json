@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "react-stretch-data-driven-ui",
+  "title": "Data-Driven UI: Build a UI that Fetches, Displays, and Updates from an API",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a React application that fetches data from an external API, displays it, and allows users to update the data. Use the JSONPlaceholder API for this exercise.\n\nRequirements:\n\n1. API integration:\n   - Fetch posts from https://jsonplaceholder.typicode.com/posts?_limit=10\n   - Use React's useEffect hook to fetch data on component mount\n   - Handle loading states while data is being fetched\n   - Handle error states if the fetch fails\n\n2. Display data:\n   - Display the fetched posts in a list or grid\n   - Show the post title and body for each post\n   - Display the post ID with each item\n\n3. Update functionality:\n   - Add an \"Edit\" button for each post\n   - When clicked, show a form to edit the post title and body\n   - Include \"Save\" and \"Cancel\" buttons in the edit form\n   - When saved, update the local state with the edited values\n   - Note: The actual API update is not required (simulate the update in local state only)\n\n4. State management:\n   - Use useState for posts data, loading state, error state, and editing state\n   - Track which post is currently being edited\n   - Maintain the posts in local state after fetching\n\n5. UI requirements:\n   - Show a loading indicator while fetching\n   - Show an error message if the fetch fails\n   - Show the edit form inline or in a modal when editing\n   - Provide visual feedback for the edit mode\n\nUse functional components with hooks. Do not use external data fetching libraries like React Query or Axios (use the native Fetch API).",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate components using clear comments such as // === COMPONENT: PostItem ===, // === COMPONENT: PostList ===, etc. Include all necessary imports and a brief explanation of how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "API data fetching with useEffect",
+      "marks": 25,
+      "full": "Correctly uses useEffect to fetch data from the API on mount, uses async/await or proper promise handling, and manages the fetch lifecycle correctly.",
+      "partial": "Fetches data but has issues with useEffect usage, async handling, or lifecycle management.",
+      "zero": "Does not fetch data from the API or the fetch implementation is incorrect."
+    },
+    {
+      "criterion": "Loading and error state handling",
+      "marks": 25,
+      "full": "Implements loading state with appropriate UI feedback, handles errors gracefully with error messages, and transitions states correctly.",
+      "partial": "Implements loading or error handling but one is missing, incomplete, or the state transitions are incorrect.",
+      "zero": "Does not handle loading or error states."
+    },
+    {
+      "criterion": "Data display and edit functionality",
+      "marks": 25,
+      "full": "Displays the fetched posts correctly, implements edit mode with a form for title and body, saves changes to local state, and cancels edits properly.",
+      "partial": "Displays data but has issues with edit mode, form handling, or state updates.",
+      "zero": "Does not display data or the edit functionality is non-functional."
+    },
+    {
+      "criterion": "State management and React best practices",
+      "marks": 25,
+      "full": "Uses useState appropriately for all state needs, manages editing state correctly, follows React best practices with hooks, and the code is well-organized.",
+      "partial": "Mostly manages state correctly but has issues with state updates, editing state, or React best practices.",
+      "zero": "State management is incorrect or does not follow React best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use separate components for PostItem, PostList, EditForm, etc., or keep everything in one component.",
+    "Show the edit form inline or in a modal/dialog.",
+    "Use controlled inputs or uncontrolled inputs for the edit form.",
+    "Add optimistic UI updates or other enhancements if desired (optional)."
+  ],
+  "mistakes_to_check": [
+    "Not using useEffect correctly or missing dependency array (React hooks).",
+    "Not handling loading state or not showing a loading indicator (loading state).",
+    "Not handling errors or not showing error messages (error handling).",
+    "Mutating state directly instead of using setState (state management).",
+    "Not tracking which post is being edited correctly (editing state).",
+    "Not updating the local state when saving edits (data updates)."
+  ],
+  "solution_file": "solution.jsx"
 }

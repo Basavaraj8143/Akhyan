@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "rest-api-design-core-validated-api",
+  "title": "Validated API: Add Rigorous Validation and Error Handling to an API",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a RESTful API with comprehensive input validation and error handling. The API should validate all incoming data and provide clear, consistent error responses.\n\nRequirements:\n\n1. Resource definition:\n   - Resource: User\n   - Schema:\n     - id: number (auto-generated)\n     - firstName: string (required, 2-50 characters)\n     - lastName: string (required, 2-50 characters)\n     - email: string (required, valid email format)\n     - age: number (optional, 18-120)\n     - phone: string (optional, valid phone format)\n\n2. Validation rules:\n   - firstName: required, 2-50 characters, letters only\n   - lastName: required, 2-50 characters, letters only\n   - email: required, valid email format (regex: /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/)\n   - age: optional, if provided must be 18-120\n   - phone: optional, if provided must match phone format (regex: /^\\+?[1-9]\\d{1,14}$/)\n\n3. Error responses:\n   - Consistent error response format:\n     {\n       \"error\": \"error_type\",\n       \"message\": \"Human-readable error message\",\n       \"details\": {\n         \"field\": \"Specific field with error\",\n         \"value\": \"Invalid value provided\",\n         \"constraint\": \"Validation constraint violated\"\n       }\n     }\n   - Return 400 for validation errors\n   - Return 404 for resource not found\n   - Return 422 for unprocessable entity (business logic errors)\n   - Return 500 for server errors\n\n4. CRUD operations with validation:\n   - POST /api/users - Validate all required fields\n   - PUT /api/users/:id - Validate all fields on update\n   - PATCH /api/users/:id - Validate only provided fields\n   - GET /api/users - Validate query parameters (limit, offset)\n   - GET /api/users/:id - Validate ID format\n\n5. Error handling middleware:\n   - Centralized error handling\n   - Validation error class\n   - Not found error class\n   - Consistent error logging\n\nUse Express.js. Do not use validation libraries like Joi or Yup—implement validation manually.",
+  "instructions": "Submit exactly one file containing the complete REST API implementation with validation. Include all CRUD operations, validation logic, error classes, error handling middleware, and consistent error responses. Separate each component using clear comments. Include a brief explanation of the validation strategy. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Validation implementation",
+      "marks": 30,
+      "full": "Implements comprehensive validation for all fields according to the specified rules (required fields, length constraints, format validation, ranges).",
+      "partial": "Implements validation for most fields but has missing rules, incorrect regex patterns, or incomplete validation.",
+      "zero": "Validation is missing or incorrectly implemented."
+    },
+    {
+      "criterion": "Error response format",
+      "marks": 25,
+      "full": "Returns consistent error responses with the specified format (error, message, details) for all error scenarios.",
+      "partial": "Error responses are mostly consistent but have missing fields or inconsistent formatting.",
+      "zero": "Error response format is incorrect or inconsistent."
+    },
+    {
+      "criterion": "HTTP status codes and error types",
+      "marks": 25,
+      "full": "Uses appropriate HTTP status codes (400, 404, 422, 500) for different error types and creates custom error classes.",
+      "partial": "Uses status codes but has incorrect codes for some scenarios or missing error classes.",
+      "zero": "HTTP status codes are incorrect or error classes are missing."
+    },
+    {
+      "criterion": "Error handling middleware and validation coverage",
+      "marks": 20,
+      "full": "Implements centralized error handling middleware, applies validation to all CRUD operations and query parameters, and errors are properly caught and handled.",
+      "partial": "Error handling is mostly correct but has gaps in validation coverage or middleware implementation.",
+      "zero": "Error handling is missing or validation is not applied consistently."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different regex patterns as long as they validate the same constraints.",
+    "Add additional validation rules if desired (e.g., password strength).",
+    "Use different error response format as long as it's consistent and informative.",
+    "Add additional fields to the user schema if desired."
+  ],
+  "mistakes_to_check": [
+    "Not validating required fields (Validation completeness).",
+    "Not using regex for format validation (Format validation).",
+    "Not returning consistent error response format (Error format).",
+    "Not using appropriate HTTP status codes (Status codes).",
+    "Not creating custom error classes (Error classes).",
+    "Not validating query parameters (Query parameter validation)."
+  ],
   "solution_file": "solution.js"
 }

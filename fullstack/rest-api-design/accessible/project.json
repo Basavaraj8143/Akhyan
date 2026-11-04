@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "rest-api-design-accessible-crud-api",
+  "title": "CRUD API: Build a CRUD REST API with Proper Status Codes",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Build a RESTful API that follows REST principles and implements CRUD operations with proper HTTP status codes. The API should manage a simple resource (e.g., products or articles).\n\nRequirements:\n\n1. Resource definition:\n   - Choose a resource (e.g., products, articles, books)\n   - Define the resource schema with at least 4 fields:\n     - id (unique identifier)\n     - name/title (string)\n     - description/body (string)\n     - createdAt (timestamp)\n\n2. CRUD operations:\n   - CREATE: POST /api/resource - Create a new resource\n   - READ: GET /api/resource - Get all resources (with pagination)\n   - READ: GET /api/resource/:id - Get a specific resource by ID\n   - UPDATE: PUT /api/resource/:id - Update a resource (full update)\n   - DELETE: DELETE /api/resource/:id - Delete a resource\n\n3. HTTP status codes:\n   - 200 OK - Successful GET, PUT, DELETE\n   - 201 Created - Successful POST\n   - 400 Bad Request - Invalid request data\n   - 404 Not Found - Resource not found\n   - 405 Method Not Allowed - Unsupported HTTP method\n   - 500 Internal Server Error - Server errors\n\n4. REST principles:\n   - Use nouns for resource names (not verbs)\n   - Use plural nouns for collections (/api/products)\n   - Use HTTP methods correctly (GET, POST, PUT, DELETE)\n   - Return JSON responses\n   - Use proper content-type header (application/json)\n\n5. Data storage:\n   - Use in-memory array for simplicity\n   - Generate IDs automatically\n\nUse Express.js. Do not use databases or ORMs.",
+  "instructions": "Submit exactly one file containing the complete REST API implementation. Include all CRUD operations, proper status codes, and adherence to REST principles. Separate each route using clear comments. Include a brief explanation of the REST principles followed. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "CRUD operations implementation",
+      "marks": 30,
+      "full": "Implements all CRUD operations (CREATE, READ all, READ by ID, UPDATE, DELETE) with correct HTTP methods and route patterns.",
+      "partial": "Implements most CRUD operations but has missing operations or incorrect HTTP methods.",
+      "zero": "CRUD operations are missing or incorrectly implemented."
+    },
+    {
+      "criterion": "HTTP status codes",
+      "marks": 30,
+      "full": "Uses appropriate HTTP status codes for all scenarios (200, 201, 400, 404, 405, 500) based on the outcome of each operation.",
+      "partial": "Uses status codes but has incorrect codes for some scenarios or missing codes.",
+      "zero": "HTTP status codes are incorrect or not used."
+    },
+    {
+      "criterion": "REST principles adherence",
+      "marks": 25,
+      "full": "Follows REST principles: uses nouns for resources, plural for collections, correct HTTP methods, JSON responses, and proper content-type.",
+      "partial": "Mostly follows REST principles but has some violations (e.g., verbs in URLs, wrong methods).",
+      "zero": "Does not follow REST principles or has significant violations."
+    },
+    {
+      "criterion": "Response format and data handling",
+      "marks": 15,
+      "full": "Returns consistent JSON responses, handles data validation correctly, generates IDs automatically, and the data structure is well-defined.",
+      "partial": "Response format is mostly correct but has inconsistencies or data handling issues.",
+      "zero": "Response format is incorrect or data handling is flawed."
+    }
+  ],
+  "valid_alternatives": [
+    "Use PATCH instead of PUT for partial updates (both are acceptable).",
+    "Choose any resource type (products, articles, books, etc.) as long as the schema is well-defined.",
+    "Add additional fields to the resource schema if desired.",
+    "Use different ID generation strategy as long as it ensures uniqueness."
+  ],
+  "mistakes_to_check": [
+    "Using verbs in URL paths (e.g., /api/getProducts) instead of nouns (REST principles).",
+    "Using wrong HTTP methods for operations (e.g., GET for creating resources) (HTTP methods).",
+    "Not returning appropriate status codes (e.g., returning 200 for creation instead of 201) (Status codes).",
+    "Not setting Content-Type header to application/json (Response headers).",
+    "Using singular nouns for collections (e.g., /api/product instead of /api/products) (REST conventions).",
+    "Not validating request data or handling invalid data (Data validation)."
+  ],
   "solution_file": "solution.js"
 }

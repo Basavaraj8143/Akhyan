@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "typescript-stretch-generic-utilities",
+  "title": "Generic Utilities: Write Reusable Generic Typed Utilities",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Create a set of reusable TypeScript utility functions using generics. These utilities should work with various types while maintaining type safety.\n\nImplement the following generic utility functions:\n\n1. first<T>(array: T[]): T | undefined\n   Returns the first element of an array, or undefined if the array is empty.\n\n2. last<T>(array: T[]): T | undefined\n   Returns the last element of an array, or undefined if the array is empty.\n\n3. mapObject<K, V, U>(obj: Record<K, V>, mapper: (value: V, key: K) => U): Record<K, U>\n   Transforms the values of an object using a mapper function, preserving keys.\n\n4. pluck<T, K extends keyof T>(array: T[], key: K): T[K][]\n   Extracts an array of values for a specific property from an array of objects.\n\n5. zip<T, U>(arr1: T[], arr2: U[]): [T, U][]\n   Combines two arrays into an array of pairs. If arrays have different lengths, only pair up to the shorter length.\n\nRequirements:\n1. Use appropriate generic type parameters for each function.\n2. Ensure type safety so TypeScript infers correct types.\n3. Handle edge cases (empty arrays, different length arrays) appropriately.\n4. Use type constraints (extends) where necessary to restrict generic types.\n5. Provide clear type annotations for all parameters and return types.\n6. Do not use any type—use specific generic types.",
+  "instructions": "Submit exactly one file containing the complete TypeScript implementation of all five generic utility functions with type annotations. Include example usage comments demonstrating how each function works with different types. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Generic type parameters and constraints",
+      "marks": 30,
+      "full": "Uses appropriate generic type parameters with correct constraints (e.g., K extends keyof T) where needed for all functions.",
+      "partial": "Uses generics for most functions but has missing constraints, incorrect constraint usage, or incomplete generic definitions.",
+      "zero": "Does not use generics or uses them incorrectly."
+    },
+    {
+      "criterion": "Type annotations and inference",
+      "marks": 25,
+      "full": "Provides complete type annotations for all parameters and return types, enabling TypeScript to infer correct types when the functions are used.",
+      "partial": "Provides type annotations but has missing or incorrect annotations that hinder type inference.",
+      "zero": "Does not provide type annotations or they are incorrect."
+    },
+    {
+      "criterion": "Function implementation correctness",
+      "marks": 25,
+      "full": "All functions implement the required behavior correctly, handling edge cases like empty arrays and different length arrays appropriately.",
+      "partial": "Most functions work correctly but one or two have edge case handling issues or incorrect behavior.",
+      "zero": "Functions do not implement the required behavior or have significant errors."
+    },
+    {
+      "criterion": "Type safety and reusability",
+      "marks": 20,
+      "full": "The utilities are fully type-safe without using any, work correctly with different types, and demonstrate genuine reusability through generics.",
+      "partial": "The utilities are mostly type-safe but have unnecessary any usage or limited reusability.",
+      "zero": "The implementation relies on any or is not genuinely reusable across types."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different type parameter names (e.g., TInput, TOutput) as long as they are clear and consistent.",
+    "Return undefined or null for edge cases like empty arrays, as long as the return type reflects this.",
+    "Use array destructuring or other modern syntax in the implementation.",
+    "Add overloads for functions if it improves type safety (though not required)."
+  ],
+  "mistakes_to_check": [
+    "Using any instead of proper generic types (type safety).",
+    "Missing type constraints like K extends keyof T for pluck (generic constraints).",
+    "Not handling empty arrays or different length arrays in zip (edge case handling).",
+    "Using incorrect return types that don't reflect possible undefined values (type correctness).",
+    "Implementing functions that don't actually work with different types (reusability)."
+  ],
+  "solution_file": "solution.ts"
 }

@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "build-tools-stretch-custom-config",
+  "title": "Custom Config: Configure a Bundler for a Non-Trivial Project Need",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Configure a build tool (Vite or Webpack) for a complex project with multiple advanced requirements. The configuration should handle real-world scenarios that go beyond basic setup.\n\nRequirements:\n\nChoose and implement at least four of the following advanced configuration scenarios:\n\n1. Multiple entry points:\n   - Configure the bundler to build from multiple entry files\n   - Generate separate bundles for each entry point\n   - Shared code should be extracted to a common chunk\n\n2. Environment variables:\n   - Configure environment-specific builds (development, staging, production)\n   - Use .env files and process.env\n   - Demonstrate different behavior based on environment\n\n3. Asset handling:\n   - Configure handling for images, fonts, and other static assets\n   - Set up asset optimization (compression, resizing)\n   - Configure asset naming and output paths\n\n4. CSS preprocessing:\n   - Integrate a CSS preprocessor (Sass, Less, or PostCSS)\n   - Configure autoprefixer and other PostCSS plugins\n   - Set up CSS extraction for production builds\n\n5. Code splitting and lazy loading:\n   - Configure automatic code splitting\n   - Set up lazy loading for routes or components\n   - Configure prefetching and preloading strategies\n\n6. Plugin integration:\n   - Integrate at least two custom plugins (e.g., for PWA, compression, image optimization)\n   - Configure plugin options correctly\n   - Explain why each plugin was chosen\n\n7. Build performance optimization:\n   - Configure caching strategies\n   - Set up parallel processing for faster builds\n   - Configure incremental builds\n\n8. Custom loaders or transforms:\n   - Configure custom loaders for non-standard file types\n   - Set up file transformations (e.g., markdown to HTML)\n   - Configure loader options and chaining\n\nFor each chosen scenario:\n- Provide the configuration code\n- Explain the problem being solved\n- Explain how the configuration addresses the problem\n- Demonstrate that it works correctly",
+  "instructions": "Submit exactly one file containing the complete custom configuration documentation. Include the full build configuration file (vite.config.js or webpack.config.js), explanations for each chosen scenario, example code demonstrating the configuration in use, and verification that it works. Separate each scenario using clear comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Configuration complexity and coverage",
+      "marks": 30,
+      "full": "Implements at least four advanced configuration scenarios with proper, working configurations that address real-world needs.",
+      "partial": "Implements some advanced configurations but has fewer than four scenarios or incorrect implementations.",
+      "zero": "Does not implement advanced configurations or they are non-functional."
+    },
+    {
+      "criterion": "Configuration correctness and best practices",
+      "marks": 30,
+      "full": "All configurations are correct, follow build tool best practices, and integrate properly without conflicts.",
+      "partial": "Most configurations are correct but some have issues or conflicts with other configurations.",
+      "zero": "Configurations are incorrect or do not follow best practices."
+    },
+    {
+      "criterion": "Explanations and documentation",
+      "marks": 25,
+      "full": "Each scenario includes clear explanations of the problem, solution, and how the configuration works, with examples.",
+      "partial": "Most scenarios have explanations but some are incomplete or unclear.",
+      "zero": "Explanations are missing or do not adequately explain the configurations."
+    },
+    {
+      "criterion": "Verification and testing",
+      "marks": 15,
+      "full": "Demonstrates that each configuration works correctly with examples or verification steps.",
+      "partial": "Most configurations are verified but some lack proper testing or verification.",
+      "zero": "Configurations are not verified or verification is incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Vite or Webpack (both are acceptable).",
+    "Choose different advanced scenarios than the suggested ones as long as they are non-trivial.",
+    "Combine scenarios in creative ways if appropriate.",
+    "Use additional plugins or tools to enhance the configuration."
+  ],
+  "mistakes_to_check": [
+    "Implementing fewer than four advanced scenarios (Configuration coverage).",
+    "Configurations that conflict with each other or break the build (Configuration correctness).",
+    "Not explaining why configurations were chosen or how they work (Explanations).",
+    "Not verifying that configurations work correctly (Verification).",
+    "Using basic configurations instead of advanced ones (Complexity level).",
+    "Not following build tool best practices (Best practices)."
+  ],
   "solution_file": "solution.js"
 }

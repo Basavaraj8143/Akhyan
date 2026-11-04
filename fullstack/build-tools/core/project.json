@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "build-tools-core-optimize-build",
+  "title": "Optimize a Build: Analyze and Shrink a Build's Bundle Size",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Analyze and optimize the bundle size of a JavaScript application. Use build analysis tools to identify large dependencies and apply optimization techniques to reduce the bundle size.\n\nRequirements:\n\n1. Initial analysis:\n   - Create a sample application with multiple dependencies\n   - Build the application for production\n   - Analyze the initial bundle size using rollup-plugin-visualizer or similar tool\n   - Document the initial bundle size and identify the largest chunks\n\n2. Optimization techniques:\n   - Apply at least three of the following optimization techniques:\n     a. Code splitting (dynamic imports)\n     b. Tree shaking (remove unused code)\n     c. Lazy loading components or routes\n     d. Minification and compression\n     e. Externalizing large libraries (CDN)\n     f. Using smaller alternatives for large libraries\n   - Explain why each technique was chosen and how it works\n\n3. Post-optimization analysis:\n   - Rebuild the application after optimizations\n   - Re-analyze the bundle size\n   - Compare the before and after bundle sizes\n   - Calculate the percentage reduction\n\n4. Documentation:\n   - Document the initial bundle size and breakdown\n   - Document each optimization technique applied\n   - Document the final bundle size and breakdown\n   - Show the comparison and percentage reduction\n   - List any trade-offs or considerations\n\nUse Vite or Webpack as the build tool. Use bundle analysis tools like rollup-plugin-visualizer, webpack-bundle-analyzer, or similar.",
+  "instructions": "Submit exactly one file containing the complete optimization documentation. Include the initial build configuration, optimized build configuration, code changes for optimizations, bundle analysis results (before and after), and comparison metrics. Separate each section using clear comments. Include the vite.config.js or webpack.config.js content. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Initial bundle analysis",
+      "marks": 25,
+      "full": "Correctly analyzes the initial bundle size using a bundle analysis tool, documents the size and breakdown, and identifies the largest chunks.",
+      "partial": "Analyzes the bundle but has incomplete documentation or does not identify the largest chunks.",
+      "zero": "Does not analyze the initial bundle or analysis is incorrect."
+    },
+    {
+      "criterion": "Optimization techniques applied",
+      "marks": 35,
+      "full": "Applies at least three different optimization techniques with proper implementation, explains why each was chosen, and demonstrates understanding of how they work.",
+      "partial": "Applies some optimizations but has fewer than three techniques, incorrect implementation, or incomplete explanations.",
+      "zero": "Does not apply optimization techniques or they are incorrectly implemented."
+    },
+    {
+      "criterion": "Post-optimization analysis and comparison",
+      "marks": 25,
+      "full": "Re-analyzes the bundle after optimizations, documents the final size and breakdown, compares before/after metrics, and calculates percentage reduction.",
+      "partial": "Re-analyzes but has incomplete comparison or incorrect calculations.",
+      "zero": "Does not re-analyze or comparison is missing."
+    },
+    {
+      "criterion": "Documentation quality",
+      "marks": 15,
+      "full": "Documentation is clear, complete, and well-organized with all required information, configuration files, and trade-off considerations.",
+      "partial": "Documentation is mostly complete but has missing information or poor organization.",
+      "zero": "Documentation is incomplete or unclear."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different optimization techniques than the suggested ones as long as they are valid and effective.",
+    "Use different bundle analysis tools as long as they provide size breakdown.",
+    "Optimize a real project instead of a sample project if preferred.",
+    "Use Vite or Webpack (both are acceptable)."
+  ],
+  "mistakes_to_check": [
+    "Not using a bundle analysis tool to measure initial size (Initial analysis).",
+    "Applying fewer than three optimization techniques (Optimization completeness).",
+    "Not explaining why techniques were chosen or how they work (Optimization explanations).",
+    "Not re-analyzing the bundle after optimizations (Post-optimization analysis).",
+    "Not calculating or showing the percentage reduction (Comparison metrics).",
+    "Not documenting trade-offs or considerations (Documentation completeness)."
+  ],
   "solution_file": "solution.js"
 }

@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "react-accessible-first-components",
+  "title": "First Components: Build Reusable Components with Props and State",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Build a simple React application with two reusable components that demonstrate props and state usage.\n\nRequirements:\n\n1. Create a Button component that accepts the following props:\n   - label: string (text displayed on the button)\n   - onClick: function (callback when button is clicked)\n   - disabled: boolean (optional, defaults to false)\n   The component should render a button element with the provided label and handle clicks.\n\n2. Create a Counter component that:\n   - Has a count state initialized to 0\n   - Displays the current count\n   - Has an increment button that increases the count by 1\n   - Has a decrement button that decreases the count by 1\n   - Uses the Button component for both increment and decrement actions\n   - Prevents the count from going below 0\n\n3. Create an App component that:\n   - Renders the Counter component\n   - Renders a second Counter component (demonstrating component reusability)\n\nUse functional components with hooks. Do not use class components. Use React's useState hook for state management.",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate each component using clear comments such as // === COMPONENT: Button ===, // === COMPONENT: Counter ===, and // === COMPONENT: App ===. Include all necessary imports and a brief explanation of how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Button component with props",
+      "marks": 30,
+      "full": "Creates a Button component that correctly accepts and uses label, onClick, and optional disabled props, rendering a functional button element.",
+      "partial": "Creates a Button component but has missing props, incorrect prop usage, or the button does not handle clicks properly.",
+      "zero": "Does not create a Button component or the component is non-functional."
+    },
+    {
+      "criterion": "Counter component with state",
+      "marks": 35,
+      "full": "Creates a Counter component with correct useState implementation, displays the count, and uses Button components for increment/decrement with proper logic to prevent negative values.",
+      "partial": "Creates a Counter component but has state management issues, incorrect increment/decrement logic, or does not prevent negative values.",
+      "zero": "Does not create a Counter component or it does not manage state correctly."
+    },
+    {
+      "criterion": "Component reusability and composition",
+      "marks": 20,
+      "full": "The App component renders two separate Counter components, demonstrating that the Counter component is reusable and maintains independent state.",
+      "partial": "The App component renders Counter components but they share state or the reusability is not properly demonstrated.",
+      "zero": "Does not demonstrate component reusability or composition."
+    },
+    {
+      "criterion": "React best practices and code quality",
+      "marks": 15,
+      "full": "Uses functional components with hooks, follows React naming conventions, handles props correctly, and the code is clean and readable.",
+      "partial": "Mostly follows React best practices but has minor issues with hook usage, prop handling, or code organization.",
+      "zero": "Does not follow React best practices or has significant code quality issues."
+    }
+  ],
+  "valid_alternatives": [
+    "Use TypeScript interfaces for props if using TypeScript.",
+    "Use button with different styling or structure as long as it functions correctly.",
+    "Add additional features like a reset button or step size if desired (optional enhancements).",
+    "Use default props or defaultProps instead of optional disabled prop with default value."
+  ],
+  "mistakes_to_check": [
+    "Not using useState hook for state management (React hooks).",
+    "Not passing props correctly to the Button component (props usage).",
+    "Allowing the count to go below 0 (Counter logic).",
+    "Using class components instead of functional components (component type).",
+    "The two Counter components sharing the same state (state isolation).",
+    "Not using the Button component inside Counter (component composition)."
+  ],
+  "solution_file": "solution.jsx"
 }

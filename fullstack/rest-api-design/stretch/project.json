@@ -1,18 +1,60 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "rest-api-design-stretch-documented-api",
+  "title": "Documented API: Build a Versioned, Documented API to Spec",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a RESTful API with API versioning, comprehensive documentation, and adherence to OpenAPI/Swagger specification. The API should be production-ready with proper versioning strategy.\n\nRequirements:\n\n1. API versioning:\n   - Implement URL path versioning (e.g., /api/v1/resources, /api/v2/resources)\n   - Support at least two versions (v1 and v2)\n   - v1: Basic CRUD operations\n   - v2: Enhanced features (e.g., filtering, sorting, pagination)\n   - Maintain backward compatibility for v1\n\n2. API documentation:\n   - Create OpenAPI/Swagger specification document\n   - Document all endpoints with:\n     - HTTP method and path\n     - Request parameters (path, query, body)\n     - Request body schema\n     - Response schemas for all status codes\n     - Authentication requirements (if any)\n     - Example requests and responses\n   - Include API metadata (title, version, description)\n\n3. Enhanced features in v2:\n   - Pagination: limit and offset query parameters\n   - Filtering: filter by field values\n   - Sorting: sort by field with ascending/descending\n   - Field selection: select specific fields to return\n   - Expand: include related resources\n\n4. Resource definition:\n   - Resource: Products\n   - Schema:\n     - id: number\n     - name: string\n     - description: string\n     - price: number\n     - category: string\n     - stock: number\n     - createdAt: timestamp\n     - updatedAt: timestamp\n\n5. Response standards:\n   - Consistent response format across all endpoints\n   - Include metadata in list responses (pagination info, total count)\n   - Use HATEOAS links (optional but recommended)\n   - Standardized error responses\n\n6. Implementation:\n   - Use Express.js\n   - Use in-memory data storage\n   - Separate route files by version\n   - Implement version-specific logic\n\nDo not use API documentation generators like Swagger UI—write the OpenAPI specification manually in YAML or JSON format.",
+  "instructions": "Submit exactly one file containing the complete versioned API implementation and OpenAPI specification. Separate the API code and OpenAPI spec using clear comments. Include v1 and v2 route implementations, enhanced features, and the complete OpenAPI specification. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".yaml",
+    ".json",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "API versioning implementation",
+      "marks": 30,
+      "full": "Implements proper API versioning with /api/v1 and /api/v2 paths, maintains backward compatibility for v1, and v2 has enhanced features.",
+      "partial": "Implements versioning but has incorrect path structure, breaks v1 compatibility, or v2 lacks enhanced features.",
+      "zero": "API versioning is not implemented or incorrectly implemented."
+    },
+    {
+      "criterion": "OpenAPI specification completeness",
+      "marks": 30,
+      "full": "Creates a comprehensive OpenAPI specification documenting all endpoints, parameters, schemas, responses, and examples for both v1 and v2.",
+      "partial": "OpenAPI spec exists but has missing documentation for some endpoints, incomplete schemas, or missing examples.",
+      "zero": "OpenAPI specification is missing or severely incomplete."
+    },
+    {
+      "criterion": "Enhanced features in v2",
+      "marks": 25,
+      "full": "Implements pagination, filtering, sorting, field selection, and expand features in v2 with correct query parameter handling.",
+      "partial": "Implements some enhanced features but has missing features or incorrect implementation.",
+      "zero": "Enhanced features are not implemented in v2."
+    },
+    {
+      "criterion": "Response standards and consistency",
+      "marks": 15,
+      "full": "Uses consistent response formats, includes metadata in list responses, standardized error responses, and follows API design best practices.",
+      "partial": "Response format is mostly consistent but has missing metadata or inconsistent error responses.",
+      "zero": "Response format is inconsistent or does not follow standards."
+    }
+  ],
+  "valid_alternatives": [
+    "Use header versioning (e.g., Accept: application/vnd.api.v1+json) instead of URL versioning.",
+    "Add additional enhanced features in v2 if desired.",
+    "Use YAML or JSON for OpenAPI spec (both are acceptable).",
+    "Implement HATEOAS links if desired (optional enhancement)."
+  ],
+  "mistakes_to_check": [
+    "Not implementing proper versioning in URL paths (Versioning).",
+    "Breaking v1 compatibility when adding v2 (Backward compatibility).",
+    "Not documenting all endpoints in OpenAPI spec (Documentation completeness).",
+    "Not implementing enhanced features in v2 (Enhanced features).",
+    "Not including metadata in list responses (Response standards).",
+    "Inconsistent response formats across endpoints (Consistency)."
+  ],
   "solution_file": "solution.js"
 }

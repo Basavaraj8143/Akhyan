@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "angular-stretch-data-driven-ui",
+  "title": "Data-Driven UI: Build an Angular App Consuming an API with RxJS",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build an Angular application that fetches data from an external API using RxJS, displays it, and allows users to update the data. Use the JSONPlaceholder API for this exercise.\n\nRequirements:\n\n1. API integration with RxJS:\n   - Fetch posts from https://jsonplaceholder.typicode.com/posts?_limit=10\n   - Use Angular's HttpClient with RxJS operators\n   - Use the HttpClient service in a dedicated service\n   - Handle HTTP errors using RxJS error handling operators\n\n2. Service implementation:\n   - Create a PostService with methods:\n     - getPosts(): Observable<Post[]>\n     - updatePost(id: number, data: Partial<Post>): Observable<Post>\n   - Use RxJS operators like map, catchError, tap, etc.\n   - Handle HTTP errors gracefully\n\n3. Display data:\n   - Display the fetched posts in a list\n   - Show the post title and body for each post\n   - Display the post ID with each item\n   - Use the async pipe in templates for observable subscriptions\n\n4. Update functionality:\n   - Add an \"Edit\" button for each post\n   - When clicked, show a form to edit the post title and body\n   - Include \"Save\" and \"Cancel\" buttons in the edit form\n   - When saved, call the service's updatePost method\n   - Update the local state with the response from the API\n\n5. State management:\n   - Use RxJS BehaviorSubject or Subject to manage posts state\n   - Use async pipe for template subscriptions\n   - Handle loading and error states using RxJS\n\n6. UI requirements:\n   - Show a loading indicator while fetching\n   - Show an error message if the fetch fails\n   - Show the edit form inline or in a modal when editing\n   - Provide visual feedback for the edit mode\n\nUse Angular's HttpClient and RxJS. Do not use external HTTP libraries or data fetching libraries.",
+  "instructions": "Submit exactly one file containing the complete Angular implementation. Separate each file using clear comments such as // === FILE: src/app/post.service.ts ===, // === FILE: src/app/post-list/post-list.component.ts ===, etc. Include the component templates and styles inline or as separate marked sections. Include all necessary imports and a brief explanation of how to set up and run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "API integration with HttpClient and RxJS",
+      "marks": 25,
+      "full": "Creates a PostService with HttpClient, uses RxJS operators correctly (map, catchError, etc.), and implements getPosts and updatePost methods.",
+      "partial": "Creates a service but has issues with HttpClient usage, RxJS operators, or missing methods.",
+      "zero": "Does not create a service or the API integration is incorrect."
+    },
+    {
+      "criterion": "RxJS state management and async pipe",
+      "marks": 25,
+      "full": "Uses BehaviorSubject or Subject for state management, uses async pipe in templates for subscriptions, and handles loading/error states with RxJS.",
+      "partial": "Uses some RxJS patterns but has issues with state management, async pipe usage, or state transitions.",
+      "zero": "Does not use RxJS for state management or async pipe is not used."
+    },
+    {
+      "criterion": "Data display and edit functionality",
+      "marks": 25,
+      "full": "Displays posts correctly, implements edit mode with a form, saves changes via the service, and updates local state with API response.",
+      "partial": "Displays data but has issues with edit mode, form handling, or state updates.",
+      "zero": "Does not display data or the edit functionality is non-functional."
+    },
+    {
+      "criterion": "Error handling and Angular best practices",
+      "marks": 25,
+      "full": "Implements proper error handling with RxJS operators, shows loading/error states in UI, follows Angular best practices, and the code is well-organized.",
+      "partial": "Has error handling but it's incomplete, or has minor Angular best practice issues.",
+      "zero": "Does not handle errors or does not follow Angular best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use standalone components or NgModule-based components (both are acceptable).",
+    "Use different RxJS operators as long as the functionality is preserved.",
+    "Show the edit form inline or in a modal/dialog.",
+    "Use ReactiveFormsModule or Template-driven forms for the edit form."
+  ],
+  "mistakes_to_check": [
+    "Not using HttpClient or not using RxJS operators (API integration).",
+    "Not using async pipe for observable subscriptions (async pipe usage).",
+    "Not using BehaviorSubject or Subject for state management (RxJS state).",
+    "Not handling HTTP errors with RxJS operators (error handling).",
+    "Not showing loading or error states in the UI (state feedback).",
+    "Not updating local state after API update (state synchronization)."
+  ],
+  "solution_file": "solution.ts"
 }

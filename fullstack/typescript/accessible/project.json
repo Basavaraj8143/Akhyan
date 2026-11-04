@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "typescript-accessible-type-function",
+  "title": "Type a Function: Add Correct Types to Utility Functions",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "You are given a set of untyped JavaScript utility functions. Add appropriate TypeScript types to make them type-safe while preserving their original behavior.\n\nUntyped implementation:\n\nfunction calculateTotal(items) {\n  return items.reduce((sum, item) => sum + item.price, 0);\n}\n\nfunction filterActive(users) {\n  return users.filter(user => user.isActive);\n}\n\nfunction greet(name, age) {\n  return `Hello, ${name}! You are ${age} years old.`;\n}\n\nfunction findUserById(users, id) {\n  return users.find(user => user.id === id);\n}\n\nAdd appropriate TypeScript types to:\n1. The function parameters\n2. The function return types\n3. Any object properties referenced in the functions\n\nDefine appropriate interfaces or type aliases where needed. Use specific types (e.g., number instead of any) when the type is clear from the context. Keep the function logic unchanged—only add types.",
+  "instructions": "Submit exactly one file containing the complete TypeScript implementation with all type annotations and interface/type definitions. Include the original function implementations with types added. Do not change the function logic. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Function parameter types",
+      "marks": 30,
+      "full": "Adds appropriate and specific types to all function parameters, using interfaces or type aliases for object parameters when needed.",
+      "partial": "Adds types to most parameters but misses some, uses any unnecessarily, or has incorrect type definitions.",
+      "zero": "Does not add type annotations to function parameters or types are incorrect."
+    },
+    {
+      "criterion": "Return type annotations",
+      "marks": 25,
+      "full": "Adds correct return type annotations to all functions, matching the actual return values.",
+      "partial": "Adds return types to most functions but misses some or has incorrect return type annotations.",
+      "zero": "Does not add return type annotations or they are incorrect."
+    },
+    {
+      "criterion": "Interface and type definitions",
+      "marks": 25,
+      "full": "Defines appropriate interfaces or type aliases for object types, with correctly typed properties.",
+      "partial": "Defines some types but has missing properties, incorrect property types, or unnecessary use of any.",
+      "zero": "Does not define interfaces or type aliases for object parameters."
+    },
+    {
+      "criterion": "Type safety and completeness",
+      "marks": 20,
+      "full": "The implementation is type-safe without using any (except where justified), includes all required types, and preserves the original function logic.",
+      "partial": "The implementation is mostly type-safe but has unnecessary any usage or minor type definition issues.",
+      "zero": "The implementation relies heavily on any or changes the original function logic."
+    }
+  ],
+  "valid_alternatives": [
+    "Use interfaces or type aliases interchangeably for object types.",
+    "Use inline object types instead of named interfaces or type aliases.",
+    "Omit explicit return type annotations if TypeScript can infer them correctly (though explicit annotations are preferred for this exercise).",
+    "Use readonly properties if appropriate for the use case."
+  ],
+  "mistakes_to_check": [
+    "Using any for parameters or return types when specific types are available (type safety).",
+    "Missing type annotations for object parameters (parameter types).",
+    "Defining interfaces with incorrect property types or missing required properties (interface definitions).",
+    "Changing the original function logic while adding types (behavior preservation).",
+    "Not defining types for nested object properties like item.price or user.id (type completeness)."
+  ],
+  "solution_file": "solution.ts"
 }

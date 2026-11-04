@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nodejs-express-accessible-first-server",
+  "title": "First Server: Build an Express Server with Routes",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Build a simple Express server with multiple routes that handle different HTTP methods and respond with appropriate data. The server should demonstrate basic routing and response handling.\n\nRequirements:\n\n1. Server setup:\n   - Initialize an Express application\n   - Configure the server to listen on port 3000\n   - Start the server and log a message when it's running\n\n2. Routes to implement:\n   - GET / - Returns a welcome message with server info\n   - GET /api/users - Returns an array of user objects (id, name, email)\n   - GET /api/users/:id - Returns a specific user by ID or 404 if not found\n   - POST /api/users - Accepts JSON data (name, email) and creates a new user\n   - PUT /api/users/:id - Updates an existing user by ID\n   - DELETE /api/users/:id - Deletes a user by ID\n\n3. Data handling:\n   - Store users in an in-memory array\n   - Return appropriate HTTP status codes (200, 201, 404, etc.)\n   - Return JSON responses for all API routes\n   - Handle JSON request bodies properly\n\n4. Error handling:\n   - Handle invalid user IDs (return 404)\n   - Handle missing request body data (return 400)\n   - Use Express's built-in error handling\n\nUse Express.js. Do not use additional frameworks or databases.",
+  "instructions": "Submit exactly one file containing the complete Express server implementation. Include all necessary imports, route definitions, data storage, and server startup code. Separate routes using clear comments. Include a brief explanation of how to install dependencies and run the server. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Server setup and configuration",
+      "marks": 20,
+      "full": "Correctly initializes Express, configures the server to listen on port 3000, and logs when the server starts.",
+      "partial": "Initializes Express but has configuration issues or missing startup logging.",
+      "zero": "Does not initialize Express or server setup is incorrect."
+    },
+    {
+      "criterion": "Route implementation",
+      "marks": 35,
+      "full": "Implements all required routes (GET /, GET /api/users, GET /api/users/:id, POST /api/users, PUT /api/users/:id, DELETE /api/users/:id) with correct HTTP methods and paths.",
+      "partial": "Implements most routes but has missing routes, incorrect methods, or wrong paths.",
+      "zero": "Routes are missing or incorrectly implemented."
+    },
+    {
+      "criterion": "Data handling and HTTP status codes",
+      "marks": 25,
+      "full": "Stores users in memory, returns appropriate status codes (200, 201, 404, 400), handles JSON bodies correctly, and returns JSON responses.",
+      "partial": "Handles data but has incorrect status codes, JSON handling issues, or missing responses.",
+      "zero": "Data handling is incorrect or HTTP status codes are wrong."
+    },
+    {
+      "criterion": "Error handling and code quality",
+      "marks": 20,
+      "full": "Handles errors appropriately (404 for invalid IDs, 400 for missing data), uses Express error handling, and the code is clean and organized.",
+      "partial": "Has basic error handling but misses some cases or has code organization issues.",
+      "zero": "Error handling is missing or the code is poorly organized."
+    }
+  ],
+  "valid_alternatives": [
+    "Use a different port number as long as it's valid.",
+    "Add additional fields to user objects if desired.",
+    "Use different HTTP status codes if they are more appropriate for the scenario.",
+    "Add additional routes or features if desired (optional enhancements)."
+  ],
+  "mistakes_to_check": [
+    "Not initializing Express or not using express() (Server setup).",
+    "Not implementing all required routes or using wrong HTTP methods (Route implementation).",
+    "Not returning appropriate HTTP status codes (Status codes).",
+    "Not using express.json() to parse JSON bodies (JSON handling).",
+    "Not handling 404 for invalid user IDs (Error handling).",
+    "Not returning JSON responses (Response format)."
+  ],
   "solution_file": "solution.js"
 }

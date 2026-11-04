@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "typescript-core-type-app",
+  "title": "Type an App: Convert a To-Do App to TypeScript",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Convert a small JavaScript to-do application to TypeScript. The application manages a list of tasks with the ability to add, complete, and delete tasks.\n\nJavaScript implementation:\n\nclass TodoApp {\n  constructor() {\n    this.tasks = [];\n    this.nextId = 1;\n  }\n\n  addTask(title) {\n    const task = {\n      id: this.nextId++,\n      title: title,\n      completed: false,\n      createdAt: new Date()\n    };\n    this.tasks.push(task);\n    return task;\n  }\n\n  completeTask(id) {\n    const task = this.tasks.find(t => t.id === id);\n    if (task) {\n      task.completed = true;\n    }\n    return task;\n  }\n\n  deleteTask(id) {\n    const index = this.tasks.findIndex(t => t.id === id);\n    if (index !== -1) {\n      const deleted = this.tasks.splice(index, 1)[0];\n      return deleted;\n    }\n    return null;\n  }\n\n  getAllTasks() {\n    return this.tasks;\n  }\n\n  getCompletedTasks() {\n    return this.tasks.filter(t => t.completed);\n  }\n}\n\nConvert this application to TypeScript by:\n1. Defining a Task interface with appropriate types for id, title, completed, and createdAt.\n2. Adding type annotations to the class properties and methods.\n3. Adding type annotations to method parameters and return types.\n4. Ensuring the class is properly typed for use in a TypeScript environment.\n\nPreserve the original behavior. The application should work exactly as the JavaScript version.",
+  "instructions": "Submit exactly one file containing the complete TypeScript implementation of the TodoApp class with all type annotations and interface definitions. Include the Task interface and the fully typed class. Do not change the original logic. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Task interface definition",
+      "marks": 25,
+      "full": "Defines a Task interface with correctly typed properties for id (number), title (string), completed (boolean), and createdAt (Date).",
+      "partial": "Defines a Task interface but has incorrect property types or missing properties.",
+      "zero": "Does not define a Task interface or the interface is incorrect."
+    },
+    {
+      "criterion": "Class property types",
+      "marks": 25,
+      "full": "Adds correct type annotations to class properties (tasks array, nextId number) and uses the Task interface appropriately.",
+      "partial": "Adds some property types but misses annotations or uses incorrect types (e.g., any for the tasks array).",
+      "zero": "Does not add type annotations to class properties."
+    },
+    {
+      "criterion": "Method parameter and return types",
+      "marks": 25,
+      "full": "Adds correct type annotations to all method parameters and return types, handling nullable returns appropriately.",
+      "partial": "Adds type annotations to most methods but misses some or has incorrect return types (e.g., not handling null returns).",
+      "zero": "Does not add type annotations to method parameters or return types."
+    },
+    {
+      "criterion": "Type safety and behavior preservation",
+      "marks": 25,
+      "full": "The implementation is fully type-safe without using any, preserves the original behavior, and correctly handles all operations.",
+      "partial": "The implementation is mostly type-safe but has unnecessary any usage or minor type issues, or has minor behavior differences.",
+      "zero": "The implementation relies on any, changes the original behavior, or does not compile."
+    }
+  ],
+  "valid_alternatives": [
+    "Use a type alias instead of an interface for the Task type.",
+    "Use readonly for the id property if appropriate.",
+    "Use array methods that maintain type safety without explicit type assertions.",
+    "Add optional chaining or nullish coalescing if appropriate for error handling."
+  ],
+  "mistakes_to_check": [
+    "Using any for the tasks array or task objects instead of the Task interface (type safety).",
+    "Not typing the return type of deleteTask as Task | null or similar (nullable returns).",
+    "Missing type annotations for method parameters like title and id (parameter types).",
+    "Changing the original logic or behavior while adding types (behavior preservation).",
+    "Not defining the Task interface with all required properties (interface completeness)."
+  ],
+  "solution_file": "solution.ts"
 }

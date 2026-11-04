@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nodejs-express-core-middleware-chain",
+  "title": "Middleware Chain: Build Middleware for Logging, Auth, and Error Handling",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build an Express server with a custom middleware chain that handles logging, authentication, and error handling. The server should demonstrate how middleware functions work together in Express.\n\nRequirements:\n\n1. Logging middleware:\n   - Create a custom logging middleware that logs:\n     - Request method and URL\n     - Timestamp of the request\n     - Response status code\n     - Response time (duration)\n   - Log each request to the console\n   - Use the next() function to pass control to the next middleware\n\n2. Authentication middleware:\n   - Create an authentication middleware that:\n     - Checks for an Authorization header in the request\n     - Validates the token (simple check: token must be 'secret-token')\n     - If valid, call next() to proceed\n     - If invalid or missing, return 401 Unauthorized\n   - Apply this middleware to protected routes only\n\n3. Error handling middleware:\n   - Create a custom error handling middleware that:\n     - Catches errors from routes and other middleware\n     - Logs the error message and stack trace\n     - Returns a consistent error response with status code and message\n     - Handles different types of errors (validation, not found, etc.)\n\n4. Routes to implement:\n   - GET /api/public - Public route (no auth required)\n   - GET /api/protected - Protected route (auth required)\n   - GET /api/error - Route that intentionally throws an error\n   - POST /api/users - Route with validation (requires name and email)\n\n5. Middleware chain configuration:\n   - Apply logging middleware globally (all routes)\n   - Apply auth middleware only to protected routes\n   - Apply error handling middleware at the end (after all routes)\n   - Use Express's built-in middleware (express.json) for body parsing\n\nUse Express.js. Do not use external auth libraries or validation libraries.",
+  "instructions": "Submit exactly one file containing the complete Express server implementation with middleware. Include all middleware functions, route definitions, and error handling. Separate each middleware and route using clear comments. Include a brief explanation of how the middleware chain works. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Logging middleware implementation",
+      "marks": 25,
+      "full": "Creates a logging middleware that logs method, URL, timestamp, status code, and response time, and correctly uses next().",
+      "partial": "Creates logging middleware but has missing information or incorrect next() usage.",
+      "zero": "Does not create logging middleware or it's incorrectly implemented."
+    },
+    {
+      "criterion": "Authentication middleware implementation",
+      "marks": 25,
+      "full": "Creates an auth middleware that validates the Authorization header, returns 401 for invalid/missing tokens, and is applied only to protected routes.",
+      "partial": "Creates auth middleware but has validation issues, incorrect application, or wrong error handling.",
+      "zero": "Does not create auth middleware or it's incorrectly implemented."
+    },
+    {
+      "criterion": "Error handling middleware implementation",
+      "marks": 25,
+      "full": "Creates an error handling middleware that catches errors, logs them, returns consistent error responses, and handles different error types.",
+      "partial": "Creates error handling but has incomplete logging, inconsistent responses, or misses error types.",
+      "zero": "Does not create error handling middleware or it's incorrectly implemented."
+    },
+    {
+      "criterion": "Middleware chain configuration and routes",
+      "marks": 25,
+      "full": "Correctly configures the middleware chain (logging globally, auth on protected routes, error handling at end), implements all required routes, and validation works correctly.",
+      "partial": "Configures middleware but has incorrect application order or missing routes.",
+      "zero": "Middleware chain is incorrectly configured or routes are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different token validation logic as long as it demonstrates the concept.",
+    "Add additional middleware if desired (e.g., CORS, rate limiting).",
+    "Use different logging formats or log to a file instead of console.",
+    "Add additional protected or public routes if desired."
+  ],
+  "mistakes_to_check": [
+    "Not using next() in middleware functions (Middleware flow).",
+    "Not applying auth middleware only to protected routes (Middleware application).",
+    "Not catching errors properly in error handling middleware (Error handling).",
+    "Not logging all required information in logging middleware (Logging completeness).",
+    "Not applying error handling middleware at the end (Middleware order).",
+    "Not validating request data in POST route (Validation)."
+  ],
   "solution_file": "solution.js"
 }

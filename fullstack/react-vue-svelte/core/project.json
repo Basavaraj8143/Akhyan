@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "react-core-interactive-spa",
+  "title": "Interactive SPA: Build a Stateful Single-Page App with React",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a task management single-page application using React with proper state management. The application should allow users to add, complete, and delete tasks.\n\nRequirements:\n\n1. Task data structure:\n   - id: unique identifier (number or string)\n   - title: task description (string)\n   - completed: boolean indicating completion status\n\n2. Features:\n   - Add a new task with a text input and an \"Add\" button\n   - Display all tasks in a list\n   - Mark a task as completed or incomplete (toggle)\n   - Delete a task\n   - Show a count of total tasks and completed tasks\n   - Filter tasks: show All, Active, or Completed tasks\n   - Clear all completed tasks with a button\n\n3. State management:\n   - Use useState for managing the tasks array\n   - Use useState for the current filter (All/Active/Completed)\n   - Use useState for the input field value\n\n4. UI requirements:\n   - Display tasks with their title and completion status\n   - Completed tasks should be visually distinguished (e.g., strikethrough or different color)\n   - Show an empty state message when no tasks match the current filter\n   - Prevent adding empty or whitespace-only tasks\n\nUse functional components with hooks. Do not use external state management libraries like Redux. Persist data to localStorage if desired (optional).",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate components using clear comments such as // === COMPONENT: TaskItem ===, // === COMPONENT: TaskList ===, etc. Include all necessary imports and a brief explanation of how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Task state management",
+      "marks": 25,
+      "full": "Correctly uses useState to manage the tasks array, and implements add, toggle completion, and delete operations with proper state updates.",
+      "partial": "Manages task state but has issues with state updates, missing operations, or incorrect state mutation.",
+      "zero": "Does not properly manage task state or the operations are not functional."
+    },
+    {
+      "criterion": "Task filtering and display",
+      "marks": 25,
+      "full": "Implements task filtering (All/Active/Completed) correctly, displays tasks appropriately, and shows empty state when no tasks match the filter.",
+      "partial": "Implements filtering but has issues with filter logic, display, or empty state handling.",
+      "zero": "Does not implement task filtering or the display is incorrect."
+    },
+    {
+      "criterion": "User interaction and input handling",
+      "marks": 25,
+      "full": "Handles user input correctly, prevents empty tasks, implements task completion toggle and delete functionality, and provides a clear all completed button.",
+      "partial": "Handles most interactions but has issues with input validation, button functionality, or user feedback.",
+      "zero": "User interactions are not functional or input handling is incorrect."
+    },
+    {
+      "criterion": "UI implementation and React best practices",
+      "marks": 25,
+      "full": "Visually distinguishes completed tasks, shows task counts, uses functional components with hooks, follows React best practices, and the code is well-organized.",
+      "partial": "The UI is mostly functional but has missing visual cues, incorrect counts, or minor React best practice issues.",
+      "zero": "The UI is non-functional or does not follow React best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use separate components for TaskItem, TaskList, FilterControls, etc., or keep everything in one component.",
+    "Use localStorage for persistence or keep data in memory only.",
+    "Use different visual styles for completed tasks as long as they are clearly distinguished.",
+    "Use a different approach for unique IDs (e.g., Date.now(), UUID library, or simple counter)."
+  ],
+  "mistakes_to_check": [
+    "Mutating state directly instead of using setState or immutable updates (state management).",
+    "Not handling the filter state correctly or not updating the displayed tasks (filtering).",
+    "Allowing empty or whitespace-only tasks to be added (input validation).",
+    "Not visually distinguishing completed tasks (UI requirements).",
+    "Not showing task counts or showing incorrect counts (task statistics).",
+    "Using class components instead of functional components with hooks (React best practices)."
+  ],
+  "solution_file": "solution.jsx"
 }

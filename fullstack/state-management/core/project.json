@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "state-management-core-global-store",
+  "title": "Global Store: Use Redux/Zustand for App-Wide State",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a React application with a task manager that uses a global state management library (Redux or Zustand) to manage application state. The application should demonstrate proper store setup, actions, and state selectors.\n\nRequirements:\n\n1. State structure:\n   - tasks: array of task objects\n   - filter: string ('all', 'active', 'completed')\n   Each task has: id, title, completed\n\n2. Store actions (Redux) or store methods (Zustand):\n   - addTask(title): Add a new task\n   - toggleTask(id): Toggle task completion\n   - deleteTask(id): Delete a task\n   - setFilter(filter): Set the current filter\n   - clearCompleted(): Clear all completed tasks\n\n3. Components:\n   - TaskList: Displays filtered tasks with toggle and delete buttons\n   - TaskForm: Form to add new tasks\n   - FilterControls: Buttons to set the filter (all/active/completed)\n   - TaskStats: Display total and completed task counts\n   All components should read from and write to the global store\n\n4. Features:\n   - Add new tasks\n   - Toggle task completion\n   - Delete tasks\n   - Filter tasks by status\n   - Clear all completed tasks\n   - Display task statistics\n\n5. Implementation choice:\n   - Option A: Use Redux with redux-toolkit (configureStore, createSlice)\n   - Option B: Use Zustand with create\n   Choose one approach and implement it fully\n\nUse either Redux Toolkit or Zustand. Do not mix both. Ensure proper TypeScript types if using TypeScript.",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate the store setup and components using clear comments such as // === STORE: Redux/Zustand Setup ===, // === COMPONENT: TaskList ===, etc. Include all necessary imports and a brief explanation of how to run the application. Specify which library you used (Redux or Zustand). Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Store setup and configuration",
+      "marks": 30,
+      "full": "Correctly sets up the global store (Redux with configureStore and createSlice, or Zustand with create), defines initial state, and implements all required actions/methods.",
+      "partial": "Sets up the store but has missing actions, incorrect state structure, or configuration issues.",
+      "zero": "Does not set up a global store or the setup is incorrect."
+    },
+    {
+      "criterion": "Component integration with store",
+      "marks": 30,
+      "full": "All components correctly read from the store using selectors (useSelector or store selector) and dispatch actions/use store methods to modify state.",
+      "partial": "Most components integrate with the store but some have incorrect selector usage or action dispatching.",
+      "zero": "Components do not integrate with the store or integration is incorrect."
+    },
+    {
+      "criterion": "State management functionality",
+      "marks": 25,
+      "full": "All required features work correctly: add, toggle, delete, filter, clear completed, and statistics update properly with state changes.",
+      "partial": "Most features work but one or two have issues with state updates or filtering logic.",
+      "zero": "State management functionality is incomplete or incorrect."
+    },
+    {
+      "criterion": "Code quality and best practices",
+      "marks": 15,
+      "full": "Follows Redux Toolkit or Zustand best practices, proper use of hooks, clean code organization, and appropriate separation of concerns.",
+      "partial": "Mostly follows best practices but has minor issues with hook usage or code organization.",
+      "zero": "Does not follow the chosen library's best practices or has significant code quality issues."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Redux Toolkit or Zustand (both are acceptable).",
+    "Use different state structures or action names as long as functionality is preserved.",
+    "Add additional features like task editing if desired (optional enhancement).",
+    "Use TypeScript with proper type definitions if using TypeScript."
+  ],
+  "mistakes_to_check": [
+    "Not using configureStore and createSlice for Redux (Redux setup).",
+    "Not using create for Zustand (Zustand setup).",
+    "Not using useSelector or useStore hooks to read state (State reading).",
+    "Not using useDispatch or store methods to modify state (State updates).",
+    "Implementing state updates incorrectly (mutations in Redux, incorrect immer usage).",
+    "Not updating the UI when state changes (Reactivity)."
+  ],
+  "solution_file": "solution.jsx"
 }

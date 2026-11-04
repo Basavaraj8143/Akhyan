@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nodejs-express-stretch-structured-backend",
+  "title": "Structured Backend: Structure a Backend with Routes, Controllers, Services",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a well-structured Express backend that follows the MVC (Model-View-Controller) pattern with clear separation of concerns. The application should have routes, controllers, and services organized in separate modules.\n\nRequirements:\n\n1. Project structure:\n   - Separate the application into modules:\n     - routes/ - Route definitions (URL patterns)\n     - controllers/ - Request/response handling logic\n     - services/ - Business logic and data operations\n     - models/ - Data models/interfaces\n   - Each module should have a single responsibility\n\n2. Models:\n   - Define a User model with fields: id, name, email, createdAt\n   - Define a Task model with fields: id, title, completed, userId, createdAt\n   - Use simple JavaScript objects or TypeScript interfaces\n\n3. Services:\n   - UserService: Methods for CRUD operations on users\n   - TaskService: Methods for CRUD operations on tasks, including filtering by userId\n   - Services should handle data validation and business logic\n   - Services should not know about HTTP (no req/res objects)\n\n4. Controllers:\n   - UserController: Handles HTTP requests/responses for users\n   - TaskController: Handles HTTP requests/responses for tasks\n   - Controllers should call services and format HTTP responses\n   - Controllers should handle HTTP-specific concerns (status codes, etc.)\n\n5. Routes:\n   - User routes: GET /api/users, GET /api/users/:id, POST /api/users, PUT /api/users/:id, DELETE /api/users/:id\n   - Task routes: GET /api/tasks, GET /api/tasks/:id, POST /api/tasks, PUT /api/tasks/:id, DELETE /api/tasks/:id, GET /api/users/:userId/tasks\n   - Routes should map to controller methods\n\n6. Error handling:\n   - Create a centralized error handling middleware\n   - Create custom error classes (NotFoundError, ValidationError, etc.)\n   - Services should throw custom errors\n   - Controllers should not catch errors (let them propagate to error middleware)\n\n7. Data storage:\n   - Use in-memory arrays for simplicity\n   - Services should manage the data storage\n\nUse Express.js. Do not use frameworks like NestJS or Mongoose. Keep the structure simple but demonstrate clear separation of concerns.",
+  "instructions": "Submit exactly one file containing the complete structured backend implementation. Separate each module using clear comments such as // === FILE: models/user.model.js ===, // === FILE: services/user.service.js ===, etc. Include all modules (models, services, controllers, routes) and the main server file. Include a brief explanation of the MVC pattern and separation of concerns. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Module structure and separation of concerns",
+      "marks": 30,
+      "full": "Organizes the application into clear modules (models, services, controllers, routes) with proper separation of concerns. Each module has a single, well-defined responsibility.",
+      "partial": "Has some module separation but responsibilities are mixed or unclear in some modules.",
+      "zero": "Does not separate the application into modules or separation is incorrect."
+    },
+    {
+      "criterion": "Service layer implementation",
+      "marks": 25,
+      "full": "Services implement business logic and data operations correctly, do not handle HTTP concerns, validate data, and throw appropriate custom errors.",
+      "partial": "Services exist but have HTTP concerns, missing validation, or incorrect error handling.",
+      "zero": "Services are not implemented or do not follow service layer principles."
+    },
+    {
+      "criterion": "Controller layer implementation",
+      "marks": 25,
+      "full": "Controllers handle HTTP requests/responses correctly, call services, format HTTP responses with appropriate status codes, and do not contain business logic.",
+      "partial": "Controllers exist but have business logic mixed in or incorrect HTTP handling.",
+      "zero": "Controllers are not implemented or do not follow controller layer principles."
+    },
+    {
+      "criterion": "Routes and error handling",
+      "marks": 20,
+      "full": "Routes map correctly to controller methods, all required routes are implemented, error handling is centralized with custom error classes, and errors propagate correctly.",
+      "partial": "Routes are mostly correct but have missing mappings or error handling is incomplete.",
+      "zero": "Routes are incorrect or error handling is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use TypeScript with interfaces for models if preferred.",
+    "Add additional layers (e.g., repositories) if desired.",
+    "Use different naming conventions as long as they are consistent.",
+    "Add additional features (e.g., logging middleware) if desired."
+  ],
+  "mistakes_to_check": [
+    "Mixing HTTP concerns in services (Service layer violations).",
+    "Putting business logic in controllers (Controller layer violations).",
+    "Not using custom error classes or handling errors incorrectly (Error handling).",
+    "Routes not mapping to controller methods (Route configuration).",
+    "Models not defined or missing required fields (Model definitions).",
+    "Not following MVC pattern or unclear separation of concerns (Architecture)."
+  ],
   "solution_file": "solution.js"
 }

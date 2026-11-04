@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "state-management-stretch-server-state",
+  "title": "Server State: Manage Server State Cleanly with React Query",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a React application that uses React Query (TanStack Query) to manage server state separately from UI state. The application should demonstrate proper data fetching, caching, invalidation, and separation of concerns between server and client state.\n\nRequirements:\n\n1. API integration:\n   - Fetch posts from https://jsonplaceholder.typicode.com/posts?_limit=10\n   - Use React Query's useQuery for data fetching\n   - Implement proper error handling and loading states\n\n2. Mutations:\n   - Create a mutation to add a new post (POST to the API)\n   - Create a mutation to update a post (PATCH to the API)\n   - Create a mutation to delete a post (DELETE to the API)\n   - Use React Query's useMutation for all mutations\n   - Implement optimistic updates where appropriate\n\n3. Cache management:\n   - Configure the QueryClient with appropriate defaults\n   - Use query keys properly for cache identification\n   - Invalidate queries after mutations to keep data fresh\n   - Implement refetch-on-window-focus or other cache strategies\n\n4. UI state vs Server state separation:\n   - UI state (filters, modals, form inputs) should be managed with useState\n   - Server state (posts data) should be managed with React Query\n   - Clearly demonstrate the separation in the code\n\n5. Components:\n   - PostList: Displays posts fetched with useQuery\n   - PostForm: Form to add new posts using useMutation\n   - PostItem: Individual post with edit/delete using useMutation\n   - FilterControls: UI state for filtering (managed with useState)\n\n6. Features:\n   - Fetch and display posts with loading/error states\n   - Add new posts with optimistic updates\n   - Edit post titles with optimistic updates\n   - Delete posts with optimistic updates\n   - Filter posts by search term (UI state)\n   - Auto-refetch on window focus or manual refetch\n\nUse React Query (TanStack Query). Do not use other data fetching libraries or mix server state with UI state.",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate the QueryClient setup, hooks, and components using clear comments such as // === SETUP: QueryClient ===, // === HOOK: usePosts ===, // === COMPONENT: PostList ===, etc. Include all necessary imports and a brief explanation of how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "React Query setup and useQuery implementation",
+      "marks": 25,
+      "full": "Correctly sets up QueryClient with proper configuration, implements useQuery for data fetching with proper query keys, and handles loading/error states.",
+      "partial": "Sets up React Query but has configuration issues, incorrect query key usage, or incomplete loading/error handling.",
+      "zero": "Does not set up React Query or useQuery implementation is incorrect."
+    },
+    {
+      "criterion": "Mutations with optimistic updates",
+      "marks": 25,
+      "full": "Implements useMutation for add, update, and delete operations with proper optimistic updates, rollback on error, and cache invalidation.",
+      "partial": "Implements mutations but has issues with optimistic updates, error handling, or cache invalidation.",
+      "zero": "Does not implement mutations or they are non-functional."
+    },
+    {
+      "criterion": "Server state vs UI state separation",
+      "marks": 25,
+      "full": "Clearly separates server state (managed by React Query) from UI state (managed by useState), and the code demonstrates proper separation of concerns.",
+      "partial": "Mostly separates state but has some mixing of concerns or unclear separation.",
+      "zero": "Does not separate server state from UI state or the separation is incorrect."
+    },
+    {
+      "criterion": "Cache management and React Query best practices",
+      "marks": 25,
+      "full": "Uses proper query keys, implements cache invalidation after mutations, configures QueryClient appropriately, and follows React Query best practices.",
+      "partial": "Uses React Query but has issues with query keys, cache invalidation, or configuration.",
+      "zero": "Does not manage cache properly or does not follow React Query best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different query key structures as long as they are consistent and appropriate.",
+    "Use different optimistic update strategies as long as data consistency is maintained.",
+    "Add additional cache configurations like staleTime or cacheTime if desired.",
+    "Use TypeScript with proper type definitions for queries and mutations."
+  ],
+  "mistakes_to_check": [
+    "Not using QueryClientProvider to wrap the application (React Query setup).",
+    "Not using proper query keys or using inconsistent keys (Query keys).",
+    "Not implementing optimistic updates or incorrect update logic (Optimistic updates).",
+    "Not invalidating cache after mutations (Cache invalidation).",
+    "Mixing server state with UI state in useState (State separation).",
+    "Not handling loading or error states properly (Error handling)."
+  ],
+  "solution_file": "solution.jsx"
 }

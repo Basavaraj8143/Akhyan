@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "state-management-accessible-lift-state",
+  "title": "Lift State: Manage Shared State Across Components with Context",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Build a React application that uses React Context to manage shared state across multiple components. The application should demonstrate how to lift state and share it using the Context API.\n\nRequirements:\n\n1. Create a ThemeContext that:\n   - Provides a theme value ('light' or 'dark')\n   - Provides a toggleTheme function to switch between themes\n   - Has a default value of 'light'\n\n2. Create a ThemeProvider component that:\n   - Wraps the application with ThemeContext.Provider\n   - Manages the theme state using useState\n   - Provides the theme and toggleTheme to child components\n\n3. Create the following components:\n   - Header: Displays the current theme and a button to toggle it\n   - Content: Displays content that changes based on the theme\n   - Footer: Displays the current theme\n   All three components should consume the ThemeContext\n\n4. Theme application:\n   - Light theme: white background, black text\n   - Dark theme: dark gray background, white text\n   - Each component should apply the appropriate styles based on the current theme\n\n5. Component hierarchy:\n   - App renders ThemeProvider\n   - ThemeProvider renders Header, Content, and Footer\n   - All child components consume the context\n\nUse React's createContext, useContext, and Context.Provider. Do not use external state management libraries.",
+  "instructions": "Submit exactly one file containing the complete React implementation. Separate each component using clear comments such as // === CONTEXT: ThemeContext ===, // === COMPONENT: ThemeProvider ===, etc. Include all necessary imports and a brief explanation of how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".jsx",
+    ".js",
+    ".tsx",
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Context creation and provider",
+      "marks": 30,
+      "full": "Creates a ThemeContext with createContext, implements ThemeProvider with Context.Provider, and correctly provides theme and toggleTheme to children.",
+      "partial": "Creates context but has issues with provider implementation, missing values, or incorrect context structure.",
+      "zero": "Does not create a context or the provider is non-functional."
+    },
+    {
+      "criterion": "Context consumption in components",
+      "marks": 30,
+      "full": "All three components (Header, Content, Footer) correctly consume the ThemeContext using useContext and access theme and toggleTheme.",
+      "partial": "Some components consume context but others do not, or context consumption is incorrect.",
+      "zero": "Components do not consume the context or consumption is incorrect."
+    },
+    {
+      "criterion": "State management and theme application",
+      "marks": 25,
+      "full": "ThemeProvider correctly manages theme state with useState, toggleTheme works correctly, and all components apply appropriate styles based on the theme.",
+      "partial": "State management works but has issues with theme toggling or style application in some components.",
+      "zero": "State management is incorrect or theme is not applied properly."
+    },
+    {
+      "criterion": "Component structure and React best practices",
+      "marks": 15,
+      "full": "Component hierarchy is correct, uses React hooks properly, follows React best practices, and the code is clean and readable.",
+      "partial": "Mostly correct structure but has minor issues with hooks usage or code organization.",
+      "zero": "Component structure is incorrect or does not follow React best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use TypeScript interfaces for the context value if using TypeScript.",
+    "Use different color schemes or styling approaches as long as light/dark themes are clearly distinguished.",
+    "Add additional theme options if desired (optional enhancement).",
+    "Use default values in createContext or ensure the provider always wraps consumers."
+  ],
+  "mistakes_to_check": [
+    "Not using createContext to create the context (Context API).",
+    "Not using Context.Provider to wrap child components (Provider usage).",
+    "Not using useContext to consume the context in components (Context consumption).",
+    "Not providing the theme or toggleTheme in the provider value (Provider value).",
+    "Components not applying styles based on the theme (Theme application).",
+    "Missing the ThemeProvider wrapper in the component hierarchy (Provider placement)."
+  ],
+  "solution_file": "solution.jsx"
 }

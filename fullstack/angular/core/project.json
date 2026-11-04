@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "angular-core-interactive-app",
+  "title": "Interactive App: Build a Routed, Service-Driven Angular App",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a task management Angular application with routing and a service for data management. The application should allow users to add, complete, and delete tasks across multiple views.\n\nRequirements:\n\n1. Task data structure:\n   - id: unique identifier (number)\n   - title: task description (string)\n   - completed: boolean indicating completion status\n\n2. Service:\n   - Create a TaskService with methods for:\n     - getTasks(): Observable<Task[]>\n     - addTask(title: string): Observable<Task>\n     - toggleTask(id: number): Observable<Task>\n     - deleteTask(id: number): Observable<void>\n   - Use RxJS Observable and BehaviorSubject to manage task data\n   - The service should maintain the task state and notify subscribers\n\n3. Components:\n   - TaskListComponent: Displays all tasks with toggle and delete functionality\n   - TaskFormComponent: Form to add new tasks\n   - AppComponent: Main component with navigation\n\n4. Routing:\n   - Set up routes for:\n     - '/tasks' - Task list view\n     - '/add' - Add task form view\n   - Provide navigation between views using routerLink\n\n5. Features:\n   - Add a new task with a form\n   - Display all tasks in a list\n   - Mark a task as completed or incomplete (toggle)\n   - Delete a task\n   - Navigate between views\n   - Completed tasks should be visually distinguished\n\nUse Angular's dependency injection for the service. Use RxJS for asynchronous operations. Do not use external state management libraries like NgRx.",
+  "instructions": "Submit exactly one file containing the complete Angular implementation. Separate each file using clear comments such as // === FILE: src/app/task.service.ts ===, // === FILE: src/app/task-list/task-list.component.ts ===, etc. Include the component templates and styles inline or as separate marked sections. Include all necessary imports and a brief explanation of how to set up and run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".ts",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "TaskService with RxJS",
+      "marks": 25,
+      "full": "Creates a TaskService with Observable methods, uses BehaviorSubject for state management, and properly implements getTasks, addTask, toggleTask, and deleteTask.",
+      "partial": "Creates a TaskService but has issues with Observable usage, BehaviorSubject implementation, or missing methods.",
+      "zero": "Does not create a TaskService or the service implementation is incorrect."
+    },
+    {
+      "criterion": "Component implementation with DI",
+      "marks": 25,
+      "full": "Implements TaskListComponent and TaskFormComponent with proper dependency injection, subscribes to service observables, and handles user interactions correctly.",
+      "partial": "Implements components but has issues with DI, subscription handling, or user interaction logic.",
+      "zero": "Components are not properly implemented or do not use the service."
+    },
+    {
+      "criterion": "Routing configuration and navigation",
+      "marks": 25,
+      "full": "Sets up proper routing configuration with routes for '/tasks' and '/add', uses routerLink for navigation, and navigation works correctly.",
+      "partial": "Sets up routing but has issues with route configuration, routerLink usage, or navigation flow.",
+      "zero": "Does not implement routing or navigation is non-functional."
+    },
+    {
+      "criterion": "UI implementation and Angular best practices",
+      "marks": 25,
+      "full": "Visually distinguishes completed tasks, implements forms correctly, uses Angular directives properly, follows Angular best practices, and the code is well-organized.",
+      "partial": "The UI is mostly functional but has missing visual cues, form issues, or minor Angular best practice issues.",
+      "zero": "The UI is non-functional or does not follow Angular best practices."
+    }
+  ],
+  "valid_alternatives": [
+    "Use standalone components or NgModule-based components (both are acceptable).",
+    "Use ReactiveFormsModule or Template-driven forms for the task form.",
+    "Use different visual styles for completed tasks as long as they are clearly distinguished.",
+    "Use Subject instead of BehaviorSubject if initial state is not required."
+  ],
+  "mistakes_to_check": [
+    "Not using RxJS Observable or BehaviorSubject in the service (RxJS usage).",
+    "Not properly subscribing to observables in components (subscription handling).",
+    "Not implementing dependency injection correctly (Angular DI).",
+    "Not setting up routing configuration or using incorrect route paths (routing).",
+    "Not using routerLink for navigation (Angular routing).",
+    "Not visually distinguishing completed tasks (UI requirements)."
+  ],
+  "solution_file": "solution.ts"
 }
