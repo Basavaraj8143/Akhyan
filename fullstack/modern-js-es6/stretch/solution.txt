@@ -1,0 +1,337 @@
+PROJECT: ES Module Architecture - Modular Task Manager
+
+PROJECT STRUCTURE:
+
+index.html
+src/
+    main.js
+    services/
+        taskService.js
+    storage/
+        taskStorage.js
+    ui/
+        taskView.js
+
+
+==================================================
+FILE: index.html
+==================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular Task Manager</title>
+</head>
+<body>
+
+    <h1>Task Manager</h1>
+
+    <form id="task-form">
+        <input
+            type="text"
+            id="task-input"
+            placeholder="Enter a task"
+            required
+        />
+
+        <button type="submit">Add Task</button>
+    </form>
+
+    <p id="message" aria-live="polite"></p>
+
+    <ul id="task-list"></ul>
+
+    <script type="module" src="./src/main.js"></script>
+
+</body>
+</html>
+
+
+==================================================
+FILE: src/storage/taskStorage.js
+==================================================
+
+// Responsible only for storing and retrieving tasks.
+
+const STORAGE_KEY = "modular-task-manager-tasks";
+
+export const getTasks = () => {
+    try {
+        const storedTasks = localStorage.getItem(STORAGE_KEY);
+
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    } catch (error) {
+        console.error("Unable to read tasks:", error);
+        return [];
+    }
+};
+
+export const saveTasks = (tasks) => {
+    try {
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(tasks)
+        );
+    } catch (error) {
+        console.error("Unable to save tasks:", error);
+        throw new Error("Tasks could not be saved.");
+    }
+};
+
+
+==================================================
+FILE: src/services/taskService.js
+==================================================
+
+// Responsible for task operations and business logic.
+
+import {
+    getTasks,
+    saveTasks
+} from "../storage/taskStorage.js";
+
+export const getAllTasks = () => {
+    return getTasks();
+};
+
+export const addTask = (title) => {
+    const trimmedTitle = title.trim();
+
+    if (!trimmedTitle) {
+        throw new Error("Task title cannot be empty.");
+    }
+
+    const tasks = getTasks();
+
+    const newTask = {
+        id: crypto.randomUUID(),
+        title: trimmedTitle,
+        completed: false
+    };
+
+    const updatedTasks = [...tasks, newTask];
+
+    saveTasks(updatedTasks);
+
+    return updatedTasks;
+};
+
+export const toggleTask = (taskId) => {
+    const tasks = getTasks();
+
+    const updatedTasks = tasks.map((task) =>
+        task.id === taskId
+            ? { ...task, completed: !task.completed }
+            : task
+    );
+
+    saveTasks(updatedTasks);
+
+    return updatedTasks;
+};
+
+export const deleteTask = (taskId) => {
+    const tasks = getTasks();
+
+    const updatedTasks = tasks.filter(
+        (task) => task.id !== taskId
+    );
+
+    saveTasks(updatedTasks);
+
+    return updatedTasks;
+};
+
+
+==================================================
+FILE: src/ui/taskView.js
+==================================================
+
+// Responsible only for rendering and updating the UI.
+
+const taskList = document.getElementById("task-list");
+
+export const renderTasks = (tasks) => {
+    taskList.replaceChildren();
+
+    if (tasks.length === 0) {
+        const emptyMessage = document.createElement("li");
+
+        emptyMessage.textContent = "No tasks available.";
+
+        taskList.appendChild(emptyMessage);
+
+        return;
+    }
+
+    tasks.forEach((task) => {
+        const listItem = document.createElement("li");
+
+        const taskTitle = document.createElement("span");
+
+        taskTitle.textContent = task.title;
+
+        if (task.completed) {
+            taskTitle.style.textDecoration = "line-through";
+        }
+
+        const toggleButton = document.createElement("button");
+
+        toggleButton.textContent = task.completed
+            ? "Undo"
+            : "Complete";
+
+        toggleButton.dataset.action = "toggle";
+        toggleButton.dataset.id = task.id;
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete";
+
+        deleteButton.dataset.action = "delete";
+        deleteButton.dataset.id = task.id;
+
+        listItem.append(
+            taskTitle,
+            toggleButton,
+            deleteButton
+        );
+
+        taskList.appendChild(listItem);
+    });
+};
+
+export const showMessage = (message) => {
+    document.getElementById("message").textContent = message;
+};
+
+
+==================================================
+FILE: src/main.js
+==================================================
+
+// Application entry point.
+// Connects the service and UI modules.
+
+import {
+    getAllTasks,
+    addTask,
+    toggleTask,
+    deleteTask
+} from "./services/taskService.js";
+
+import {
+    renderTasks,
+    showMessage
+} from "./ui/taskView.js";
+
+const taskForm = document.getElementById("task-form");
+
+const taskInput = document.getElementById("task-input");
+
+const taskList = document.getElementById("task-list");
+
+// Render existing tasks when the application starts.
+const initializeApp = () => {
+    const tasks = getAllTasks();
+
+    renderTasks(tasks);
+};
+
+// Handle adding tasks.
+taskForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    try {
+        const updatedTasks = addTask(taskInput.value);
+
+        renderTasks(updatedTasks);
+
+        taskInput.value = "";
+
+        showMessage("Task added successfully.");
+
+    } catch (error) {
+        showMessage(error.message);
+    }
+});
+
+// Handle complete and delete actions using event delegation.
+taskList.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+
+    if (!button) {
+        return;
+    }
+
+    const { action, id } = button.dataset;
+
+    try {
+        let updatedTasks;
+
+        if (action === "toggle") {
+            updatedTasks = toggleTask(id);
+        } else if (action === "delete") {
+            updatedTasks = deleteTask(id);
+        } else {
+            return;
+        }
+
+        renderTasks(updatedTasks);
+
+        showMessage("Task list updated.");
+
+    } catch (error) {
+        showMessage(error.message);
+    }
+});
+
+// Start the application.
+initializeApp();
+
+
+==================================================
+MODULE ARCHITECTURE EXPLANATION
+==================================================
+
+1. main.js
+   - Acts as the application entry point.
+   - Connects UI events with service functions.
+   - Does not contain storage implementation.
+
+2. taskService.js
+   - Contains task-related business logic.
+   - Handles adding, completing, and deleting tasks.
+   - Communicates with the storage module.
+
+3. taskStorage.js
+   - Handles localStorage operations.
+   - Provides functions to retrieve and save tasks.
+   - Does not manipulate the DOM.
+
+4. taskView.js
+   - Handles rendering tasks in the browser.
+   - Creates UI elements and displays messages.
+   - Does not contain storage or business logic.
+
+DEPENDENCY FLOW:
+
+main.js
+   |
+   |----> taskService.js
+   |          |
+   |          |----> taskStorage.js
+   |
+   |----> taskView.js
+
+
+HOW TO RUN:
+
+1. Create the folder structure shown above.
+2. Copy each section into its corresponding file.
+3. Open the project through a local development server.
+4. Open index.html in the browser through that server.
+5. Add, complete, and delete tasks.
+6. Refresh the browser to verify localStorage persistence.

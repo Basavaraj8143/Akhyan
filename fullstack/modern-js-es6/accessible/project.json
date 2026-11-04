@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "modern-js-es6-accessible-refactor",
+  "title": "Refactor to ES6: Modernize a Legacy Employee Utility",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "You are given an old-style JavaScript utility that processes employee data. Modernize it using suitable ES6+ features while preserving its behavior.\n\nLegacy implementation:\n\nvar employees = [\n  { name: \"Asha\", department: \"Engineering\", active: true, salary: 45000 },\n  { name: \"Ravi\", department: \"Support\", active: false, salary: 32000 },\n  { name: \"Meera\", department: \"Engineering\", active: true, salary: 52000 }\n];\n\nvar getActiveEmployees = function(list) {\n  var activeEmployees = [];\n  for (var i = 0; i < list.length; i++) {\n    if (list[i].active === true) {\n      activeEmployees.push(list[i]);\n    }\n  }\n  return activeEmployees;\n};\n\nvar createEmployeeLabels = function(list) {\n  var labels = [];\n  for (var i = 0; i < list.length; i++) {\n    labels.push(list[i].name + \" (\" + list[i].department + \")\");\n  }\n  return labels;\n};\n\nvar activeEmployees = getActiveEmployees(employees);\nvar labels = createEmployeeLabels(activeEmployees);\n\nconsole.log(\"Active employees: \" + activeEmployees.length);\nconsole.log(labels);\n\nRefactor this utility using ES6+ idioms. Keep the same data and results: select only employees whose active property is true, create labels in the format Name (Department), and display the active employee count and labels. Preserve the original order and do not add unrelated features.",
+  "instructions": "Submit exactly one file containing the complete refactored JavaScript implementation and a brief note identifying the ES6+ features used. Include the employee data so the file can run independently in a JavaScript environment. Preserve the original output behavior. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Appropriate variable declarations",
+      "marks": 20,
+      "full": "Replaces var with appropriate const and/or let declarations based on whether reassignment is needed.",
+      "partial": "Modernizes most declarations but retains unnecessary var declarations or uses declarations inconsistently.",
+      "zero": "Uses var throughout or introduces declaration errors that prevent the program from working."
+    },
+    {
+      "criterion": "Modern function and array syntax",
+      "marks": 30,
+      "full": "Uses suitable ES6+ function syntax and modern array processing (for example, filter() and map(), or an equally clear modern alternative) to implement the original operations correctly.",
+      "partial": "Modernizes some function or array-processing logic, but one operation remains unnecessarily old-style or behaves incorrectly in some cases.",
+      "zero": "Does not meaningfully modernize the function or array-processing logic, or the operations do not work."
+    },
+    {
+      "criterion": "String construction and output",
+      "marks": 20,
+      "full": "Uses template literals for employee labels and the summary message while preserving the required format and values.",
+      "partial": "Uses template literals in some places, but one required string or output format is incorrect.",
+      "zero": "Required labels or summary output are missing or incorrect."
+    },
+    {
+      "criterion": "Behavior preservation and completeness",
+      "marks": 30,
+      "full": "Includes the supplied data, selects only active employees, preserves order, produces correct labels and count, and provides a runnable single-file implementation.",
+      "partial": "The implementation is mostly complete but has a minor behavior, ordering, output, or completeness issue.",
+      "zero": "The implementation is incomplete, does not preserve required behavior, or cannot be run."
+    }
+  ],
+  "valid_alternatives": [
+    "Use function declarations or named function expressions instead of arrow functions if the syntax is clear and behavior is preserved.",
+    "Use for...of or another readable loop instead of map() or filter() if the result is correct and the modernization is otherwise appropriate.",
+    "Use destructuring for employee properties, or access properties directly.",
+    "Use console.log with separate arguments instead of a template literal for the summary, provided the required information is displayed correctly."
+  ],
+  "mistakes_to_check": [
+    "Using const for a variable that is later reassigned, or using let where const is sufficient (variable declarations).",
+    "Changing the active-employee condition or including inactive employees (array processing and behavior).",
+    "Changing employee order or producing labels other than Name (Department) (behavior preservation).",
+    "Using template literals incorrectly or omitting the count or labels (string construction and output).",
+    "Omitting the employee data or submitting code that cannot run as a single file (completeness)."
+  ],
   "solution_file": "solution.js"
 }

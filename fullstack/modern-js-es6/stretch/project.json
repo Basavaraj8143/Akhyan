@@ -1,18 +1,61 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "modern-js-es6-stretch-module-architecture",
+  "title": "ES Module Architecture: Modular Task Manager",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a browser-based task manager using native JavaScript ES modules. The application must be organized into separate modules with clear responsibilities instead of placing all application logic in one JavaScript file.\n\nThe application must support:\n1. Adding a new task with a non-empty title.\n2. Displaying all saved tasks.\n3. Marking a task as completed or incomplete.\n4. Deleting an individual task.\n5. Persisting tasks using localStorage so they remain available after refreshing the page.\n\nArchitecture requirements:\n1. Create a main entry module responsible for initializing the application and connecting the modules.\n2. Create a task service module responsible for task operations and business logic.\n3. Create a storage module responsible for reading and writing task data to localStorage.\n4. Create a UI module responsible for rendering tasks and updating the interface.\n5. Use appropriate named or default exports and imports to share functionality between modules.\n6. Keep responsibilities separated and avoid placing all logic inside the main entry module.\n7. Use native ES modules supported by modern browsers. Do not use a bundler or external framework.\n\nThe application must work when served through a local development server.",
+  "instructions": "Submit exactly one file containing the complete implementation of all JavaScript modules and the HTML entry point. Separate each file using clear comments such as // === FILE: index.html ===, // === FILE: src/main.js ===, and // === FILE: src/services/taskService.js ===. Include all necessary source code and a brief explanation of the module structure and how to run the application. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".pdf",
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Module architecture and separation of responsibilities",
+      "marks": 30,
+      "full": "Organizes the application into clearly separated entry, service, storage, and UI modules. Each module has a focused responsibility and dependencies flow appropriately.",
+      "partial": "Uses multiple modules but has unclear responsibilities, excessive logic in the entry module, or unnecessary coupling between modules.",
+      "zero": "Places the application logic in one file or does not demonstrate meaningful modular architecture."
+    },
+    {
+      "criterion": "ES module imports and exports",
+      "marks": 25,
+      "full": "Uses valid import and export statements to share functionality between modules, with correct module paths and no missing or unused required exports.",
+      "partial": "Uses imports and exports but has incorrect paths, missing exports, or incomplete module connections.",
+      "zero": "Does not correctly use ES module imports and exports."
+    },
+    {
+      "criterion": "Application functionality",
+      "marks": 25,
+      "full": "Correctly implements adding, displaying, completing, deleting, and persisting tasks through the separated modules.",
+      "partial": "Implements most required operations but one or more features have functional issues or incomplete persistence.",
+      "zero": "The application cannot perform the essential task-management operations."
+    },
+    {
+      "criterion": "Code quality and integration",
+      "marks": 20,
+      "full": "Provides readable and consistent code, handles empty task input, safely renders user-provided text, integrates modules correctly, and includes a usable HTML entry point with module loading.",
+      "partial": "The implementation is mostly understandable but has integration, validation, rendering, or completeness issues.",
+      "zero": "The implementation cannot be integrated or run as a browser-based modular application."
+    }
+  ],
+  "valid_alternatives": [
+    "Use named exports or default exports according to the module's responsibility.",
+    "Use separate modules for storage, services, and UI with different filenames or directory structures, provided responsibilities remain clear.",
+    "Use a class-based or function-based service implementation.",
+    "Use event delegation or individual event listeners for task actions.",
+    "Use a different internal task representation as long as the required functionality is preserved."
+  ],
+  "mistakes_to_check": [
+    "Putting all business logic and DOM manipulation inside the main entry module (module architecture).",
+    "Using incorrect relative import paths or importing symbols that are not exported (module integration).",
+    "Mixing storage, business logic, and UI responsibilities unnecessarily (separation of concerns).",
+    "Updating the UI without updating persisted task data, or vice versa (application functionality).",
+    "Allowing empty or whitespace-only task titles (input validation).",
+    "Rendering user-provided task text using unsafe HTML insertion instead of safe text rendering (code quality).",
+    "Using a normal script instead of type=\"module\" in the HTML entry point (module loading).",
+    "Submitting incomplete module source or omitting the HTML entry point (completeness)."
+  ],
+  "solution_file": "solution.txt"
 }

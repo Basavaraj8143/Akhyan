@@ -1,18 +1,60 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "modern-js-es6-core-async-data",
+  "title": "Async Data: Fetch and Display API Posts",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a JavaScript application that fetches data from the JSONPlaceholder API using async/await and displays the retrieved posts in the browser.\n\nAPI endpoint: https://jsonplaceholder.typicode.com/posts?_limit=5\n\nRequirements:\n1. Create an asynchronous function that fetches data from the provided API using async/await.\n2. Check whether the HTTP response is successful before processing the response body.\n3. Convert the response into JSON data.\n4. Display the title and body of each retrieved post in the browser.\n5. Show a loading message while the API request is in progress.\n6. Handle network errors and unsuccessful HTTP responses by displaying an appropriate error message.\n7. Provide a button that allows users to fetch the posts again.\n8. Update the displayed content when a new request is made without unnecessarily duplicating old results.\n\nUse JavaScript's built-in Fetch API. Do not use external HTTP libraries or frameworks.",
+  "instructions": "Submit exactly one file containing the complete JavaScript implementation and a brief explanation of how to run or integrate it. The implementation must work in a browser environment. You may assume a basic HTML document is available, but include any required HTML structure in your submission using comments such as // === FILE: index.html === if necessary. Include the JavaScript source in the same submitted file. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Asynchronous API request",
+      "marks": 25,
+      "full": "Implements an asynchronous function using async/await and fetch() to request data from the specified API endpoint.",
+      "partial": "Makes an API request successfully but has incomplete async/await usage or an issue in the request implementation.",
+      "zero": "Does not successfully implement an asynchronous API request."
+    },
+    {
+      "criterion": "Response handling and JSON processing",
+      "marks": 25,
+      "full": "Checks response.ok, handles unsuccessful HTTP responses, converts the response to JSON, and correctly processes the returned post data.",
+      "partial": "Processes the response but misses HTTP status checking or has an issue handling the JSON response.",
+      "zero": "Does not correctly process the API response or JSON data."
+    },
+    {
+      "criterion": "Displaying data in the browser",
+      "marks": 25,
+      "full": "Displays the title and body of all retrieved posts correctly in the browser and updates the displayed content when new data is fetched.",
+      "partial": "Displays some retrieved data but has missing fields, incomplete rendering, or duplicate content after repeated requests.",
+      "zero": "Does not display the retrieved API data."
+    },
+    {
+      "criterion": "Loading and error handling",
+      "marks": 25,
+      "full": "Displays a loading indicator during the request, handles network and HTTP errors with meaningful messages, and restores the interface after the request completes.",
+      "partial": "Implements loading or error handling, but one is missing or the interface does not recover correctly after a request.",
+      "zero": "Does not handle loading states or request errors."
+    }
+  ],
+  "valid_alternatives": [
+    "Use fetch() with async/await inside a named function or an arrow function.",
+    "Use document.createElement(), textContent, or another safe DOM-rendering approach to display the posts.",
+    "Use a separate rendering function to generate the post elements.",
+    "Use finally or equivalent cleanup logic to restore the loading state after a request.",
+    "Use a different but equivalent DOM structure as long as the required post title and body are displayed."
+  ],
+  "mistakes_to_check": [
+    "Using fetch() without awaiting the response or without properly handling the asynchronous operation (asynchronous API request).",
+    "Failing to check response.ok before processing the response body (response handling).",
+    "Assuming the response is already JSON without calling response.json() (JSON processing).",
+    "Displaying only post titles or failing to display the post bodies (data rendering).",
+    "Not showing a loading message while the request is pending (loading handling).",
+    "Ignoring network errors or unsuccessful HTTP responses (error handling).",
+    "Appending duplicate posts instead of updating the existing displayed results after repeated requests (data rendering)."
+  ],
   "solution_file": "solution.js"
 }
