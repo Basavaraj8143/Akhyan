@@ -1,18 +1,59 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "database-design-core-index-speed",
+  "title": "Index for Speed: Add Indexes to Fix a Slow Query and Prove the Gain",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Identify a slow database query and add appropriate indexes to improve its performance. Analyze the query execution plan before and after adding indexes to demonstrate the performance gain.\n\nRequirements:\n\n1. Scenario setup:\n   - Choose a realistic scenario (e.g., e-commerce orders, user searches, blog posts)\n   - Design a table structure with at least 5 columns\n   - Include sample data that represents realistic volume (e.g., 10,000+ rows)\n   - Identify a slow query that would benefit from indexing\n\n2. Slow query identification:\n   - Describe a query that would be slow without indexes\n   - Explain why it would be slow (e.g., full table scan, filtering on non-indexed column)\n   - Provide the SQL query that needs optimization\n\n3. Index creation:\n   - Add at least 2 appropriate indexes to improve the query\n   - Explain the type of index for each (B-tree, composite, unique, etc.)\n   - Explain why each index was chosen and which columns it covers\n   - Consider query patterns when choosing index columns\n\n4. Performance analysis:\n   - Describe the execution plan before adding indexes (expected: full table scan)\n   - Describe the execution plan after adding indexes (expected: index seek)\n   - Estimate the performance improvement (e.g., from O(n) to O(log n))\n   - Explain the query cost reduction\n\n5. Trade-offs:\n   - Discuss the trade-offs of adding indexes:\n     - Increased storage space\n     - Slower INSERT/UPDATE/DELETE operations\n     - Index maintenance overhead\n   - Explain when indexes are worth the cost\n\nUse generic SQL syntax that works across most relational databases (MySQL, PostgreSQL, SQL Server).",
+  "instructions": "Submit exactly one file containing the complete indexing solution. Include the table structure, sample data, slow query, index creation statements, execution plan analysis before and after, and trade-off discussion. Use clear sections with comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".sql",
+    ".txt",
+    ".md",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Scenario and slow query identification",
+      "marks": 25,
+      "full": "Creates a realistic scenario with appropriate table structure, identifies a genuinely slow query, and explains why it would be slow without indexes.",
+      "partial": "Scenario is unrealistic or the query wouldn't actually be slow, or the explanation is incomplete.",
+      "zero": "Scenario or slow query is not properly identified."
+    },
+    {
+      "criterion": "Index design and creation",
+      "marks": 30,
+      "full": "Creates at least 2 appropriate indexes with correct index types, explains why each index was chosen, and considers query patterns.",
+      "partial": "Creates indexes but they are inappropriate for the query, missing explanations, or index types are incorrect.",
+      "zero": "Indexes are not created or are incorrectly designed."
+    },
+    {
+      "criterion": "Performance analysis and execution plans",
+      "marks": 25,
+      "full": "Accurately describes execution plans before and after indexing, explains the performance improvement with complexity analysis, and demonstrates query cost reduction.",
+      "partial": "Execution plans are described but accuracy is questionable, performance improvement is not quantified, or complexity analysis is missing.",
+      "zero": "Performance analysis is missing or incorrect."
+    },
+    {
+      "criterion": "Trade-off discussion",
+      "marks": 20,
+      "full": "Discusses the trade-offs of adding indexes (storage, write performance, maintenance) and explains when indexes are worth the cost.",
+      "partial": "Trade-offs are mentioned but discussion is incomplete or lacks depth.",
+      "zero": "Trade-offs are not discussed."
+    }
+  ],
+  "valid_alternatives": [
+    "Choose any realistic scenario (e-commerce, social media, etc.).",
+    "Add more than 2 indexes if needed for the query.",
+    "Use different index types (hash, GiST, etc.) if appropriate for the DBMS.",
+    "Include EXPLAIN ANALYZE output if desired (optional enhancement)."
+  ],
+  "mistakes_to_check": [
+    "Not identifying a genuinely slow query (Query selection).",
+    "Not creating indexes on the correct columns (Index selection).",
+    "Not explaining why indexes were chosen (Index justification).",
+    "Not accurately describing execution plans (Execution plan accuracy).",
+    "Not discussing trade-offs of indexing (Trade-off discussion).",
+    "Choosing indexes that would hurt write performance without justification (Index trade-offs)."
+  ],
+  "solution_file": "solution.sql"
 }

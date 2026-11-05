@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "database-design-stretch-sql-nosql",
+  "title": "SQL vs NoSQL: Justify SQL vs NoSQL for a Scenario and Model Both",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Analyze a real-world scenario and justify whether a SQL (relational) or NoSQL database is the better choice. Then design schemas for both database types to demonstrate the differences in data modeling approaches.\n\nRequirements:\n\n1. Scenario analysis:\n   - Choose a scenario from the following:\n     - Social media feed (posts, comments, likes, follows)\n     - Real-time analytics (event logs, metrics, time-series data)\n     - E-commerce platform (products, orders, customers, inventory)\n     - Content management system (articles, tags, categories, revisions)\n   - Analyze the data characteristics:\n     - Data structure (structured vs. semi-structured vs. unstructured)\n     - Data volume and growth rate\n     - Query patterns (read-heavy vs. write-heavy)\n     - Relationship requirements (complex vs. simple)\n     - Consistency requirements (strong vs. eventual)\n     - Scalability needs\n\n2. Justification:\n   - Choose either SQL or NoSQL for the scenario\n   - Provide at least 3 strong reasons for your choice\n   - Explain why the alternative would be less suitable\n   - Discuss trade-offs of your choice\n\n3. SQL schema design:\n   - Design a normalized relational schema for the scenario\n   - Define tables with columns, data types, and constraints\n   - Define primary keys and foreign keys\n   - Identify relationships (one-to-one, one-to-many, many-to-many)\n   - Apply normalization (at least 3NF)\n   - Show example queries that would be common\n\n4. NoSQL schema design:\n   - Design a document-oriented schema (e.g., MongoDB) for the same scenario\n   - Define document structures with embedded documents and references\n   - Decide when to embed vs. reference based on access patterns\n   - Show example documents\n   - Show example queries (using MongoDB syntax)\n\n5. Comparison:\n   - Compare the two schema designs:\n     - Complexity of relationships\n     - Query complexity\n     - Data modeling flexibility\n     - Schema evolution (migrations)\n     - Performance characteristics\n   - Explain when each approach would be preferred\n\n6. Decision:\n   - Reiterate your choice and explain in what circumstances you might switch to the alternative",
+  "instructions": "Submit exactly one file containing the complete SQL vs NoSQL analysis and design. Include the scenario analysis, justification, SQL schema, NoSQL schema, comparison, and decision. Use clear sections with comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".md",
+    ".txt",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Scenario analysis and justification",
+      "marks": 25,
+      "full": "Thoroughly analyzes the scenario's data characteristics, provides at least 3 strong reasons for the chosen database type, and explains why the alternative is less suitable.",
+      "partial": "Analyzes the scenario but has insufficient justification, fewer than 3 reasons, or incomplete alternative comparison.",
+      "zero": "Scenario analysis is missing or justification is insufficient."
+    },
+    {
+      "criterion": "SQL schema design",
+      "marks": 25,
+      "full": "Designs a properly normalized SQL schema with correct tables, columns, data types, constraints, relationships, and follows relational modeling principles.",
+      "partial": "SQL schema is designed but has normalization issues, missing constraints, or incorrect relationships.",
+      "zero": "SQL schema is not designed or is incorrect."
+    },
+    {
+      "criterion": "NoSQL schema design",
+      "marks": 25,
+      "full": "Designs an appropriate NoSQL schema with correct document structures, proper embed vs. reference decisions based on access patterns, and follows document modeling principles.",
+      "partial": "NoSQL schema is designed but has poor embed/reference decisions, inappropriate document structures, or doesn't consider access patterns.",
+      "zero": "NoSQL schema is not designed or is incorrect."
+    },
+    {
+      "criterion": "Comparison and decision",
+      "marks": 25,
+      "full": "Provides a thorough comparison of both approaches covering complexity, query patterns, flexibility, schema evolution, and performance, and makes a well-reasoned final decision.",
+      "partial": "Comparison is present but lacks depth in some areas or the decision is not well-supported.",
+      "zero": "Comparison is missing or the decision is not justified."
+    }
+  ],
+  "valid_alternatives": [
+    "Choose any scenario from the list or propose your own.",
+    "Choose either SQL or NoSQL as long as the justification is strong.",
+    "Use MongoDB syntax for NoSQL or another document database syntax.",
+    "Use any SQL dialect (MySQL, PostgreSQL, etc.) for the SQL schema."
+  ],
+  "mistakes_to_check": [
+    "Not analyzing data characteristics thoroughly (Scenario analysis).",
+    "Providing fewer than 3 reasons for the choice (Justification).",
+    "Not normalizing the SQL schema (SQL normalization).",
+    "Not considering access patterns in NoSQL embed/reference decisions (NoSQL modeling).",
+    "Not providing a meaningful comparison (Comparison depth).",
+    "Not making a clear decision or not supporting it with reasoning (Decision)."
+  ],
+  "solution_file": "solution.md"
 }

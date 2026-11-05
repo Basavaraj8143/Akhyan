@@ -1,18 +1,58 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "database-design-accessible-model-domain",
+  "title": "Model a Domain: Design a Normalized Schema for a Real Domain",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Design a normalized database schema for a real-world domain. Choose a domain (e.g., e-commerce, library management, school system, or hospital management) and create a well-structured relational database schema.\n\nRequirements:\n\n1. Domain selection:\n   - Choose one of the following domains:\n     - E-commerce (products, orders, customers, categories)\n     - Library management (books, authors, members, loans)\n     - School system (students, courses, enrollments, teachers)\n     - Hospital management (patients, doctors, appointments, departments)\n   - Or propose your own domain (must be approved)\n\n2. Entity identification:\n   - Identify at least 4 main entities in your chosen domain\n   - Define the attributes for each entity\n   - Identify primary keys for each entity\n\n3. Relationships:\n   - Identify relationships between entities (one-to-one, one-to-many, many-to-many)\n   - Define foreign keys to establish relationships\n   - Use junction tables for many-to-many relationships\n\n4. Normalization:\n   - Apply at least 3NF (Third Normal Form) to your schema\n   - Eliminate redundant data\n   - Ensure no transitive dependencies\n   - Explain the normalization steps taken\n\n5. Schema documentation:\n   - Provide entity-relationship (ER) diagram description\n   - Document each table with columns, data types, and constraints\n   - Document relationships with cardinality\n   - Explain any design decisions made\n\nDo not use a specific DBMS syntax (like MySQL or PostgreSQL). Use generic SQL data types (VARCHAR, INT, DATE, etc.).",
+  "instructions": "Submit exactly one file containing the complete database schema design. Include the domain description, entities with attributes, relationships, normalization explanation, ER diagram description, and table definitions. Use clear sections with comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md",
+    ".pdf"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Entity identification and attributes",
+      "marks": 25,
+      "full": "Identifies at least 4 relevant entities with appropriate attributes, proper primary keys, and clear attribute definitions.",
+      "partial": "Identifies entities but has fewer than 4, missing attributes, or unclear primary keys.",
+      "zero": "Entities are not properly identified or attributes are missing."
+    },
+    {
+      "criterion": "Relationships and foreign keys",
+      "marks": 30,
+      "full": "Correctly identifies relationships between entities with proper cardinality, defines foreign keys appropriately, and uses junction tables for many-to-many relationships.",
+      "partial": "Identifies some relationships but has incorrect cardinality, missing foreign keys, or incorrect junction table usage.",
+      "zero": "Relationships are not identified or incorrectly defined."
+    },
+    {
+      "criterion": "Normalization to 3NF",
+      "marks": 25,
+      "full": "Applies 3NF correctly, eliminates redundant data, removes transitive dependencies, and explains the normalization steps.",
+      "partial": "Applies some normalization but has remaining redundancy, transitive dependencies, or incomplete explanation.",
+      "zero": "Normalization is not applied or the schema is not normalized."
+    },
+    {
+      "criterion": "Schema documentation and ER diagram",
+      "marks": 20,
+      "full": "Provides clear table definitions with data types and constraints, describes the ER diagram accurately, and explains design decisions well.",
+      "partial": "Documentation is present but has missing data types, unclear ER description, or incomplete design explanations.",
+      "zero": "Documentation is missing or incomplete."
+    }
+  ],
+  "valid_alternatives": [
+    "Choose any domain from the suggested list or propose your own.",
+    "Use different normalization levels (3NF is recommended but BCNF is acceptable).",
+    "Add additional entities or attributes if needed for the domain.",
+    "Use different data type naming conventions as long as they are clear."
+  ],
+  "mistakes_to_check": [
+    "Not identifying at least 4 entities (Entity count).",
+    "Not defining primary keys for all entities (Primary keys).",
+    "Not using junction tables for many-to-many relationships (Relationship types).",
+    "Not applying normalization or having unnormalized schema (Normalization).",
+    "Having redundant data or transitive dependencies (3NF violations).",
+    "Not documenting data types or constraints (Schema documentation)."
+  ],
+  "solution_file": "solution.md"
 }

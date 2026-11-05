@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "authentication-core-oauth-login",
+  "title": "OAuth Login: Add Social Login (OAuth) to an App",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Implement OAuth 2.0 social login for a web application using a popular provider (e.g., Google, GitHub). The application should allow users to authenticate using their social media accounts.\n\nRequirements:\n\n1. OAuth flow implementation:\n   - Implement OAuth 2.0 authorization code flow\n   - Redirect user to provider's authorization page\n   - Receive authorization code from provider\n   - Exchange authorization code for access token\n   - Use access token to fetch user profile\n   - Create or update user account based on profile\n   - Generate JWT token for session management\n\n2. Routes to implement:\n   - GET /auth/google - Redirect to Google OAuth consent screen\n   - GET /auth/google/callback - Handle OAuth callback\n   - GET /auth/github - Redirect to GitHub OAuth consent screen\n   - GET /auth/github/callback - Handle OAuth callback\n\n3. User management:\n   - Check if user exists by provider_id (social media ID)\n   - If user exists, update last login timestamp\n   - If user doesn't exist, create new user account\n   - Store provider_id, provider name, and profile info\n\n4. Session management:\n   - Generate JWT token after successful OAuth\n   - Return token to client\n   - Token should include user_id and provider info\n\n5. Environment variables:\n   - OAuth client ID and client secret\n   - OAuth callback URL\n   - JWT secret key\n   - Use environment variables for sensitive data\n\nUse Express.js, passport with OAuth strategies (passport-google-oauth20, passport-github2), and jsonwebtoken. Do not implement OAuth manually.",
+  "instructions": "Submit exactly one .js file containing the complete OAuth login implementation. Include OAuth routes, passport configuration, user management, JWT generation, and environment setup. Separate each component using clear comments. Include a brief explanation of the OAuth flow. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "OAuth flow implementation",
+      "marks": 30,
+      "full": "Implements OAuth 2.0 authorization code flow correctly with passport strategies, handles redirect and callback routes, and exchanges code for token.",
+      "partial": "Implements OAuth flow but has incorrect redirect handling, missing callback route, or token exchange issues.",
+      "zero": "OAuth flow is not implemented or is incorrect."
+    },
+    {
+      "criterion": "User management with provider info",
+      "marks": 25,
+      "full": "Correctly checks for existing users by provider_id, creates new users if needed, updates login timestamp, and stores provider info.",
+      "partial": "User management exists but has issues with provider_id lookup, duplicate users, or missing profile info.",
+      "zero": "User management is not implemented or provider info is not stored."
+    },
+    {
+      "criterion": "JWT token generation",
+      "marks": 25,
+      "full": "Generates JWT token after successful OAuth with correct payload (user_id, provider, iat, exp) and returns token to client.",
+      "partial": "JWT is generated but has incorrect payload, missing fields, or incorrect expiration.",
+      "zero": "JWT is not generated or is incorrect."
+    },
+    {
+      "criterion": "Environment variables and security",
+      "marks": 20,
+      "full": "Uses environment variables for sensitive data (client ID, secret, JWT secret), does not hardcode credentials, and follows security best practices.",
+      "partial": "Environment variables are used but some credentials are hardcoded or security practices are incomplete.",
+      "zero": "Credentials are hardcoded or environment variables are not used."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Google or GitHub (both are acceptable).",
+    "Use different JWT expiration times as long as reasonable.",
+    "Add additional OAuth providers if desired.",
+    "Use different session management approach if preferred."
+  ],
+  "mistakes_to_check": [
+    "Not using passport OAuth strategies (Manual OAuth implementation).",
+    "Not checking for existing users by provider_id (Duplicate accounts).",
+    "Hardcoding OAuth credentials instead of environment variables (Security).",
+    "Not exchanging authorization code for access token (OAuth flow).",
+    "Not generating JWT after successful OAuth (Session management).",
+    "Not storing provider information (Provider tracking)."
+  ],
   "solution_file": "solution.js"
 }

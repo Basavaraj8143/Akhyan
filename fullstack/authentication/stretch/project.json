@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "authentication-stretch-role-based-access",
+  "title": "Role-Based Access: Implement Roles and Authorization Across an API",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Implement role-based access control (RBAC) for an Express API. The API should have multiple user roles with different permission levels and enforce authorization on routes.\n\nRequirements:\n\n1. User roles and permissions:\n   - Define at least 3 roles: admin, moderator, user\n   - Define permissions for each role:\n     - admin: Full access to all resources\n     - moderator: Can manage content (create, update, delete posts/comments)\n     - user: Can only read content and create their own posts\n   - Store roles in user accounts\n\n2. JWT with role information:\n   - Include role in JWT token payload\n   - Middleware should extract role from token\n   - Attach role to request object for authorization\n\n3. Authorization middleware:\n   - Create middleware to check user role\n   - Support role hierarchy (admin > moderator > user)\n   - Support multiple required roles\n   - Return 403 Forbidden if user lacks permission\n\n4. Protected routes with authorization:\n   - GET /api/posts - All authenticated users can read\n   - POST /api/posts - admin and moderator can create\n   - PUT /api/posts/:id - Admin and moderator can update any, user can update own\n   - DELETE /api/posts/:id - Admin and moderator can delete\n   - DELETE /api/users/:id - Only admin can delete users\n   - GET /api/users - Only admin can list all users\n\n5. Permission checking:\n   - For user-specific operations (update own post), check both role and ownership\n   - Return 403 Forbidden if permission denied\n   - Return 401 Unauthorized if not authenticated\n\n6. Role management (optional but recommended):\n   - Admin can change user roles\n   - PUT /api/users/:id/role - Update user role (admin only)\n\nUse Express.js, jsonwebtoken, and bcryptjs. Do not use external authorization libraries.",
+  "instructions": "Submit exactly one .js file containing the complete RBAC implementation. Include role definitions, JWT with role payload, authorization middleware, protected routes, and role management. Separate each component using clear comments. Include a brief explanation of the RBAC system. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Role and permission definition",
+      "marks": 25,
+      "full": "Defines at least 3 roles with clear permissions, implements role hierarchy, and stores roles in user accounts.",
+      "partial": "Defines roles but has unclear permissions, missing hierarchy, or role storage issues.",
+      "zero": "Roles are not defined or permissions are unclear."
+    },
+    {
+      "criterion": "JWT with role information",
+      "marks": 25,
+      "full": "Includes role in JWT token payload, middleware extracts role correctly, and attaches role to request object.",
+      "partial": "JWT includes role but extraction is incorrect or role is not attached to request.",
+      "zero": "JWT does not include role or role extraction is missing."
+    },
+    {
+      "criterion": "Authorization middleware implementation",
+      "marks": 25,
+      "full": "Implements authorization middleware that checks roles, supports role hierarchy, supports multiple required roles, and returns appropriate status codes.",
+      "partial": "Authorization middleware exists but has issues with role checking, hierarchy, or incorrect status codes.",
+      "zero": "Authorization middleware is not implemented or is incorrect."
+    },
+    {
+      "criterion": "Protected routes and permission checking",
+      "marks": 25,
+      "full": "Implements protected routes with proper authorization, checks ownership for user-specific operations, and handles permission denial correctly.",
+      "partial": "Protected routes exist but authorization is incomplete, ownership checking is missing, or error handling is incorrect.",
+      "zero": "Protected routes are not implemented or authorization is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different role names or add more roles if desired.",
+    "Use different permission models (bitmask, hierarchical, etc.).",
+    "Add additional permission checks or routes if desired.",
+    "Use external authorization library if preferred (not recommended for learning)."
+  ],
+  "mistakes_to_check": [
+    "Not defining clear permissions for each role (Permission definition).",
+    "Not including role in JWT payload (JWT payload).",
+    "Not implementing role hierarchy (Hierarchy support).",
+    "Not checking ownership for user-specific operations (Ownership checking).",
+    "Returning wrong status codes (401 vs 403) (Status codes).",
+    "Not applying authorization middleware to protected routes (Middleware application)."
+  ],
   "solution_file": "solution.js"
 }

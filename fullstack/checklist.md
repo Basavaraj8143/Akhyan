@@ -1,7 +1,7 @@
 # Full-Stack Development - Checklist
 
 **Total Learning Nodes:** 31  
-**Completed:** 8/31 (25.8%)
+**Completed:** 10/31 (32.3%)
 
 ---
 
@@ -15,16 +15,16 @@
 6. ✅ Build Tools
 7. ✅ Node.js & Express
 8. ✅ REST API Design
+9. ✅ Database Design
+10. ✅ Authentication
 
 ---
 
 ## Pending Nodes ⏳
 
-9. ⏳ HTML
-10. ⏳ CSS
-11. ⏳ JavaScript Basics
-12. ⏳ Database Design
-13. ⏳ Authentication
+11. ⏳ HTML
+12. ⏳ CSS
+13. ⏳ JavaScript Basics
 14. ⏳ SSR / SSG / SPA
 15. ⏳ Web Security
 16. ⏳ SQL Databases
@@ -46,4 +46,4 @@
 
 ---
 
-**Last Updated:** 2026-11-04 (REST API Design completed)
+**Last Updated:** 2026-11-05 (Authentication completed)

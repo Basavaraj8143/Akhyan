@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "authentication-accessible-jwt-auth",
+  "title": "JWT Auth: Add JWT-Based Login to an API",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Implement JWT (JSON Web Token) based authentication for an Express API. The API should allow users to register, login, and access protected routes using JWT tokens.\n\nRequirements:\n\n1. User registration:\n   - POST /api/auth/register - Create a new user account\n   - Required fields: username, email, password\n   - Password should be hashed before storing (use bcrypt)\n   - Return success message with user info (excluding password)\n\n2. User login:\n   - POST /api/auth/login - Authenticate user and return JWT token\n   - Required fields: email, password\n   - Verify password hash against stored hash\n   - Generate JWT token with user_id and username\n   - Return token along with user info\n\n3. Protected routes:\n   - Create middleware to verify JWT token\n   - Token should be in Authorization header (Bearer token)\n   - Extract user info from token and attach to request object\n   - Return 401 Unauthorized if token is invalid or missing\n   - Apply middleware to protected routes\n\n4. JWT implementation:\n   - Usejsonwebtoken library for token generation\n   - Use jsonwebtoken library for token verification\n   - Token should include: user_id, username, iat (issued at), exp (expiration)\n   - Set expiration time (e.g., 1 hour)\n   - Use a secret key for signing\n\n5. Protected routes to implement:\n   - GET /api/users/profile - Get current user's profile (requires auth)\n   - PUT /api/users/profile - Update current user's profile (requires auth)\n\nUse Express.js, jsonwebtoken, and bcryptjs. Do not use session-based authentication.",
+  "instructions": "Submit exactly one .js file containing the complete JWT authentication implementation. Include user registration, login, JWT middleware, and protected routes. Separate each component using clear comments. Include a brief explanation of how JWT works. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "User registration and password hashing",
+      "marks": 25,
+      "full": "Implements user registration with proper password hashing using bcrypt, stores user securely, and returns appropriate response.",
+      "partial": "Implements registration but has missing password hashing, incorrect hashing, or storage issues.",
+      "zero": "Registration is not implemented or password is stored in plain text."
+    },
+    {
+      "criterion": "JWT login implementation",
+      "marks": 30,
+      "full": "Implements login with password verification, JWT token generation with correct payload (user_id, username, iat, exp), and returns token successfully.",
+      "partial": "Implements login but has incorrect password verification, missing token fields, or incorrect JWT generation.",
+      "zero": "Login is not implemented or JWT generation is incorrect."
+    },
+    {
+      "criterion": "JWT middleware and token verification",
+      "marks": 25,
+      "full": "Implements JWT middleware that extracts token from Authorization header, verifies token correctly, attaches user info to request, and returns 401 for invalid tokens.",
+      "partial": "Implements middleware but has incorrect token extraction, verification issues, or doesn't attach user info.",
+      "zero": "Middleware is not implemented or token verification is incorrect."
+    },
+    {
+      "criterion": "Protected routes and error handling",
+      "marks": 20,
+      "full": "Implements protected routes with middleware applied, handles authentication errors correctly, and routes function as expected.",
+      "partial": "Protected routes exist but middleware is not applied or error handling is incomplete.",
+      "zero": "Protected routes are not implemented or middleware is not used."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different expiration times as long as they are reasonable.",
+    "Include additional fields in JWT payload if needed.",
+    "Use different hashing library if bcryptjs is not available.",
+    "Add additional protected routes if desired."
+  ],
+  "mistakes_to_check": [
+    "Not hashing passwords before storing (Security violation).",
+    "Not verifying password during login (Authentication logic).",
+    "Not including required fields in JWT payload (user_id, username, iat, exp) (JWT structure).",
+    "Not extracting token from Authorization header correctly (Token extraction).",
+    "Not verifying JWT signature or not checking expiration (Token verification).",
+    "Not applying middleware to protected routes (Middleware application)."
+  ],
   "solution_file": "solution.js"
 }
