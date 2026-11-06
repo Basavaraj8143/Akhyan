@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nosql-databases-core-aggregations",
+  "title": "Aggregations: Use MongoDB Aggregations for Analytics",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Write MongoDB aggregation pipeline queries to perform analytics on a blog database. The queries should answer business questions about users, posts, and comments.\n\nRequirements:\n\n1. Basic aggregations:\n   - Write $match to filter documents\n   - Write $group to group by field\n   - Write $project to reshape documents\n   - Write $sort to sort results\n\n2. Count and sum aggregations:\n   - Write aggregation to count posts per user\n   - Write aggregation to sum comment counts per post\n   - Write aggregation to count total users\n\n3. Average and extreme values:\n   - Write aggregation to calculate average post length\n   - Write aggregation to find most commented posts\n   - Write aggregation to find most active users\n\n4. Array operations:\n   - Write $unwind to flatten arrays\n   - Write $lookup to join collections\n   - Write $push to create arrays\n   - Write $addToSet to create unique arrays\n\n5. Complex pipelines:\n   - Write pipeline to get posts with comment counts\n   - Write pipeline to get users with post and comment counts\n   - Write pipeline to get monthly post statistics\n\n6. Advanced aggregations:\n   - Write $facet to run multiple aggregations in parallel\n   - Write $bucket to categorize data\n   - Write $redact to filter based on document structure",
+  "instructions": "Submit exactly one .js file containing all the MongoDB aggregation queries. Use the MongoDB Node.js driver syntax. Organize queries by type (basic, count/sum, average, array, complex, advanced). Use comments to label each query and explain the business question. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Basic aggregations",
+      "marks": 25,
+      "full": "Writes correct aggregation pipelines with $match, $group, $project, and $sort stages.",
+      "partial": "Writes some basic aggregations but missing stages or incorrect syntax.",
+      "zero": "Basic aggregations are missing or incorrect."
+    },
+    {
+      "criterion": "Count and sum aggregations",
+      "marks": 25,
+      "full": "Writes correct aggregations to count posts per user, sum comment counts, and count total users.",
+      "partial": "Writes some count/sum aggregations but missing operations or incorrect grouping.",
+      "zero": "Count and sum aggregations are missing or incorrect."
+    },
+    {
+      "criterion": "Array operations and complex pipelines",
+      "marks": 25,
+      "full": "Writes correct aggregations with $unwind, $lookup, $push, $addToSet, and complex pipelines for business analytics.",
+      "partial": "Writes some array operations but missing stages or incorrect joins.",
+      "zero": "Array operations or complex pipelines are missing."
+    },
+    {
+      "criterion": "Advanced aggregations",
+      "marks": 25,
+      "full": "Writes correct aggregations with $facet, $bucket, and $redact for advanced analytics.",
+      "partial": "Some advanced aggregations are missing or incorrect.",
+      "zero": "Advanced aggregations are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use MongoDB shell syntax or Node.js driver syntax (both are acceptable).",
+    "Add additional analytics queries if desired.",
+    "Use different business questions if schema is adapted.",
+    "Skip advanced aggregations if MongoDB version doesn't support them."
+  ],
+  "mistakes_to_check": [
+    "Not using correct aggregation stages (Stages).",
+    "Not using $group with _id (Grouping).",
+    "Not using $lookup correctly (Joins).",
+    "Not using $unwind before array operations (Array flattening).",
+    "Not explaining business questions (Documentation).",
+    "Not sorting results (Sorting)."
+  ],
   "solution_file": "solution.js"
 }

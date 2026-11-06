@@ -1,0 +1,89 @@
+# CI/CD & Deployment Reference Solution: Auto-Deploy
+# Pipeline that deploys on push
+
+# === FILE: .github/workflows/deploy.yml ===
+name: Auto-Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.ORG_ID }}
+          vercel-project-id: ${{ secrets.PROJECT_ID }}
+          vercel-args: '--prod'
+
+# === FILE: package.json ===
+{
+  "name": "auto-deploy-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Tests passed\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+
+# === FILE: server.js ===
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Auto-deployed app!', version: '1.0.0' });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'healthy' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+# === SETUP INSTRUCTIONS ===
+
+# 1. Create GitHub secrets:
+#    - Go to repository Settings > Secrets and variables > Actions
+#    - Add VERCEL_TOKEN (from Vercel account settings)
+#    - Add ORG_ID (from Vercel project)
+#    - Add PROJECT_ID (from Vercel project)
+
+# 2. Push to main branch:
+#    git add .
+#    git commit -m "Deploy to production"
+#    git push origin main
+
+# 3. Pipeline will automatically:
+#    - Checkout code
+#    - Setup Node.js
+#    - Install dependencies
+#    - Run tests
+#    - Deploy to Vercel
+
+# 4. Monitor deployment in GitHub Actions tab

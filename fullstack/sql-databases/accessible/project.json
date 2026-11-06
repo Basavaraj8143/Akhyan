@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "sql-databases-accessible-write-queries",
+  "title": "Write SQL Queries: Practice Basic CRUD Queries",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Write SQL queries to perform basic CRUD (Create, Read, Update, Delete) operations on a database schema. The schema represents a simple e-commerce system with products, customers, and orders.\n\nRequirements:\n\n1. Schema (provided):\n   - Products table: product_id (PK), name, price, stock_quantity, category\n   - Customers table: customer_id (PK), name, email, address\n   - Orders table: order_id (PK), customer_id (FK), order_date, total_amount\n   - Order_Items table: order_item_id (PK), order_id (FK), product_id (FK), quantity\n\n2. CREATE queries:\n   - Write INSERT statements to add a new product\n   - Write INSERT statements to add a new customer\n   - Write INSERT statements to add a new order with order items\n\n3. READ queries:\n   - Write SELECT to get all products\n   - Write SELECT to get products by category\n   - Write SELECT to get orders for a specific customer\n   - Write SELECT to get order details with product information\n\n4. UPDATE queries:\n   - Write UPDATE to change product price\n   - Write UPDATE to update stock quantity\n   - Write UPDATE to change customer address\n\n5. DELETE queries:\n   - Write DELETE to remove a product\n   - Write DELETE to remove a customer (and their orders)\n   - Write DELETE to remove an order\n\n6. Advanced SELECT queries:\n   - Write SELECT with WHERE clause (filtering)\n   - Write SELECT with ORDER BY (sorting)\n   - Write SELECT with LIMIT (pagination)\n   - Write SELECT with LIKE (pattern matching)",
+  "instructions": "Submit exactly one .sql file containing all the SQL queries. Organize queries by operation type (CREATE, READ, UPDATE, DELETE, Advanced). Use comments to label each query. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".sql"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "CREATE queries",
+      "marks": 25,
+      "full": "Writes correct INSERT statements for products, customers, and orders with order items, respecting foreign key relationships.",
+      "partial": "Writes INSERT statements but missing some tables or foreign key relationships.",
+      "zero": "CREATE queries are missing or incorrect."
+    },
+    {
+      "criterion": "READ queries",
+      "marks": 25,
+      "full": "Writes correct SELECT statements for all products, products by category, customer orders, and order details with product information.",
+      "partial": "Writes SELECT statements but missing some queries or incorrect joins.",
+      "zero": "READ queries are missing or incorrect."
+    },
+    {
+      "criterion": "UPDATE and DELETE queries",
+      "marks": 25,
+      "full": "Writes correct UPDATE statements for products and customers, and correct DELETE statements for products, customers, and orders.",
+      "partial": "Writes UPDATE or DELETE statements but missing some operations or incorrect syntax.",
+      "zero": "UPDATE or DELETE queries are missing or incorrect."
+    },
+    {
+      "criterion": "Advanced SELECT queries",
+      "marks": 25,
+      "full": "Writes correct SELECT statements with WHERE, ORDER BY, LIMIT, and LIKE clauses.",
+      "partial": "Writes some advanced SELECT queries but missing clauses or incorrect syntax.",
+      "zero": "Advanced SELECT queries are missing or incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use any SQL dialect (MySQL, PostgreSQL, SQLite) as long as syntax is correct.",
+    "Add additional queries if desired.",
+    "Use different column names if the schema is adapted.",
+    "Add comments explaining queries if desired."
+  ],
+  "mistakes_to_check": [
+    "Not respecting foreign key relationships (Foreign keys).",
+    "Not including all required columns in INSERT (Insert syntax).",
+    "Not using WHERE clause in UPDATE/DELETE (Data safety).",
+    "Not joining tables correctly for order details (Joins).",
+    "Not using correct syntax for LIKE (Pattern matching).",
+    "Not organizing queries by operation type (Organization)."
+  ],
+  "solution_file": "solution.sql"
 }

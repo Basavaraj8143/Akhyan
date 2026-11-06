@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "ssr-ssg-spa-accessible-understand",
+  "title": "Understand SSR vs SSG vs SPA: Explain the Differences and When to Use Each",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Write a comprehensive explanation of Server-Side Rendering (SSR), Static Site Generation (SSG), and Single-Page Applications (SPA). Compare their characteristics, use cases, advantages, and disadvantages.\n\nRequirements:\n\n1. Definitions:\n   - Define SSR (Server-Side Rendering)\n   - Define SSG (Static Site Generation)\n   - Define SPA (Single-Page Application)\n   - Explain how each approach renders content\n\n2. Rendering process:\n   - Explain how SSR renders on the server\n   - Explain how SSG pre-renders at build time\n   - Explain how SPA renders on the client with JavaScript\n   - Compare when rendering happens for each approach\n\n3. Advantages and disadvantages:\n   - List advantages of SSR (SEO, initial load speed, etc.)\n   - List disadvantages of SSR (server load, complexity, etc.)\n   - List advantages of SSG (performance, security, etc.)\n   - List disadvantages of SSG (build time, dynamic content limits, etc.)\n   - List advantages of SPA (interactivity, UX, etc.)\n   - List disadvantages of SPA (SEO, initial load, etc.)\n\n4. Use cases:\n   - Provide 3 examples where SSR is the best choice\n   - Provide 3 examples where SSG is the best choice\n   - Provide 3 examples where SPA is the best choice\n   - Explain why each approach fits those use cases\n\n5. Technology examples:\n   - List 2-3 technologies/frameworks for SSR (e.g., Next.js SSR, Rails)\n   - List 2-3 technologies/frameworks for SSG (e.g., Next.js SSG, Gatsby, Hugo)\n   - List 2-3 technologies/frameworks for SPA (e.g., React, Vue, Angular)\n\n6. Comparison table:\n   - Create a comparison table with rows for: Rendering location, Initial load time, SEO, Caching, Server load, Interactivity, Deployment complexity, Use cases",
+  "instructions": "Submit exactly one .md file containing the complete explanation. Include definitions, rendering processes, advantages/disadvantages, use cases, technology examples, and a comparison table. Use clear headings and formatting. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Definitions and rendering process",
+      "marks": 25,
+      "full": "Accurately defines SSR, SSG, and SPA, and clearly explains how each approach renders content and when rendering happens.",
+      "partial": "Defines the approaches but rendering process explanation is incomplete or unclear.",
+      "zero": "Definitions are missing or incorrect."
+    },
+    {
+      "criterion": "Advantages and disadvantages",
+      "marks": 25,
+      "full": "Lists at least 3 advantages and 3 disadvantages for each approach (SSR, SSG, SPA) with accurate and relevant points.",
+      "partial": "Lists advantages/disadvantages but has fewer than 3 per approach or points are inaccurate.",
+      "zero": "Advantages/disadvantages are missing or severely incomplete."
+    },
+    {
+      "criterion": "Use cases and technology examples",
+      "marks": 25,
+      "full": "Provides 3 valid use cases for each approach with clear explanations, and lists 2-3 technologies for each approach.",
+      "partial": "Provides use cases and technologies but has fewer than 3 per approach or explanations are weak.",
+      "zero": "Use cases or technology examples are missing."
+    },
+    {
+      "criterion": "Comparison table",
+      "marks": 25,
+      "full": "Creates a comprehensive comparison table with all required rows and accurate information for SSR, SSG, and SPA.",
+      "partial": "Comparison table exists but has missing rows or inaccurate information.",
+      "zero": "Comparison table is missing or incomplete."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different technology examples as long as they are accurate.",
+    "Add more advantages/disadvantages if desired.",
+    "Add more use cases if desired.",
+    "Include diagrams or visual representations if helpful."
+  ],
+  "mistakes_to_check": [
+    "Not clearly defining each approach (Definitions).",
+    "Not explaining when rendering happens (Rendering process).",
+    "Providing fewer than 3 advantages/disadvantages per approach (Advantages/disadvantages).",
+    "Providing fewer than 3 use cases per approach (Use cases).",
+    "Not explaining why each approach fits the use case (Use case justification).",
+    "Missing rows in comparison table (Comparison table)."
+  ],
+  "solution_file": "solution.md"
 }

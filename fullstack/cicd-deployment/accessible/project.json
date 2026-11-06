@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "cicd-deployment-accessible-auto-deploy",
+  "title": "Auto-Deploy: Set Up a Pipeline that Deploys on Push",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Create a CI/CD pipeline that automatically deploys a simple application when code is pushed to the main branch. The pipeline should use GitHub Actions or a similar CI/CD platform.\n\nRequirements:\n\n1. Simple application:\n   - Create a simple Node.js Express application\n   - Application should have a single endpoint that returns a JSON response\n   - Include package.json with dependencies\n   - Include a simple test script\n\n2. CI/CD pipeline configuration:\n   - Create a GitHub Actions workflow file (.github/workflows/deploy.yml)\n   - Trigger on push to main branch\n   - Install dependencies\n   - Run tests\n   - Build the application\n   - Deploy to a platform (e.g., Vercel, Netlify, Heroku, or Docker registry)\n\n3. Deployment target:\n   - Choose a deployment platform (Vercel, Netlify, Heroku, or Docker registry)\n   - Configure deployment credentials as secrets\n   - Write deployment command or configuration\n   - Configure environment variables if needed\n\n4. Pipeline stages:\n   - Stage 1: Checkout code\n   - Stage 2: Setup Node.js\n   - Stage 3: Install dependencies\n   - Stage 4: Run tests\n   - Stage 5: Deploy\n\n5. Documentation:\n   - Document how to set up secrets in GitHub\n   - Document the deployment process\n   - Document how to trigger the pipeline",
+  "instructions": "Submit exactly one file containing the GitHub Actions workflow, application code, and documentation. Use === FILE: path === separators to separate files. Include setup instructions in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Application and package.json",
+      "marks": 25,
+      "full": "Creates simple Express app with package.json, dependencies, and test script.",
+      "partial": "Application exists but missing dependencies or test script.",
+      "zero": "Application is missing or incorrect."
+    },
+    {
+      "criterion": "CI/CD pipeline configuration",
+      "marks": 25,
+      "full": "Creates GitHub Actions workflow with correct trigger, stages (checkout, setup, install, test, deploy), and proper structure.",
+      "partial": "Workflow exists but missing stages or incorrect structure.",
+      "zero": "CI/CD pipeline is missing or incorrect."
+    },
+    {
+      "criterion": "Deployment configuration",
+      "marks": 25,
+      "full": "Configures deployment to a platform with secrets management and proper deployment command.",
+      "partial": "Deployment configured but missing secrets or incorrect command.",
+      "zero": "Deployment configuration is missing."
+    },
+    {
+      "criterion": "Documentation and setup",
+      "marks": 25,
+      "full": "Documents secret setup, deployment process, and pipeline trigger with clear instructions.",
+      "partial": "Documentation exists but missing setup instructions or unclear.",
+      "zero": "Documentation is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use GitHub Actions, GitLab CI, or CircleCI (all are acceptable).",
+    "Deploy to Vercel, Netlify, Heroku, or Docker registry (all are acceptable).",
+    "Add additional pipeline stages if desired.",
+    "Use different trigger conditions if justified."
+  ],
+  "mistakes_to_check": [
+    "Not triggering on push to main (Trigger).",
+    "Not running tests before deployment (Quality gate).",
+    "Not using secrets for credentials (Security).",
+    "Not documenting secret setup (Documentation).",
+    "Not configuring environment variables (Configuration).",
+    "Not having deployment stage (Deployment)."
+  ],
+  "solution_file": "solution.txt"
 }

@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nosql-databases-accessible-basic-crud",
+  "title": "Basic CRUD: Practice Basic CRUD with MongoDB",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Write MongoDB queries to perform basic CRUD (Create, Read, Update, Delete) operations on a blog database schema. The schema includes users, posts, and comments.\n\nRequirements:\n\n1. Schema (provided):\n   - Users collection: _id, username, email, password_hash, created_at\n   - Posts collection: _id, title, content, author_id, created_at, updated_at\n   - Comments collection: _id, post_id, user_id, content, created_at\n\n2. CREATE operations:\n   - Write insertOne to add a new user\n   - Write insertMany to add multiple posts\n   - Write insertOne to add a comment\n\n3. READ operations:\n   - Write find to get all users\n   - Write findOne to get a specific user by email\n   - Write find with query to get posts by author\n   - Write find with projection to get specific fields\n\n4. UPDATE operations:\n   - Write updateOne to change user email\n   - Write updateMany to update all posts by author\n   - Write updateOne with $inc to increment a counter\n   - Write updateOne with $push to add to an array\n\n5. DELETE operations:\n   - Write deleteOne to remove a user\n   - Write deleteMany to remove all posts by author\n   - Write deleteOne to remove a comment\n\n6. Advanced queries:\n   - Write find with comparison operators ($gt, $lt, $gte, $lte)\n   - Write find with logical operators ($and, $or, $not)\n   - Write find with $in and $nin operators\n   - Write find with sort, limit, and skip",
+  "instructions": "Submit exactly one .js file containing all the MongoDB queries. Use the MongoDB Node.js driver syntax. Organize queries by operation type (CREATE, READ, UPDATE, DELETE, Advanced). Use comments to label each query. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "CREATE operations",
+      "marks": 25,
+      "full": "Writes correct insertOne and insertMany queries for users, posts, and comments with proper document structure.",
+      "partial": "Writes some INSERT queries but missing operations or incorrect document structure.",
+      "zero": "CREATE operations are missing or incorrect."
+    },
+    {
+      "criterion": "READ operations",
+      "marks": 25,
+      "full": "Writes correct find and findOne queries with filters, projections, and relationships.",
+      "partial": "Writes some READ queries but missing find/findOne or incorrect filters.",
+      "zero": "READ operations are missing or incorrect."
+    },
+    {
+      "criterion": "UPDATE and DELETE operations",
+      "marks": 25,
+      "full": "Writes correct updateOne, updateMany, deleteOne, and deleteMany queries with proper operators.",
+      "partial": "Writes some UPDATE/DELETE queries but missing operations or incorrect operators.",
+      "zero": "UPDATE or DELETE operations are missing or incorrect."
+    },
+    {
+      "criterion": "Advanced queries",
+      "marks": 25,
+      "full": "Writes correct queries with comparison operators, logical operators, $in/$nin, and sort/limit/skip.",
+      "partial": "Writes some advanced queries but missing operators or incorrect syntax.",
+      "zero": "Advanced queries are missing or incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use MongoDB shell syntax or Node.js driver syntax (both are acceptable).",
+    "Add additional queries if desired.",
+    "Use different field names if schema is adapted.",
+    "Add comments explaining queries if desired."
+  ],
+  "mistakes_to_check": [
+    "Not using correct MongoDB operators (Operators).",
+    "Not using update operators ($set, $inc, $push) (Update syntax).",
+    "Not using projection in find (Projection).",
+    "Not using comparison operators correctly (Comparison).",
+    "Not organizing queries by operation type (Organization).",
+    "Not including _id in document structure (Document structure)."
+  ],
   "solution_file": "solution.js"
 }

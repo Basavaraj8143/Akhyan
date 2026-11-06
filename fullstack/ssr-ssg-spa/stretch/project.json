@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "ssr-ssg-spa-stretch-implement-ssg",
+  "title": "Implement a Simple SSG App: Build a Static Site Generator",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Build a simple static site generator using Node.js. The generator should read content files (markdown or JSON), process them, and generate static HTML files.\n\nRequirements:\n\n1. Content structure:\n   - Create a content directory with markdown or JSON files\n   - Each file represents a page (e.g., home.md, about.md, posts/post1.md)\n   - Files should include: title, content, date, author (frontmatter or JSON structure)\n   - Include at least 3 content files\n\n2. Generator implementation:\n   - Create a build script that reads content files\n   - Parse content (markdown frontmatter or JSON)\n   - Extract metadata (title, date, author)\n   - Convert markdown to HTML if using markdown\n\n3. Template system:\n   - Create an HTML template with placeholders for dynamic content\n   - Template should include: header, navigation, footer, content area\n   - Use simple placeholder syntax (e.g., {{title}}, {{content}})\n   - Include CSS styling\n\n4. Page generation:\n   - For each content file, generate an HTML file\n   - Replace template placeholders with content data\n   - Generate navigation links automatically based on content files\n   - Output files to a dist or public directory\n\n5. Build process:\n   - Script should be runnable with npm run build or node build.js\n   - Clear dist directory before building\n   - Log progress as files are generated\n   - Report total files generated\n\n6. Directory structure:\n   - /content - Source content files\n   - /templates - HTML template\n   - /dist - Generated static HTML files\n   - build.js - Build script\n\nUse Node.js. For markdown parsing, use a library like marked or simple custom parser. Do not use existing static site generators (Gatsby, Hugo, etc.).",
+  "instructions": "Submit exactly one .js file containing the complete static site generator. Include build script, template code in comments, and content files in comments. Separate files using === FILE: path ===. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Content structure and parsing",
+      "marks": 25,
+      "full": "Creates content directory with at least 3 files, parses content correctly (markdown frontmatter or JSON), and extracts metadata.",
+      "partial": "Content files exist but parsing is incomplete or metadata extraction is missing.",
+      "zero": "Content structure is missing or parsing is incorrect."
+    },
+    {
+      "criterion": "Template system",
+      "marks": 25,
+      "full": "Creates HTML template with placeholders for dynamic content, includes header/navigation/footer, and includes CSS styling.",
+      "partial": "Template exists but placeholders are missing or layout is incomplete.",
+      "zero": "Template system is missing."
+    },
+    {
+      "criterion": "Page generation",
+      "marks": 25,
+      "full": "Generates HTML files for each content file, replaces placeholders correctly, generates navigation automatically, and outputs to dist directory.",
+      "partial": "Page generation exists but placeholder replacement is incomplete or navigation is not generated.",
+      "zero": "Page generation is not implemented."
+    },
+    {
+      "criterion": "Build process and directory structure",
+      "marks": 25,
+      "full": "Build script is runnable, clears dist directory before building, logs progress, reports total files generated, and follows correct directory structure.",
+      "partial": "Build script exists but directory structure is incorrect or logging is missing.",
+      "zero": "Build process is not implemented."
+    }
+  ],
+  "valid_alternatives": [
+    "Use markdown or JSON for content (both are acceptable).",
+    "Use different placeholder syntax as long as it's consistent.",
+    "Add additional features (sitemap generation, RSS feed) if desired.",
+    "Use marked library or custom markdown parser."
+  ],
+  "mistakes_to_check": [
+    "Not parsing content correctly (Content parsing).",
+    "Not extracting metadata (Metadata extraction).",
+    "Not replacing template placeholders (Placeholder replacement).",
+    "Not generating navigation automatically (Navigation generation).",
+    "Not clearing dist directory before building (Build process).",
+    "Not logging build progress (Logging)."
+  ],
   "solution_file": "solution.js"
 }

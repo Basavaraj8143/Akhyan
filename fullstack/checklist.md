@@ -1,7 +1,7 @@
 # Full-Stack Development - Checklist
 
 **Total Learning Nodes:** 31  
-**Completed:** 10/31 (32.3%)
+**Completed:** 16/31 (51.6%)
 
 ---
 
@@ -17,20 +17,20 @@
 8. ✅ REST API Design
 9. ✅ Database Design
 10. ✅ Authentication
+11. ✅ SSR / SSG / SPA
+12. ✅ Web Security
+13. ✅ SQL Databases
+14. ✅ NoSQL Databases
+15. ✅ Docker & Containers
+16. ✅ CI/CD & Deployment
 
 ---
 
 ## Pending Nodes ⏳
 
-11. ⏳ HTML
-12. ⏳ CSS
-13. ⏳ JavaScript Basics
-14. ⏳ SSR / SSG / SPA
-15. ⏳ Web Security
-16. ⏳ SQL Databases
-17. ⏳ NoSQL Databases
-18. ⏳ Docker & Containers
-19. ⏳ CI/CD & Deployment
+17. ⏳ HTML
+18. ⏳ CSS
+19. ⏳ JavaScript Basics
 20. ⏳ Observability
 21. ⏳ Performance
 22. ⏳ Accessibility
@@ -46,4 +46,4 @@
 
 ---
 
-**Last Updated:** 2026-11-05 (Authentication completed)
+**Last Updated:** 2026-11-06 (CI/CD & Deployment completed)

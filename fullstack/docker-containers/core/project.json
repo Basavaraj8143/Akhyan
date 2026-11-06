@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "docker-containers-core-multi-container",
+  "title": "Multi-Container App: Use Docker Compose for a Multi-Service App",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Create a docker-compose.yml file to orchestrate a multi-container application with a web service, database, and cache. The application should demonstrate service communication and networking.\n\nRequirements:\n\n1. Services:\n   - Web service: Node.js Express application\n   - Database service: PostgreSQL or MySQL\n   - Cache service: Redis\n\n2. Docker Compose configuration:\n   - Define version (3.8 or higher)\n   - Define services with appropriate images\n   - Configure service dependencies (depends_on)\n   - Configure environment variables\n   - Configure volume mounts\n   - Configure port mappings\n   - Configure networks\n\n3. Web service configuration:\n   - Build from Dockerfile or use image\n   - Expose port 3000\n   - Set environment variables for database and cache connection\n   - Depends on database and cache services\n   - Restart policy (unless-stopped)\n\n4. Database service configuration:\n   - Use official database image (postgres or mysql)\n   - Set environment variables for credentials\n   - Mount volume for data persistence\n   - Expose port (optional, for debugging)\n   - Restart policy (unless-stopped)\n\n5. Cache service configuration:\n   - Use official Redis image\n   - Mount volume for data persistence\n   - Expose port (optional, for debugging)\n   - Restart policy (unless-stopped)\n\n6. Networks and volumes:\n   - Define custom network for service communication\n   - Define named volumes for data persistence\n   - Configure volume mounts for database and cache",
+  "instructions": "Submit exactly one file containing the docker-compose.yml, Dockerfile for web service, and a simple Express app. Use === FILE: path === separators to separate files. Include build and run commands in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Docker Compose structure and services",
+      "marks": 25,
+      "full": "Defines correct docker-compose.yml version, web/database/cache services with appropriate images, and proper structure.",
+      "partial": "Docker Compose exists but missing services or incorrect structure.",
+      "zero": "Docker Compose is missing or incorrect."
+    },
+    {
+      "criterion": "Service configuration",
+      "marks": 25,
+      "full": "Configures dependencies (depends_on), environment variables, port mappings, and restart policies correctly for all services.",
+      "partial": "Service configuration exists but missing dependencies or environment variables.",
+      "zero": "Service configuration is missing or incorrect."
+    },
+    {
+      "criterion": "Volumes and networks",
+      "marks": 25,
+      "full": "Defines custom network for service communication, named volumes for persistence, and configures volume mounts correctly.",
+      "partial": "Volumes or networks exist but missing configuration or incorrect mounts.",
+      "zero": "Volumes and networks are missing or incorrect."
+    },
+    {
+      "criterion": "Dockerfile and application",
+      "marks": 25,
+      "full": "Creates Dockerfile for web service and simple Express app that connects to database and cache.",
+      "partial": "Dockerfile or app exists but missing database/cache connection.",
+      "zero": "Dockerfile or app is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use PostgreSQL or MySQL (both are acceptable).",
+    "Use different port mappings as long as documented.",
+    "Add additional services if desired.",
+    "Use different volume strategy if justified."
+  ],
+  "mistakes_to_check": [
+    "Not using depends_on for service startup order (Dependencies).",
+    "Not setting environment variables (Configuration).",
+    "Not mounting volumes for persistence (Data persistence).",
+    "Not using custom network (Networking).",
+    "Not configuring restart policy (Reliability).",
+    "Not connecting app to database/cache (Service communication)."
+  ],
+  "solution_file": "solution.txt"
 }

@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "cicd-deployment-stretch-blue-green-deploy",
+  "title": "Blue-Green Deploy: Implement Blue-Green Deployment Strategy",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Implement a blue-green deployment strategy for an application. The deployment should allow zero-downtime deployments with instant rollback capability.\n\nRequirements:\n\n1. Blue-green architecture:\n   - Design two identical production environments (blue and green)\n   - Blue environment: Currently serving live traffic\n   - Green environment: New version for deployment\n   - Load balancer or router to switch traffic between environments\n\n2. Deployment pipeline:\n   - Create CI/CD pipeline with blue-green deployment stages\n   - Stage 1: Deploy to green environment\n   - Stage 2: Run smoke tests on green environment\n   - Stage 3: Switch traffic from blue to green\n   - Stage 4: Keep blue environment for rollback\n   - Stage 5: Deprovision old blue environment (after verification)\n\n3. Traffic switching:\n   - Configure load balancer or service mesh for traffic switching\n   - Implement health checks for both environments\n   - Switch traffic only when green is healthy\n   - Support instant rollback (switch back to blue)\n\n4. Rollback strategy:\n   - Document rollback procedure\n   - Automate rollback if health checks fail\n   - Keep previous version available in blue environment\n   - Test rollback process\n\n5. Database migrations:\n   - Handle database migrations in blue-green deployment\n   - Ensure migrations are backward compatible\n   - Run migrations before traffic switch\n   - Support rollback of migrations if needed\n\n6. Monitoring and validation:\n   - Add monitoring for both environments\n   - Add smoke tests to validate green environment\n   - Add metrics collection during deployment\n   - Configure alerts for deployment failures",
+  "instructions": "Submit exactly one file containing the CI/CD pipeline, deployment scripts, load balancer configuration, and documentation. Use === FILE: path === separators to separate files. Include deployment and rollback commands in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Blue-green architecture design",
+      "marks": 25,
+      "full": "Designs two identical environments with load balancer, documents traffic switching, and supports instant rollback.",
+      "partial": "Architecture exists but missing load balancer or rollback support.",
+      "zero": "Blue-green architecture is missing."
+    },
+    {
+      "criterion": "Deployment pipeline",
+      "marks": 25,
+      "full": "Implements pipeline with deploy to green, smoke tests, traffic switch, blue deprovision, and proper stages.",
+      "partial": "Pipeline exists but missing smoke tests or traffic switching stage.",
+      "zero": "Deployment pipeline is missing."
+    },
+    {
+      "criterion": "Traffic switching and rollback",
+      "marks": 25,
+      "full": "Configures load balancer for traffic switching, implements health checks, and documents rollback procedure.",
+      "partial": "Traffic switching exists but missing health checks or rollback documentation.",
+      "zero": "Traffic switching and rollback are missing."
+    },
+    {
+      "criterion": "Database migrations and monitoring",
+      "marks": 25,
+      "full": "Handles database migrations with backward compatibility, adds monitoring and smoke tests for validation.",
+      "partial": "Migrations or monitoring exist but incomplete or missing validation.",
+      "zero": "Database migrations and monitoring are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Kubernetes, AWS ECS, or manual deployment (all are acceptable).",
+    "Use NGINX, HAProxy, or cloud load balancer (all are acceptable).",
+    "Add additional validation steps if desired.",
+    "Use different migration strategy if justified."
+  ],
+  "mistakes_to_check": [
+    "Not having two identical environments (Architecture).",
+    "Not running smoke tests before traffic switch (Validation).",
+    "Not implementing health checks (Health monitoring).",
+    "Not documenting rollback procedure (Rollback).",
+    "Not handling database migrations (Migrations).",
+    "Not supporting instant rollback (Rollback capability)."
+  ],
+  "solution_file": "solution.txt"
 }

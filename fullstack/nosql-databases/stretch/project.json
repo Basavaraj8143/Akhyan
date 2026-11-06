@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "nosql-databases-stretch-sharding-replication",
+  "title": "Sharding and Replication: Design a Sharded and Replicated MongoDB Cluster",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Design a MongoDB cluster architecture with sharding and replication for a high-traffic blog application. Write the configuration and commands to set up the cluster.\n\nRequirements:\n\n1. Replica set configuration:\n   - Design a replica set with 3 nodes (1 primary, 2 secondaries)\n   - Write the replica set configuration file\n   - Include settings for members, priority, votes\n   - Configure write concern and read concern\n   - Configure automatic failover\n\n2. Sharding configuration:\n   - Design a sharded cluster with 3 shards\n   - Choose shard key for the posts collection\n   - Configure config servers (3-member replica set)\n   - Configure query routers (mongos instances)\n   - Write the sharding configuration commands\n\n3. Index optimization:\n   - Create indexes for shard key\n   - Create compound indexes for common queries\n   - Create text indexes for search\n   - Create geospatial indexes if applicable\n   - Explain index strategy for sharded collections\n\n4. Backup and recovery:\n   - Configure automated backups\n   - Write backup command using mongodump\n   - Write restore command using mongorestore\n   - Configure point-in-time recovery\n   - Explain backup strategy for sharded cluster\n\n5. Monitoring and maintenance:\n   - Configure monitoring for replica set health\n   - Configure monitoring for sharding status\n   - Write commands to check cluster status\n   - Explain maintenance procedures (balancing, chunk migration)\n\n6. Security configuration:\n   - Enable authentication\n   - Configure role-based access control\n   - Enable encryption at rest\n   - Enable TLS/SSL for connections\n   - Configure IP whitelisting",
+  "instructions": "Submit exactly one .js file containing the cluster configuration, setup commands, and documentation. Include replica set config, sharding config, index creation, backup commands, monitoring commands, and security config. Use clear comments to label each section. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Replica set configuration",
+      "marks": 25,
+      "full": "Designs correct replica set with 3 nodes, proper configuration file, write/read concern, and failover settings.",
+      "partial": "Replica set design exists but missing nodes, configuration, or failover settings.",
+      "zero": "Replica set configuration is missing or incorrect."
+    },
+    {
+      "criterion": "Sharding configuration",
+      "marks": 25,
+      "full": "Designs correct sharded cluster with 3 shards, appropriate shard key, config servers, and mongos instances.",
+      "partial": "Sharding design exists but missing components or incorrect shard key.",
+      "zero": "Sharding configuration is missing or incorrect."
+    },
+    {
+      "criterion": "Index optimization and backup",
+      "marks": 25,
+      "full": "Creates appropriate indexes (shard key, compound, text), explains index strategy, and configures backup/recovery commands.",
+      "partial": "Indexes or backup commands exist but missing types or incomplete strategy.",
+      "zero": "Index optimization or backup configuration is missing."
+    },
+    {
+      "criterion": "Monitoring and security",
+      "marks": 25,
+      "full": "Configures monitoring for replica set and sharding, includes status check commands, and configures security (auth, RBAC, encryption, TLS).",
+      "partial": "Monitoring or security configuration exists but missing components.",
+      "zero": "Monitoring and security configuration is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different number of nodes/shards as long as it's reasonable.",
+    "Choose different shard key if justified.",
+    "Add additional monitoring if desired.",
+    "Use different backup strategy if explained."
+  ],
+  "mistakes_to_check": [
+    "Not configuring replica set with 3 nodes (Replica set).",
+    "Not choosing appropriate shard key (Shard key).",
+    "Not configuring config servers (Config servers).",
+    "Not creating indexes for shard key (Indexing).",
+    "Not enabling authentication (Security).",
+    "Not configuring backup (Backup)."
+  ],
   "solution_file": "solution.js"
 }

@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "sql-databases-stretch-transactions-constraints",
+  "title": "Transactions and Constraints: Implement Transactions and Constraints",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Implement database transactions and constraints to ensure data integrity in an e-commerce system. Write SQL code to create tables with constraints and implement transactional operations.\n\nRequirements:\n\n1. Table creation with constraints:\n   - Create Products table with: PRIMARY KEY, NOT NULL, CHECK (price > 0, stock >= 0), UNIQUE (product name)\n   - Create Customers table with: PRIMARY KEY, NOT NULL, UNIQUE (email), CHECK (email format)\n   - Create Orders table with: PRIMARY KEY, NOT NULL, FOREIGN KEY (customer_id), CHECK (total_amount >= 0)\n   - Create Order_Items table with: PRIMARY KEY, NOT NULL, FOREIGN KEY (order_id, product_id), CHECK (quantity > 0)\n\n2. Foreign key constraints:\n   - Define foreign keys with ON DELETE CASCADE for order_items\n   - Define foreign keys with ON DELETE RESTRICT for orders\n   - Define foreign keys with ON UPDATE CASCADE for all foreign keys\n\n3. Indexes for performance:\n   - Create index on customer_id in Orders table\n   - Create index on product_id in Order_Items table\n   - Create index on email in Customers table\n\n4. Transaction implementation:\n   - Write a transaction to create an order with multiple items\n   - Include BEGIN TRANSACTION, COMMIT, and ROLLBACK\n   - Handle errors and rollback on failure\n   - Ensure atomicity (all items or none)\n\n5. Stored procedure (optional but recommended):\n   - Create a stored procedure to place an order\n   - Parameters: customer_id, product_ids, quantities\n   - Validate stock availability before inserting\n   - Update stock quantities after order placement\n   - Use transaction within the procedure\n\n6. Trigger (optional but recommended):\n   - Create a trigger to prevent deleting products with existing orders\n   - Create a trigger to update order total when items are added/removed\n\nUse any SQL dialect that supports transactions and stored procedures (PostgreSQL, MySQL, SQL Server).",
+  "instructions": "Submit exactly one .sql file containing table creation, constraints, indexes, transactions, and stored procedures. Separate each section with clear comments. Include error handling in transactions. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".sql"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Table creation with constraints",
+      "marks": 25,
+      "full": "Creates all tables with correct PRIMARY KEY, NOT NULL, CHECK, UNIQUE, and FOREIGN KEY constraints.",
+      "partial": "Creates tables but missing some constraints or incorrect constraint syntax.",
+      "zero": "Table creation is missing or constraints are incorrect."
+    },
+    {
+      "criterion": "Foreign key and index configuration",
+      "marks": 25,
+      "full": "Configures foreign keys with correct ON DELETE/UPDATE actions and creates indexes on foreign key columns.",
+      "partial": "Configures foreign keys but missing ON DELETE/UPDATE actions or indexes are missing.",
+      "zero": "Foreign key configuration or indexes are missing."
+    },
+    {
+      "criterion": "Transaction implementation",
+      "marks": 25,
+      "full": "Implements transaction with BEGIN, COMMIT, ROLLBACK, error handling, and ensures atomicity.",
+      "partial": "Implements transaction but missing error handling or ROLLBACK logic.",
+      "zero": "Transaction implementation is missing or incorrect."
+    },
+    {
+      "criterion": "Stored procedure and trigger",
+      "marks": 25,
+      "full": "Creates stored procedure with stock validation and stock update, and creates triggers for referential integrity.",
+      "partial": "Creates stored procedure or trigger but missing validation or stock update.",
+      "zero": "Stored procedure and trigger are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use any SQL dialect (PostgreSQL, MySQL, SQL Server) as long as syntax is correct.",
+    "Skip stored procedure or trigger if dialect doesn't support them (explain in comments).",
+    "Add additional constraints or indexes if desired.",
+    "Use different ON DELETE/UPDATE actions if justified."
+  ],
+  "mistakes_to_check": [
+    "Not including PRIMARY KEY constraint (Primary key).",
+    "Not using CHECK constraints for data validation (Data integrity).",
+    "Not configuring ON DELETE/UPDATE actions (Referential integrity).",
+    "Not using BEGIN/COMMIT/ROLLBACK correctly (Transaction syntax).",
+    "Not handling errors in transactions (Error handling).",
+    "Not validating stock before placing order (Business logic)."
+  ],
+  "solution_file": "solution.sql"
 }

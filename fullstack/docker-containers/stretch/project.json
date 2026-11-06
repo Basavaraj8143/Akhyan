@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "docker-containers-stretch-production-deployment",
+  "title": "Production Deployment: Deploy to Production with Optimizations",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Design a production-ready Docker deployment with optimizations for security, performance, and monitoring. The deployment should include Dockerfile optimizations, security hardening, health checks, and CI/CD integration.\n\nRequirements:\n\n1. Dockerfile production optimizations:\n   - Use multi-stage build with separate build and runtime stages\n   - Use non-root user for running the application\n   - Minimize layers and combine RUN commands\n   - Use specific base image versions\n   - Set appropriate permissions\n   - Remove build artifacts in final stage\n\n2. Security hardening:\n   - Scan images for vulnerabilities (use Trivy or similar)\n   - Use security scanning in CI/CD\n   - Use secrets management (not in Dockerfile)\n   - Use read-only root filesystem\n   - Drop unnecessary Linux capabilities\n   - Implement least privilege\n\n3. Health checks:\n   - Add HEALTHCHECK instruction to Dockerfile\n   - Define health check endpoint in application\n   - Configure health check in docker-compose\n   - Set appropriate intervals and timeouts\n   - Handle unhealthy containers\n\n4. Resource limits:\n   - Set memory limits in docker-compose\n   - Set CPU limits in docker-compose\n   - Configure logging driver\n   - Configure log rotation\n\n5. CI/CD integration:\n   - Write Docker build and push commands for CI/CD\n   - Configure image tagging strategy (git commit SHA, semantic version)\n   - Configure automated testing before build\n   - Configure deployment strategy (blue-green, rolling)\n\n6. Monitoring and observability:\n   - Configure metrics collection (Prometheus)\n   - Configure logging (ELK stack or similar)\n   - Configure tracing (Jaeger or similar)\n   - Document monitoring setup",
+  "instructions": "Submit exactly one file containing the production Dockerfile, docker-compose.yml, health check implementation, and CI/CD configuration. Use === FILE: path === separators to separate files. Include deployment commands and monitoring setup in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Dockerfile production optimizations",
+      "marks": 25,
+      "full": "Implements multi-stage build, non-root user, minimized layers, specific versions, and removes build artifacts.",
+      "partial": "Dockerfile has some optimizations but missing non-root user or build artifacts not removed.",
+      "zero": "Dockerfile lacks production optimizations."
+    },
+    {
+      "criterion": "Security hardening",
+      "marks": 25,
+      "full": "Implements image scanning, secrets management, read-only filesystem, dropped capabilities, and least privilege.",
+      "partial": "Some security measures exist but missing scanning or capabilities not dropped.",
+      "zero": "Security hardening is missing."
+    },
+    {
+      "criterion": "Health checks and resource limits",
+      "marks": 25,
+      "full": "Implements HEALTHCHECK instruction, health endpoint, resource limits (memory/CPU), and logging configuration.",
+      "partial": "Health checks or resource limits exist but incomplete.",
+      "zero": "Health checks or resource limits are missing."
+    },
+    {
+      "criterion": "CI/CD and monitoring",
+      "marks": 25,
+      "full": "Configures CI/CD build/push, image tagging strategy, deployment strategy, and monitoring setup.",
+      "partial": "CI/CD or monitoring exists but incomplete or missing deployment strategy.",
+      "zero": "CI/CD and monitoring are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different CI/CD platform (GitHub Actions, GitLab CI, etc.).",
+    "Use different monitoring stack (Prometheus, CloudWatch, etc.).",
+    "Use different deployment strategy (canary, rolling, blue-green).",
+    "Add additional security measures if desired."
+  ],
+  "mistakes_to_check": [
+    "Not using non-root user (Security).",
+    "Not implementing HEALTHCHECK (Health monitoring).",
+    "Not setting resource limits (Resource management).",
+    "Not configuring secrets management (Secrets).",
+    "Not using specific image versions (Version pinning).",
+    "Not implementing image scanning (Security scanning)."
+  ],
+  "solution_file": "solution.txt"
 }

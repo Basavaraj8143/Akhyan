@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "docker-containers-accessible-dockerize-app",
+  "title": "Dockerize an App: Create a Dockerfile for a Simple App",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Create a Dockerfile to containerize a simple Node.js Express application. The Dockerfile should follow best practices for building, running, and optimizing the container image.\n\nRequirements:\n\n1. Base image selection:\n   - Choose an appropriate base image (node:alpine or node:slim)\n   - Use specific version tag (not latest)\n   - Explain why the base image was chosen\n\n2. Dockerfile stages:\n   - Set working directory\n   - Copy package.json and package-lock.json\n   - Install dependencies\n   - Copy application code\n   - Expose application port\n   - Define command to run the application\n\n3. Dockerfile optimization:\n   - Use multi-stage build to reduce final image size\n   - Leverage Docker layer caching (copy package files before source)\n   - Use .dockerignore to exclude unnecessary files\n   - Set NODE_ENV to production\n\n4. Application:\n   - Simple Express server that listens on port 3000\n   - Returns a JSON response\n   - Has package.json with dependencies\n\n5. Build and run commands:\n   - Provide docker build command\n   - Provide docker run command with port mapping\n   - Provide docker stop and remove commands\n\n6. .dockerignore file:\n   - Exclude node_modules\n   - Exclude .git\n   - Exclude .env files\n   - Exclude other unnecessary files",
+  "instructions": "Submit exactly one file containing the Dockerfile, .dockerignore, and a simple Express app. Use === FILE: path === separators to separate files. Include build and run commands in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Base image and Dockerfile structure",
+      "marks": 25,
+      "full": "Chooses appropriate base image with specific version tag, sets working directory, and follows proper Dockerfile structure.",
+      "partial": "Base image chosen but missing version tag or Dockerfile structure is incomplete.",
+      "zero": "Base image is missing or Dockerfile structure is incorrect."
+    },
+    {
+      "criterion": "Dockerfile stages and optimization",
+      "marks": 25,
+      "full": "Implements multi-stage build, leverages layer caching, sets NODE_ENV, and follows optimization best practices.",
+      "partial": "Dockerfile exists but missing multi-stage build or layer caching is not optimized.",
+      "zero": "Dockerfile stages are missing or not optimized."
+    },
+    {
+      "criterion": "Application and dependencies",
+      "marks": 25,
+      "full": "Creates simple Express app with package.json, exposes correct port, and defines proper CMD.",
+      "partial": "Application exists but missing dependencies or CMD is incorrect.",
+      "zero": "Application is missing or incorrect."
+    },
+    {
+      "criterion": ".dockerignore and commands",
+      "marks": 25,
+      "full": "Creates .dockerignore with appropriate exclusions and provides correct build/run/stop commands.",
+      "partial": ".dockerignore exists but missing exclusions or commands are incorrect.",
+      "zero": ".dockerignore is missing or commands are incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use node:alpine or node:slim (both are acceptable).",
+    "Use different port as long as it's documented.",
+    "Add additional .dockerignore patterns if desired.",
+    "Use different optimization techniques if justified."
+  ],
+  "mistakes_to_check": [
+    "Not using specific version tag (Version pinning).",
+    "Not using multi-stage build (Image size).",
+    "Not copying package files before source (Layer caching).",
+    "Not exposing port (Port exposure).",
+    "Not setting NODE_ENV (Environment).",
+    "Not excluding node_modules in .dockerignore (Image size)."
+  ],
+  "solution_file": "solution.txt"
 }

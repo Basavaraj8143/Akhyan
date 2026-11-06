@@ -1,0 +1,188 @@
+# CI/CD & Deployment Reference Solution: Blue-Green Deploy
+# Blue-green deployment strategy
+
+# === FILE: .github/workflows/blue-green.yml ===
+name: Blue-Green Deployment
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-green:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Deploy to Green Environment
+        run: |
+          # Deploy new version to green environment
+          kubectl set image deployment/app-green \
+            app=myapp:${{ github.sha }} \
+            --namespace=production
+      
+      - name: Wait for Green to be ready
+        run: |
+          kubectl wait --for=condition=available \
+            deployment/app-green \
+            --namespace=production \
+            --timeout=5m
+      
+      - name: Run smoke tests on Green
+        run: |
+          curl -f http://green.example.com/health || exit 1
+          curl -f http://green.example.com/api/status || exit 1
+  
+  switch-traffic:
+    needs: deploy-green
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Switch traffic to Green
+        run: |
+          # Update load balancer to point to green
+          kubectl patch service app-service \
+            -p '{"spec":{"selector":{"version":"green"}}}' \
+            --namespace=production
+      
+      - name: Verify Green is serving traffic
+        run: |
+          sleep 30
+          curl -f http://app.example.com/health || exit 1
+  
+  keep-blue:
+    needs: switch-traffic
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Keep Blue for rollback
+        run: |
+          # Blue environment kept for 1 hour for rollback
+          echo "Blue environment kept for rollback window"
+  
+  deprovision-blue:
+    needs: keep-blue
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Wait for rollback window
+        run: sleep 3600
+      
+      - name: Deprovision old Blue
+        run: |
+          # Deprovision old blue environment
+          kubectl delete deployment/app-blue --namespace=production
+
+# === FILE: k8s/blue-deployment.yaml ===
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-blue
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: myapp
+        version: blue
+    spec:
+      containers:
+      - name: app
+        image: myapp:1.0.0
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+
+# === FILE: k8s/green-deployment.yaml ===
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-green
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      version: green
+  template:
+    metadata:
+      labels:
+        app: myapp
+        version: green
+    spec:
+      containers:
+      - name: app
+        image: myapp:latest
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+
+# === FILE: k8s/service.yaml ===
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: production
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+# === DEPLOYMENT COMMANDS ===
+
+# Deploy to green
+kubectl apply -f k8s/green-deployment.yaml
+
+# Switch traffic to green
+kubectl patch service app-service -p '{"spec":{"selector":{"version":"green"}}}'
+
+# Rollback to blue
+kubectl patch service app-service -p '{"spec":{"selector":{"version":"blue"}}}'
+
+# Verify health
+curl http://app.example.com/health
+
+# Check deployment status
+kubectl get deployments -n production
+
+# Rollback command (instant)
+kubectl patch service app-service -p '{"spec":{"selector":{"version":"blue"}}}'
+
+# === DATABASE MIGRATION STRATEGY ===
+
+# 1. Ensure migrations are backward compatible
+# 2. Run migrations before traffic switch
+# 3. Test migrations on green environment
+# 4. Support rollback with migration rollback
+
+# Migration script
+kubectl apply -f migrations/
+kubectl rollout status deployment/app-green
+
+# Rollback migration if needed
+kubectl apply -f migrations/rollback/

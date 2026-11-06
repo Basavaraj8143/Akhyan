@@ -1,0 +1,169 @@
+# Docker & Containers Reference Solution: Multi-Container App
+# Docker Compose for multi-service application
+
+# === FILE: docker-compose.yml ===
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_NAME=myapp
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - REDIS_HOST=cache
+      - REDIS_PORT=6379
+    depends_on:
+      - database
+      - cache
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  database:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - redis-data:/data
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+
+# === FILE: Dockerfile ===
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+
+# === FILE: package.json ===
+{
+  "name": "multi-container-app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.0",
+    "redis": "^4.6.0"
+  }
+}
+
+# === FILE: server.js ===
+const express = require('express');
+const { Pool } = require('pg');
+const redis = require('redis');
+
+const app = express();
+app.use(express.json());
+
+// PostgreSQL connection
+const pool = new Pool({
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 5432,
+  database: process.env.DB_NAME || 'myapp',
+  user: process.env.DB_USER || 'postgres',
+  password: process.env.DB_PASSWORD || 'postgres'
+});
+
+// Redis connection
+const redisClient = redis.createClient({
+  host: process.env.REDIS_HOST || 'localhost',
+  port: process.env.REDIS_PORT || 6379
+});
+
+redisClient.connect().catch(console.error);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'Multi-container app running!' });
+});
+
+app.get('/db-test', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ timestamp: result.rows[0].now });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get('/cache-test', async (req, res) => {
+  try {
+    await redisClient.set('test', 'hello from redis');
+    const value = await redisClient.get('test');
+    res.json({ value });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+# === BUILD AND RUN COMMANDS ===
+
+# Build and start all services
+docker-compose up -d --build
+
+# View logs for all services
+docker-compose logs -f
+
+# View logs for specific service
+docker-compose logs -f web
+
+# Stop all services
+docker-compose down
+
+# Stop all services and remove volumes
+docker-compose down -v
+
+# Restart a specific service
+docker-compose restart web
+
+# Scale a service
+docker-compose up -d --scale web=3
+
+# Execute command in service
+docker-compose exec web sh
+
+# Check service status
+docker-compose ps

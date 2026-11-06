@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "web-security-accessible-common-vulnerabilities",
+  "title": "Common Vulnerabilities: Identify and Explain Common Web Security Vulnerabilities",
+  "domain": "Web Development",
+  "difficulty": "Easy",
+  "problem_statement": "Write a comprehensive explanation of common web security vulnerabilities, including how they work, their impact, and how to prevent them.\n\nRequirements:\n\n1. SQL Injection:\n   - Explain what SQL injection is\n   - Provide an example of a vulnerable SQL query\n   - Explain how the attack works\n   - Explain the impact (data theft, data deletion, etc.)\n   - Explain how to prevent it (parameterized queries, ORM)\n\n2. Cross-Site Scripting (XSS):\n   - Explain what XSS is\n   - Provide an example of a vulnerable script\n   - Explain how the attack works (reflected, stored, DOM-based)\n   - Explain the impact (session hijacking, data theft)\n   - Explain how to prevent it (input validation, output encoding, CSP)\n\n3. Cross-Site Request Forgery (CSRF):\n   - Explain what CSRF is\n   - Provide an example of a CSRF attack\n   - Explain how the attack works\n   - Explain the impact (unauthorized actions)\n   - Explain how to prevent it (CSRF tokens, SameSite cookies)\n\n4. Authentication and Authorization Issues:\n   - Explain weak password issues\n   - Explain session hijacking\n   - Explain the impact (unauthorized access)\n   - Explain how to prevent it (strong passwords, secure session management)\n\n5. Security Misconfiguration:\n   - Explain common misconfigurations (default credentials, debug mode)\n   - Explain the impact (unauthorized access, data exposure)\n   - Explain how to prevent it (secure defaults, proper configuration)\n\n6. Sensitive Data Exposure:\n   - Explain what sensitive data exposure is\n   - Provide examples (credit cards, passwords in logs)\n   - Explain the impact (data breach, identity theft)\n   - Explain how to prevent it (encryption, hashing, secure storage)",
+  "instructions": "Submit exactly one .md file containing the complete explanation. Include detailed explanations for each vulnerability with examples, impacts, and prevention methods. Use clear headings and formatting. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "SQL Injection explanation",
+      "marks": 16,
+      "full": "Accurately explains SQL injection with a vulnerable example, attack mechanics, impact, and prevention methods.",
+      "partial": "Explains SQL injection but missing examples, impact, or prevention details.",
+      "zero": "SQL Injection explanation is missing or incorrect."
+    },
+    {
+      "criterion": "XSS explanation",
+      "marks": 17,
+      "full": "Accurately explains XSS with types (reflected, stored, DOM-based), examples, impact, and prevention methods.",
+      "partial": "Explains XSS but missing types, examples, or prevention details.",
+      "zero": "XSS explanation is missing or incorrect."
+    },
+    {
+      "criterion": "CSRF, Authentication, and Misconfiguration",
+      "marks": 34,
+      "full": "Accurately explains CSRF, authentication issues, and security misconfiguration with examples, impacts, and prevention methods.",
+      "partial": "Explains some but not all of these vulnerabilities or missing details.",
+      "zero": "These explanations are missing or incorrect."
+    },
+    {
+      "criterion": "Sensitive Data Exposure and overall quality",
+      "marks": 33,
+      "full": "Accurately explains sensitive data exposure with examples, impacts, and prevention methods. Overall explanation is well-structured and comprehensive.",
+      "partial": "Explains sensitive data exposure but lacks detail or overall structure is weak.",
+      "zero": "Sensitive data exposure explanation is missing or incorrect."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different examples as long as they are accurate.",
+    "Add additional vulnerabilities if desired.",
+    "Include code examples for prevention methods.",
+    "Include diagrams or visual representations if helpful."
+  ],
+  "mistakes_to_check": [
+    "Not explaining how each vulnerability works (Mechanism).",
+    "Not providing examples of vulnerable code (Examples).",
+    "Not explaining the impact of each vulnerability (Impact).",
+    "Not explaining prevention methods (Prevention).",
+    "Missing one or more vulnerabilities (Completeness).",
+    "Not explaining XSS types (XSS types)."
+  ],
+  "solution_file": "solution.md"
 }

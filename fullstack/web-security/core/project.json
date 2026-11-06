@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "web-security-core-secure-api",
+  "title": "Secure an API: Add Security Headers, Rate Limiting, and Input Validation to an API",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Secure an Express API by adding security headers, rate limiting, and input validation to protect against common attacks.\n\nRequirements:\n\n1. Security headers:\n   - Add helmet middleware to set security headers\n   - Configure specific headers: X-Content-Type-Options, X-Frame-Options, X-XSS-Protection\n   - Configure Content-Security-Policy (restrict script sources, style sources)\n   - Configure HSTS (HTTP Strict Transport Security)\n   - Verify headers are set correctly\n\n2. Rate limiting:\n   - Implement rate limiting middleware\n   - Limit requests per IP address (e.g., 100 requests per 15 minutes)\n   - Return 429 Too Many Requests when limit exceeded\n   - Include Retry-After header in response\n   - Configure different limits for different routes (e.g., stricter for login)\n\n3. Input validation:\n   - Implement input validation middleware\n   - Validate required fields are present\n   - Validate data types (string, number, boolean)\n   - Validate string length and format (email, password)\n   - Sanitize input to prevent XSS\n   - Return 400 Bad Request for invalid input\n\n4. Sample API routes:\n   - POST /api/auth/register - User registration with validation\n   - POST /api/auth/login - User login with rate limiting\n   - GET /api/users - Get users with rate limiting\n   - POST /api/posts - Create post with validation\n\n5. Error handling:\n   - Centralized error handling middleware\n   - Return appropriate status codes (400, 401, 429, 500)\n   - Return error messages without exposing sensitive information\n   - Log errors for debugging\n\nUse Express.js, helmet, express-rate-limit, and a validation library (joi or express-validator).",
+  "instructions": "Submit exactly one .js file containing the complete secure API implementation. Include security headers, rate limiting, input validation, and error handling. Separate middleware and routes using clear comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Security headers implementation",
+      "marks": 25,
+      "full": "Adds helmet middleware, configures all required security headers (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, CSP, HSTS), and headers are set correctly.",
+      "partial": "Adds helmet but some security headers are missing or misconfigured.",
+      "zero": "Security headers are not implemented."
+    },
+    {
+      "criterion": "Rate limiting implementation",
+      "marks": 25,
+      "full": "Implements rate limiting middleware with IP-based limits, returns 429 with Retry-After header, and applies different limits to different routes.",
+      "partial": "Implements rate limiting but missing Retry-After header or route-specific limits.",
+      "zero": "Rate limiting is not implemented."
+    },
+    {
+      "criterion": "Input validation implementation",
+      "marks": 25,
+      "full": "Implements input validation for required fields, data types, string length/format, sanitizes input, and returns 400 for invalid input.",
+      "partial": "Implements validation but missing type checks, sanitization, or proper error responses.",
+      "zero": "Input validation is not implemented."
+    },
+    {
+      "criterion": "Error handling and overall security",
+      "marks": 25,
+      "full": "Implements centralized error handling with appropriate status codes, error messages without sensitive info, and logging. Overall security implementation is comprehensive.",
+      "partial": "Error handling exists but status codes are incorrect or sensitive info is exposed.",
+      "zero": "Error handling is not implemented."
+    }
+  ],
+  "valid_alternatives": [
+    "Use joi or express-validator for validation (both are acceptable).",
+    "Use different rate limits as long as they are reasonable.",
+    "Add additional security headers if desired.",
+    "Add additional validation rules if desired."
+  ],
+  "mistakes_to_check": [
+    "Not using helmet middleware (Security headers).",
+    "Not configuring CSP or HSTS (Header configuration).",
+    "Not returning 429 status code (Rate limiting).",
+    "Not including Retry-After header (Rate limiting).",
+    "Not sanitizing input (XSS prevention).",
+    "Not validating data types (Validation).",
+    "Exposing sensitive information in error messages (Error handling)."
+  ],
   "solution_file": "solution.js"
 }

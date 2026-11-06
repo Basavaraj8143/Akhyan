@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "cicd-deployment-core-test-in-ci",
+  "title": "Test in CI: Add Automated Tests that Gate Deployment",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Create a CI/CD pipeline with automated tests that must pass before deployment. The pipeline should include unit tests, integration tests, and quality checks.\n\nRequirements:\n\n1. Application with testable code:\n   - Create a Node.js Express application with multiple endpoints\n   - Write modular code that can be tested\n   - Include package.json with test dependencies (jest, supertest)\n   - Write unit tests for business logic\n   - Write integration tests for API endpoints\n\n2. Test configuration:\n   - Configure Jest for testing\n   - Create test files with appropriate structure\n   - Configure test coverage thresholds\n   - Configure test reporter\n\n3. CI/CD pipeline with test gating:\n   - Create GitHub Actions workflow\n   - Trigger on push and pull request\n   - Stage 1: Checkout code\n   - Stage 2: Setup Node.js\n   - Stage 3: Install dependencies\n   - Stage 4: Run linting\n   - Stage 5: Run unit tests\n   - Stage 6: Run integration tests\n   - Stage 7: Generate coverage report\n   - Stage 8: Deploy (only if tests pass and on main branch)\n\n4. Quality checks:\n   - Add ESLint configuration\n   - Add Prettier configuration\n   - Run linting in CI\n   - Fail pipeline if linting fails\n   - Fail pipeline if tests fail\n   - Fail pipeline if coverage below threshold\n\n5. Test coverage:\n   - Set coverage threshold (e.g., 80%)\n   - Generate coverage report\n   - Upload coverage to Codecov or similar\n   - Display coverage in PR comments\n\n6. Test categories:\n   - Unit tests for utility functions\n   - Integration tests for API endpoints\n   - Test database interactions if applicable",
+  "instructions": "Submit exactly one file containing the GitHub Actions workflow, application code, tests, linting configuration, and documentation. Use === FILE: path === separators to separate files. Include setup instructions in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".txt",
+    ".md"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Application and test structure",
+      "marks": 25,
+      "full": "Creates modular Express app with unit tests and integration tests using Jest and Supertest.",
+      "partial": "Application exists but tests are missing or incomplete.",
+      "zero": "Application or tests are missing."
+    },
+    {
+      "criterion": "Test configuration and coverage",
+      "marks": 25,
+      "full": "Configures Jest with coverage thresholds, test reporter, and appropriate test structure.",
+      "partial": "Jest configured but missing coverage thresholds or incorrect structure.",
+      "zero": "Test configuration is missing."
+    },
+    {
+      "criterion": "CI/CD pipeline with test gating",
+      "marks": 25,
+      "full": "Creates pipeline with linting, unit tests, integration tests, coverage, and deployment gate.",
+      "partial": "Pipeline exists but missing test stages or gating is incomplete.",
+      "zero": "CI/CD pipeline is missing or incorrect."
+    },
+    {
+      "criterion": "Quality checks and linting",
+      "marks": 25,
+      "full": "Configures ESLint and Prettier, runs linting in CI, and fails pipeline on quality check failures.",
+      "partial": "Linting configured but not enforced in CI or missing coverage enforcement.",
+      "zero": "Quality checks are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Jest, Mocha, or Ava (all are acceptable).",
+    "Use ESLint or other linter (all are acceptable).",
+    "Use different coverage threshold if justified.",
+    "Add additional test types if desired."
+  ],
+  "mistakes_to_check": [
+    "Not running tests before deployment (Quality gate).",
+    "Not enforcing coverage threshold (Coverage enforcement).",
+    "Not running linting in CI (Quality checks).",
+    "Not failing pipeline on test failure (Gating).",
+    "Not separating unit and integration tests (Test organization).",
+    "Not configuring test coverage reporting (Coverage reporting)."
+  ],
+  "solution_file": "solution.txt"
 }

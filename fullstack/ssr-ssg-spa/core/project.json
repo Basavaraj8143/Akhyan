@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "ssr-ssg-spa-core-implement-ssr",
+  "title": "Implement a Simple SSR App: Build a Basic Server-Rendered Page",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Build a simple server-side rendered web application using Node.js and Express. The application should render HTML on the server and serve it to the client.\n\nRequirements:\n\n1. Express server setup:\n   - Create an Express server\n   - Configure server to listen on a port (e.g., 3000)\n   - Use template engine (EJS or Pug) for rendering\n   - Configure template engine views directory\n\n2. Home page:\n   - GET / route that renders a home page\n   - Page should have a header, navigation, and content\n   - Content should include dynamic data (e.g., current date, user count)\n   - Use template engine to inject dynamic data into HTML\n\n3. Dynamic page:\n   - GET /posts/:id route that renders a post page\n   - Fetch post data from a simple in-memory data store\n   - If post exists, render page with post data\n   - If post doesn't exist, render a 404 page\n\n4. About page:\n   - GET /about route that renders an about page\n   - Page should include static content about the application\n   - Use the same layout as other pages (header, navigation)\n\n5. Shared layout:\n   - Create a shared layout template (header, navigation, footer)\n   - Include CSS styling (inline or in a style tag)\n   - All pages should use the shared layout\n   - Navigation should link to home, posts, and about pages\n\n6. Data handling:\n   - Create an in-memory data store with sample posts\n   - Each post should have: id, title, content, author, date\n   - Include at least 3 sample posts\n\nUse Express.js, EJS or Pug template engine. Do not use client-side JavaScript frameworks (React, Vue, etc.).",
+  "instructions": "Submit exactly one .js file containing the complete SSR application. Include server setup, routes, template code in comments, and data store. Separate templates using comments with === FILE: path ===. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Express server and template engine setup",
+      "marks": 25,
+      "full": "Sets up Express server correctly, configures template engine (EJS or Pug), and defines views directory.",
+      "partial": "Sets up server but template engine configuration is missing or incorrect.",
+      "zero": "Server setup is missing or incorrect."
+    },
+    {
+      "criterion": "Home page with dynamic data",
+      "marks": 25,
+      "full": "Implements GET / route that renders home page with header, navigation, and dynamic data injected via template engine.",
+      "partial": "Home page exists but lacks dynamic data or template engine usage.",
+      "zero": "Home page is not implemented."
+    },
+    {
+      "criterion": "Dynamic post page with data handling",
+      "marks": 25,
+      "full": "Implements GET /posts/:id route that fetches from in-memory data store, renders post page if found, and renders 404 if not found.",
+      "partial": "Post page exists but data handling is incomplete or 404 handling is missing.",
+      "zero": "Post page is not implemented."
+    },
+    {
+      "criterion": "Shared layout and about page",
+      "marks": 25,
+      "full": "Creates shared layout template (header, navigation, footer), implements GET /about route, and all pages use the shared layout with navigation.",
+      "partial": "Layout or about page exists but shared layout is incomplete or navigation is missing.",
+      "zero": "Shared layout or about page is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use EJS or Pug (both are acceptable).",
+    "Add additional pages if desired.",
+    "Add more sample posts if desired.",
+    "Use different styling approach as long as CSS is included."
+  ],
+  "mistakes_to_check": [
+    "Not using template engine (Manual HTML rendering).",
+    "Not injecting dynamic data (Static content only).",
+    "Not handling 404 for missing posts (Error handling).",
+    "Not creating shared layout (Duplicate header/footer).",
+    "Not including navigation (Missing navigation).",
+    "Not using in-memory data store (Database usage is fine but data should be provided)."
+  ],
   "solution_file": "solution.js"
 }

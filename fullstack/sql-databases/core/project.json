@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "sql-databases-core-joins-aggregations",
+  "title": "Joins and Aggregations: Use Joins and Aggregations for Analytics",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Write SQL queries using joins and aggregations to perform analytics on an e-commerce database schema. The queries should answer business questions about sales, customers, and products.\n\nRequirements:\n\n1. Inner joins:\n   - Write a query to get customer names with their order details\n   - Write a query to get product names with their order quantities\n   - Write a query to get orders with customer and product information\n\n2. Left/Right joins:\n   - Write a LEFT JOIN to get all customers even if they have no orders\n   - Write a RIGHT JOIN to get all products even if they have no orders\n   - Write a query to get customers with order count (including zero)\n\n3. Self joins:\n   - Write a self join to find products in the same category\n   - Write a self join to find customers with the same address\n\n4. Aggregations:\n   - Write COUNT to count total orders\n   - Write SUM to calculate total revenue\n   - Write AVG to calculate average order value\n   - Write MAX/MIN to find highest/lowest priced products\n\n5. GROUP BY and HAVING:\n   - Write GROUP BY to calculate revenue per category\n   - Write GROUP BY to count orders per customer\n   - Write HAVING to find customers with more than 5 orders\n   - Write HAVING to find categories with revenue over $1000\n\n6. Window functions (optional but recommended):\n   - Write ROW_NUMBER to rank products by price\n   - Write RANK to rank customers by order count\n   - Write SUM OVER to calculate running total of revenue",
+  "instructions": "Submit exactly one .sql file containing all the SQL queries. Organize queries by type (joins, aggregations, group by, window functions). Use comments to label each query and explain the business question it answers. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".sql"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
-  "solution_file": "solution.js"
+  "rubrics": [
+    {
+      "criterion": "Join queries",
+      "marks": 25,
+      "full": "Writes correct inner joins, left/right joins, and self joins with proper relationships and business context.",
+      "partial": "Writes some join queries but missing types or incorrect join conditions.",
+      "zero": "Join queries are missing or incorrect."
+    },
+    {
+      "criterion": "Aggregation queries",
+      "marks": 25,
+      "full": "Writes correct COUNT, SUM, AVG, MAX, MIN queries to answer business questions.",
+      "partial": "Writes some aggregation queries but missing functions or incorrect syntax.",
+      "zero": "Aggregation queries are missing or incorrect."
+    },
+    {
+      "criterion": "GROUP BY and HAVING",
+      "marks": 25,
+      "full": "Writes correct GROUP BY queries with appropriate aggregations and HAVING clauses for filtering groups.",
+      "partial": "Writes GROUP BY queries but missing HAVING or incorrect grouping.",
+      "zero": "GROUP BY and HAVING queries are missing or incorrect."
+    },
+    {
+      "criterion": "Window functions and overall quality",
+      "marks": 25,
+      "full": "Writes correct window functions (ROW_NUMBER, RANK, SUM OVER) and overall queries are well-organized with comments.",
+      "partial": "Window functions are missing or incomplete, or organization is weak.",
+      "zero": "Window functions are missing and organization is poor."
+    }
+  ],
+  "valid_alternatives": [
+    "Use any SQL dialect that supports window functions (PostgreSQL, MySQL 8+, SQL Server).",
+    "Add additional analytics queries if desired.",
+    "Use different business questions if schema is adapted.",
+    "Skip window functions if dialect doesn't support them (explain in comments)."
+  ],
+  "mistakes_to_check": [
+    "Not using correct join type (Join type).",
+    "Not joining on correct columns (Join conditions).",
+    "Not using GROUP BY with aggregations (Aggregation syntax).",
+    "Not using HAVING for group filtering (Group filtering).",
+    "Not using OVER clause for window functions (Window function syntax).",
+    "Not explaining business questions (Documentation)."
+  ],
+  "solution_file": "solution.sql"
 }

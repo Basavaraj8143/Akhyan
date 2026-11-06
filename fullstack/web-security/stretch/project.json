@@ -1,18 +1,57 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "web-security-stretch-secure-auth-flow",
+  "title": "Secure Auth Flow: Implement Secure Authentication with Proper Token Handling",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Implement a secure authentication flow with proper token handling, including secure password storage, JWT token management, refresh tokens, and secure cookie handling.\n\nRequirements:\n\n1. Secure password storage:\n   - Hash passwords using bcrypt with appropriate salt rounds (10-12)\n   - Never store plain text passwords\n   - Validate password strength (minimum length, complexity)\n   - Implement secure password reset flow\n\n2. JWT token management:\n   - Generate JWT access tokens with short expiration (15 minutes)\n   - Include user_id, username, role in token payload\n   - Use strong secret key for signing\n   - Verify token signature and expiration\n   - Implement token blacklist for logout\n\n3. Refresh tokens:\n   - Generate refresh tokens with longer expiration (7 days)\n   - Store refresh tokens securely (database with hashing)\n   - Implement refresh token rotation on use\n   - Revoke refresh tokens on logout\n   - Limit refresh token usage (single use)\n\n4. Secure cookie handling:\n   - Set HttpOnly flag on cookies (prevents XSS access)\n   - Set Secure flag (only sent over HTTPS)\n   - Set SameSite flag (Strict or Lax to prevent CSRF)\n   - Set cookie expiration appropriately\n   - Set Path appropriately\n\n5. Authentication routes:\n   - POST /api/auth/register - Register with password hashing and validation\n   - POST /api/auth/login - Login with access token and refresh token in HttpOnly cookies\n   - POST /api/auth/refresh - Refresh access token using refresh token\n   - POST /api/auth/logout - Revoke refresh token and blacklist access token\n   - GET /api/auth/me - Get current user info (protected route)\n\n6. Security measures:\n   - Implement rate limiting on login endpoint\n   - Implement account lockout after failed attempts\n   - Log authentication events (login, logout, failed attempts)\n   - Implement IP-based blocking for suspicious activity\n\nUse Express.js, bcryptjs, jsonwebtoken, and cookie-parser. Do not store passwords in plain text or use weak token secrets.",
+  "instructions": "Submit exactly one .js file containing the complete secure authentication implementation. Include password hashing, JWT management, refresh tokens, secure cookies, and authentication routes. Separate middleware and routes using clear comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Secure password storage",
+      "marks": 25,
+      "full": "Hashes passwords with bcrypt (10-12 rounds), validates password strength, implements secure password reset, and never stores plain text.",
+      "partial": "Hashes passwords but validation is missing or password reset is incomplete.",
+      "zero": "Password storage is not secure (plain text or weak hashing)."
+    },
+    {
+      "criterion": "JWT token management",
+      "marks": 25,
+      "full": "Generates JWT with short expiration, includes required payload, uses strong secret, verifies signature/expiry, and implements token blacklist.",
+      "partial": "Generates JWT but missing expiration, verification, or blacklist.",
+      "zero": "JWT management is incomplete or insecure."
+    },
+    {
+      "criterion": "Refresh tokens and secure cookies",
+      "marks": 25,
+      "full": "Implements refresh tokens with secure storage, rotation, revocation, and single use. Sets HttpOnly, Secure, SameSite flags on cookies.",
+      "partial": "Implements refresh tokens but missing rotation, revocation, or secure cookie flags.",
+      "zero": "Refresh tokens or secure cookies are not implemented."
+    },
+    {
+      "criterion": "Authentication routes and security measures",
+      "marks": 25,
+      "full": "Implements all authentication routes with proper token handling, rate limiting, account lockout, event logging, and IP blocking.",
+      "partial": "Implements routes but missing security measures (rate limiting, lockout, logging).",
+      "zero": "Authentication routes are not implemented or missing security measures."
+    }
+  ],
+  "valid_alternatives": [
+    "Use different token expiration times as long as they are reasonable.",
+    "Use different bcrypt rounds as long as they are reasonable (10-12).",
+    "Add additional security measures if desired.",
+    "Use different cookie SameSite policy (Strict or Lax)."
+  ],
+  "mistakes_to_check": [
+    "Not hashing passwords (Password security).",
+    "Not validating password strength (Password validation).",
+    "Not using short expiration for access tokens (Token expiration).",
+    "Not implementing token blacklist (Logout security).",
+    "Not setting HttpOnly flag on cookies (Cookie security).",
+    "Not setting Secure flag on cookies (HTTPS only).",
+    "Not implementing rate limiting on login (Brute force protection)."
+  ],
   "solution_file": "solution.js"
 }
