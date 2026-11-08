@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "observability-core-error-monitoring",
+  "title": "Error Monitoring: Wire Up Error Monitoring So Failures Surface Fast",
+  "domain": "Web Development",
+  "difficulty": "Intermediate",
+  "problem_statement": "Integrate error monitoring into a Node.js Express application using a service like Sentry or similar. The error monitoring should capture errors, stack traces, and context for debugging.\n\nRequirements:\n\n1. Error monitoring service:\n   - Choose an error monitoring service (Sentry, Rollbar, or Bugsnag)\n   - Create an account and get API key/DSN\n   - Configure the SDK in the application\n   - Set environment and release version\n\n2. Error capture:\n   - Capture unhandled exceptions globally\n   - Capture unhandled promise rejections\n   - Capture errors in route handlers\n   - Include stack traces and context\n   - Include user information when available\n\n3. Error context:\n   - Include request details (URL, method, headers)\n   - Include user information (ID, email)\n   - Include custom tags and data\n   - Include environment information\n   - Include release version\n\n4. Error reporting:\n   - Configure error reporting for all environments\n   - Set up source maps for production\n   - Configure error grouping\n   - Configure alerting for critical errors\n\n5. Express middleware:\n   - Create error handling middleware\n   - Pass errors to error monitoring service\n   - Log errors before sending to monitoring\n   - Return appropriate error responses\n\n6. Testing error monitoring:\n   - Create a route that intentionally throws an error\n   - Verify error is captured in monitoring dashboard\n   - Verify context is included",
+  "instructions": "Submit exactly one .js file containing the Express app with error monitoring integration. Include SDK configuration, error capture, middleware, and test route. Include setup instructions in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Error monitoring SDK configuration",
+      "marks": 25,
+      "full": "Configures Sentry/Rollbar/Bugsnag SDK with API key, environment, and release version.",
+      "partial": "SDK configured but missing environment or release version.",
+      "zero": "Error monitoring SDK is not configured."
+    },
+    {
+      "criterion": "Error capture and context",
+      "marks": 25,
+      "full": "Captures unhandled exceptions, promise rejections, route errors with stack traces, request details, and user information.",
+      "partial": "Error capture exists but missing context or stack traces.",
+      "zero": "Error capture is not implemented."
+    },
+    {
+      "criterion": "Express middleware",
+      "marks": 25,
+      "full": "Creates error handling middleware that passes errors to monitoring service and returns appropriate responses.",
+      "partial": "Middleware exists but missing error monitoring integration.",
+      "zero": "Express middleware is missing."
+    },
+    {
+      "criterion": "Testing and setup",
+      "marks": 25,
+      "full": "Creates test route that throws error, verifies capture in dashboard, and documents setup.",
+      "partial": "Test route exists but missing verification or documentation.",
+      "zero": "Testing or setup documentation is missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Sentry, Rollbar, or Bugsnag (all are acceptable).",
+    "Use different error context if justified.",
+    "Add additional error handling if desired.",
+    "Use different alerting configuration if justified."
+  ],
+  "mistakes_to_check": [
+    "Not capturing unhandled exceptions (Global error handling).",
+    "Not capturing promise rejections (Promise errors).",
+    "Not including request context (Context).",
+    "Not including user information (User context).",
+    "Not using error handling middleware (Middleware).",
+    "Not providing setup instructions (Documentation)."
+  ],
   "solution_file": "solution.js"
 }

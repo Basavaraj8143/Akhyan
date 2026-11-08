@@ -1,18 +1,56 @@
 {
-  "project_id": "PLACEHOLDER",
-  "title": "PLACEHOLDER",
-  "domain": "Computer Science",
-  "difficulty": "PLACEHOLDER",
-  "problem_statement": "TODO: Write the task, requirements, and confirmed constraints.",
-  "instructions": "TODO: Explain what students must submit in ONE file. If multi-file, describe how to merge with === FILE: path === separators.",
-  "accepted_formats": [".txt", ".pdf"],
-  "rubrics": [
-    {"criterion": "Criterion 1", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 2", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 3", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"},
-    {"criterion": "Criterion 4", "marks": 25, "full": "TODO", "partial": "TODO", "zero": "TODO"}
+  "project_id": "observability-stretch-full-observability",
+  "title": "Full Observability: Instrument an App with Logs, Metrics, and Alerts",
+  "domain": "Web Development",
+  "difficulty": "Hard",
+  "problem_statement": "Instrument a Node.js Express application with full observability including logs, metrics, and alerts. The application should use a monitoring stack like Prometheus + Grafana or similar.\n\nRequirements:\n\n1. Logging:\n   - Use structured logging (winston or pino)\n   - Log application events with context\n   - Log HTTP requests with timing\n   - Log errors with stack traces\n   - Configure log rotation\n\n2. Metrics collection:\n   - Use prom-client for Prometheus metrics\n   - Define custom metrics (counter, gauge, histogram)\n   - Track HTTP request duration\n   - Track error rates\n   - Track active connections\n   - Expose metrics endpoint (/metrics)\n\n3. Distributed tracing:\n   - Use OpenTelemetry or similar for tracing\n   - Trace HTTP requests through application\n   - Trace database queries\n   - Trace external API calls\n   - Export traces to Jaeger or similar\n\n4. Alerts:\n   - Configure alerts for high error rates\n   - Configure alerts for high latency\n   - Configure alerts for low success rate\n   - Set up alert notifications (email, Slack)\n\n5. Monitoring stack:\n   - Configure Prometheus for metrics collection\n   - Configure Grafana for visualization\n   - Create dashboards for key metrics\n   - Set up alert rules in Prometheus\n\n6. Documentation:\n   - Document the observability stack\n   - Document how to query logs\n   - Document how to view metrics\n   - Document alert configuration",
+  "instructions": "Submit exactly one .js file containing the Express app with full observability. Include logging, metrics, tracing, and monitoring stack configuration. Use === FILE: path === separators to separate configuration files. Include setup instructions in comments. Do not submit a folder or ZIP.",
+  "accepted_formats": [
+    ".js"
   ],
-  "valid_alternatives": ["TODO: List defensible alternative approaches"],
-  "mistakes_to_check": ["TODO: List concrete errors tied to rubric criteria"],
+  "rubrics": [
+    {
+      "criterion": "Logging implementation",
+      "marks": 25,
+      "full": "Implements structured logging with context, HTTP timing, error stack traces, and log rotation.",
+      "partial": "Logging exists but missing context or timing information.",
+      "zero": "Logging is not implemented."
+    },
+    {
+      "criterion": "Metrics collection",
+      "marks": 25,
+      "full": "Implements prom-client with custom metrics, HTTP duration, error rates, and /metrics endpoint.",
+      "partial": "Metrics implemented but missing some metric types or /metrics endpoint.",
+      "zero": "Metrics collection is not implemented."
+    },
+    {
+      "criterion": "Distributed tracing and alerts",
+      "marks": 25,
+      "full": "Implements OpenTelemetry tracing, configures alerts for errors/latency, and sets up notifications.",
+      "partial": "Tracing or alerts exist but incomplete.",
+      "zero": "Tracing or alerts are missing."
+    },
+    {
+      "criterion": "Monitoring stack and documentation",
+      "marks": 25,
+      "full": "Configures Prometheus/Grafana, creates dashboards, and documents observability stack.",
+      "partial": "Monitoring stack configured but missing dashboards or documentation.",
+      "zero": "Monitoring stack and documentation are missing."
+    }
+  ],
+  "valid_alternatives": [
+    "Use Prometheus + Grafana or CloudWatch + X-Ray (both are acceptable).",
+    "Use OpenTelemetry or Zipkin (both are acceptable).",
+    "Add additional metrics if desired.",
+    "Use different alert notification channels if justified."
+  ],
+  "mistakes_to_check": [
+    "Not using structured logging (Log format).",
+    "Not exposing /metrics endpoint (Metrics endpoint).",
+    "Not tracing HTTP requests (Tracing).",
+    "Not configuring alert rules (Alerts).",
+    "Not creating Grafana dashboards (Visualization).",
+    "Not documenting the stack (Documentation)."
+  ],
   "solution_file": "solution.js"
 }

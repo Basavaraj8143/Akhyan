@@ -1,7 +1,7 @@
 # Full-Stack Development - Checklist
 
 **Total Learning Nodes:** 31  
-**Completed:** 16/31 (51.6%)
+**Completed:** 17/31 (54.8%)
 
 ---
 
@@ -23,15 +23,15 @@
 14. ✅ NoSQL Databases
 15. ✅ Docker & Containers
 16. ✅ CI/CD & Deployment
+17. ✅ Observability
 
 ---
 
 ## Pending Nodes ⏳
 
-17. ⏳ HTML
-18. ⏳ CSS
-19. ⏳ JavaScript Basics
-20. ⏳ Observability
+18. ⏳ HTML
+19. ⏳ CSS
+20. ⏳ JavaScript Basics
 21. ⏳ Performance
 22. ⏳ Accessibility
 23. ⏳ Testing
@@ -46,4 +46,4 @@
 
 ---
 
-**Last Updated:** 2026-11-06 (CI/CD & Deployment completed)
+**Last Updated:** 2026-11-08 (Observability completed)
